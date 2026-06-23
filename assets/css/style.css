@@ -1,0 +1,1931 @@
+:root {
+    --primary-blue: #0442F2;
+    --primary-purple: #6D28D9;
+    --hero-bg: #160028;
+    --accent-yellow: #F5C518;
+    --accent-orange: #F59E0B;
+    --text-dark: #111827;
+    --text-light: #F3F4F6;
+    --bg-light: #F9FAFB;
+    --font-main: 'TASA Orbiter', 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-color: var(--bg-light);
+}
+
+/* ── Custom Scrollbar ─────────────────────────── */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(4, 66, 242, 0.7);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 2vw, 40px);
+}
+
+/* Utilities */
+.text-blue {
+    color: #0442F2;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.text-black {
+    color: #000;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent-yellow);
+    color: var(--text-dark);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--accent-yellow);
+    border: 2px solid var(--accent-yellow);
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+/* Navbar */
+.navbar {
+    background: #fff;
+    padding: 20px 0;
+    border-bottom: 1px solid #eaeaea;
+    position: relative;
+    z-index: 200;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.hamburger-menu {
+    display: none;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    z-index: 1000;
+    position: relative;
+}
+
+.hamburger-menu svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* When menu is open — fix position so it floats above the overlay */
+.hamburger-menu.active {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+/* Stroke turns white on dark overlay */
+.hamburger-menu.active svg g {
+    stroke: #fff;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #000;
+    -webkit-text-stroke: 0.6px #000;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    background-color: #12021a;
+    color: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* The photo — bleeds from center */
+.hero-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+/* Yellow art line animation */
+.hero-art-overlay {
+    position: absolute;
+    top: 5vh;
+    right: -5vw;
+    height: 125vh;
+    width: auto;
+    max-width: none;
+    z-index: 3;
+    pointer-events: none;
+    will-change: clip-path;
+    clip-path: inset(0 0 100% 100%);
+    /* Initially hidden */
+    /* Reduced drop-shadows to improve animation performance and remove stuttering */
+    filter: drop-shadow(1px 1px 0 #FFB800) drop-shadow(-1px -1px 0 #FFB800);
+}
+
+.hero-art-overlay.loaded {
+    animation: drawArt 4s cubic-bezier(0.21, 0.85, 0.35, 1) forwards;
+}
+
+@keyframes drawArt {
+    0% {
+        clip-path: inset(0 0 100% 100%);
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* Dark gradient overlay fading left-to-right */
+.hero-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(18, 2, 26, 0.5) 0%, rgba(18, 2, 26, 0.3) 50%, rgba(18, 2, 26, 0.1) 100%),
+        linear-gradient(to top, rgba(18, 2, 26, 0.7) 0%, transparent 25%);
+    z-index: 2;
+}
+
+/* Content wrapper */
+.hero-content {
+    position: relative;
+    z-index: 4;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Subtitle at the very top */
+.hero-top-subtitle {
+    padding-top: 40px;
+    margin-bottom: 20px;
+}
+
+.hero-top-subtitle p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+
+/* Main text block */
+.hero-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 1000px;
+    padding-top: 10px;
+}
+
+.hero-title {
+    font-family: 'TASA Orbiter', 'Inter', sans-serif;
+    font-size: clamp(2rem, 5vw, 4.8rem);
+    /* Reduced font size */
+    font-weight: 800;
+    line-height: 0.88;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.hero-title span {
+    display: block;
+    padding-bottom: 5px;
+    /* Slight adjustment to prevent clipping if any */
+}
+
+/* Yellow pill buttons */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-hero-primary,
+.btn-hero-secondary {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: #000;
+    border: none;
+    padding: 10px 24px;
+    /* Reduced padding */
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    /* Reduced font size */
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.btn-hero-primary:hover,
+.btn-hero-secondary:hover {
+    background-color: #e6b800;
+    transform: translateY(-2px);
+}
+
+/* 3-column text strip at the bottom */
+.hero-bottom-features {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding-bottom: 60px;
+    margin-top: auto;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.hero-feature {
+    max-width: 320px;
+}
+
+.hero-feature p {
+    margin: 0;
+}
+
+.hero-feature strong {
+    font-weight: 800;
+}
+
+.hero-feature-right {
+    text-align: left;
+}
+
+/* ============================================
+   OUR EDGE SECTION
+   ============================================ */
+.our-edge {
+    padding: 80px 0 60px;
+    background: #fff;
+}
+
+.our-edge-title {
+    font-family: 'TASA Orbiter', 'Inter', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 800;
+    color: #0442F2;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* Tab Bar */
+.edge-tabs {
+    display: flex;
+    align-items: flex-end;
+    border-bottom: none;
+    margin-bottom: 0;
+    gap: 0;
+}
+
+.edge-tab {
+    padding: 13px 30px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #555;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.edge-tab.active {
+    background-color: #0442F2;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 6px 6px 0 0;
+}
+
+.edge-tab:not(.active):hover {
+    color: #0442F2;
+}
+
+/* Panel — seamlessly connected below active tab */
+.edge-panel {
+    display: none;
+    overflow: hidden;
+    height: 420px;
+    /* Increased height slightly more */
+    border-radius: 0 8px 8px 8px;
+}
+
+.edge-panel.active {
+    display: flex;
+}
+
+/* Left gradient side */
+.edge-panel-left {
+    width: 35%;
+    min-width: 260px;
+    background: linear-gradient(175deg, #0442F2 0%, #6C22E8 100%);
+    padding: 34px 38px 34px 38px;
+    /* Adjusted padding for 330px height */
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.edge-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    opacity: 0.7;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: auto;
+}
+
+.edge-panel-title {
+    font-family: 'TASA Orbiter', 'Inter', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    /* Increased title size to fit 330px height */
+    font-weight: 800;
+    line-height: 1.05;
+    margin-top: 22px;
+    margin-bottom: 14px;
+    color: #fff;
+}
+
+.edge-panel-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.88);
+    max-width: 230px;
+}
+
+/* Right photo side */
+.edge-panel-right {
+    flex: 1;
+    overflow: hidden;
+    height: 100%;
+}
+
+.edge-panel-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    /* Centered image */
+    display: block;
+}
+
+/* Dots */
+.edge-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.edge-dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 2px solid #0442F2;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: inline-block;
+}
+
+.edge-dot.active {
+    background: #0442F2;
+}
+
+/* Designed to Feel Different */
+.designed-different {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.designed-header {
+    margin-bottom: 70px;
+}
+
+/* Top Row */
+.designed-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.designed-main-title {
+    font-family: 'TASA Orbiter', 'Inter', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    color: #0442F2;
+    /* Updated global blue */
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+.highlight-line {
+    opacity: 0.2;
+    transition: opacity 0.1s ease-out;
+}
+
+.designed-icon-wrapper {
+    flex-shrink: 0;
+    margin-top: 20px;
+    margin-right: 40px;
+}
+
+.icon-star {
+    width: 250px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+    filter: contrast(1.3) brightness(1.1);
+}
+
+/* Bottom Row */
+.designed-bottom-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.designed-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #222;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.designed-line-input {
+    flex-grow: 1;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid #000;
+    background: transparent;
+    margin: 0 30px;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    padding: 0 10px;
+    color: #000;
+}
+
+.designed-line-input::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.designed-signup {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.signup-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+}
+
+.signup-btn {
+    background-color: #FFD24D;
+    color: #000;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 12px 32px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.signup-btn:hover {
+    transform: translateY(-2px);
+    background-color: #e6b800;
+}
+
+.product-cards {
+    display: flex;
+    gap: 20px;
+    height: 450px;
+}
+
+.card {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: flex 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card .blue-tint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(4, 66, 242, 0.7);
+    /* #0442F2 with opacity */
+    mix-blend-mode: color;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+}
+
+.card .blue-multiply {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(4, 66, 242, 0.5);
+    /* #0442F2 with opacity */
+    mix-blend-mode: multiply;
+    z-index: 2;
+    transition: opacity 0.5s ease;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 30px;
+    color: white;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+    width: 100%;
+    height: 50%;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.card-overlay h3 {
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+    font-weight: 800;
+}
+
+.card-overlay p {
+    font-size: 1.1rem;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.card.active {
+    flex: 2.5;
+}
+
+.card.active .blue-tint,
+.card.active .blue-multiply {
+    opacity: 0;
+}
+
+.card.active .card-overlay {
+    opacity: 1;
+}
+
+/* Start with Customer */
+.start-customer {
+    position: relative;
+    padding: 140px 0;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wavy-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.start-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.start-content .small-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+}
+
+.start-content h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2rem, 5vw, 4.2rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 35px 0;
+    color: #FFD24D;
+    white-space: nowrap;
+}
+
+.start-content .start-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+}
+
+/* Insurance in India */
+.insurance-india {
+    padding: 120px 0;
+    background: #fff;
+}
+
+.insurance-india-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.insurance-india-left {
+    flex: 1.3;
+}
+
+.insurance-india-left .section-title {
+    font-family: 'TASA Orbiter', 'Inter', sans-serif;
+    font-size: clamp(2.5rem, 4.5vw, 4.2rem);
+    font-weight: 800;
+    line-height: 1;
+    color: #0442F2;
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+.insurance-india-middle {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.icon-swirl {
+    width: 350px;
+    height: auto;
+    mix-blend-mode: multiply;
+    filter: contrast(1.3) brightness(1.1);
+}
+
+.insurance-india-right {
+    flex: 1;
+    padding-top: 10px;
+}
+
+.insurance-india-right h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    color: #000;
+}
+
+.insurance-india-right h3::before {
+    content: '';
+    position: absolute;
+    right: calc(100% + 20px);
+    top: 50%;
+    width: 280px;
+    height: 1px;
+    background-color: #000;
+}
+
+.insurance-india-right p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Build What Insurance */
+.build-insurance {
+    background: linear-gradient(135deg, #0442F2 0%, #7A07AE 100%);
+    padding: 100px 0 80px;
+    color: white;
+}
+
+.build-main-title {
+    font-family: 'TASA Orbiter', 'Inter', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    color: #fff;
+    letter-spacing: -1px;
+    margin-bottom: 50px;
+}
+
+.build-tabs {
+    display: flex;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    margin-bottom: 50px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.build-tab {
+    flex: 1;
+    padding: 14px 60px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.75);
+    transition: all 0.2s ease;
+    border-right: 1.5px solid rgba(255, 255, 255, 0.35);
+    white-space: nowrap;
+    text-align: center;
+}
+
+.build-tab:last-child {
+    border-right: none;
+}
+
+.build-tab.active {
+    background-color: #FFD24D;
+    color: #111;
+}
+
+.build-tab:not(.active):hover {
+    color: #fff;
+}
+
+.build-panel {
+    display: none;
+}
+
+.build-panel.active {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 40px;
+}
+
+/* careers 2x2 grid */
+.careers-features {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 50px;
+}
+
+.careers-title {
+    font-size: 2rem !important;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.icon-careers {
+    width: 340px;
+    height: auto;
+    object-fit: contain;
+    mix-blend-mode: screen;
+    filter: sepia(1) hue-rotate(250deg) saturate(5) brightness(1.1);
+    transform: translateY(30px);
+}
+
+.partner-left {
+    flex: 1.2;
+}
+
+.partner-left h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.partner-subtext {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 0;
+    max-width: 340px;
+}
+
+.partner-features {
+    display: flex;
+    gap: 40px;
+    margin: 35px 0;
+}
+
+.p-feature {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.p-feature .bullet {
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
+    background-color: #FFD24D;
+    border-radius: 50%;
+    margin-top: 6px;
+}
+
+.p-feature h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.p-feature p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.who-can-partner h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.who-can-partner p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.partner-right {
+    flex: 0.8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+.icon-pill {
+    width: 340px;
+    height: auto;
+    object-fit: contain;
+    mix-blend-mode: screen;
+    filter: sepia(1) hue-rotate(250deg) saturate(5) brightness(1.1);
+    transform: translateY(30px);
+}
+
+.email-contact {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+}
+
+.email-contact a {
+    color: #00C493;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* Footer */
+.footer {
+    background: #e6e6e6;
+    padding: 50px 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left .logo-img {
+    height: 36px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.social-icon svg {
+    width: 15px;
+    height: 15px;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+.footer-links-grid {
+    display: flex;
+    gap: 60px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-link {
+    font-family: 'Inter', sans-serif;
+    color: #555;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.footer-link:hover {
+    color: #000;
+    -webkit-text-stroke: 0.6px #000;
+}
+
+/* ============================================
+   RESPONSIVE — Desktop Breakpoints Only
+   Layout stays the same; fonts & spacing scale.
+   ============================================ */
+
+/* ── 1920px ────────────────────────────────── */
+@media (min-width: 1800px) {
+    .container {
+        max-width: 1400px;
+    }
+
+    .hero-top-subtitle p {
+        font-size: 1.6rem;
+    }
+
+    .hero-title {
+        font-size: 6rem;
+    }
+
+    .hero-bottom-features {
+        font-size: 1.2rem;
+    }
+
+    .our-edge-title {
+        font-size: 5.5rem;
+    }
+
+    .edge-panel {
+        height: 500px;
+    }
+
+    .edge-panel-title {
+        font-size: 3rem;
+    }
+
+    .designed-main-title {
+        font-size: 6.5rem;
+    }
+
+    .icon-star {
+        width: 300px;
+    }
+
+    .product-cards {
+        height: 520px;
+    }
+
+    .start-content h2 {
+        font-size: 5rem;
+    }
+
+    .insurance-india-left .section-title {
+        font-size: 5rem;
+    }
+
+    .icon-swirl {
+        width: 420px;
+    }
+
+    .build-main-title {
+        font-size: 6rem;
+    }
+
+    .partner-left h3 {
+        font-size: 2rem;
+    }
+
+    .icon-pill,
+    .icon-careers {
+        width: 400px;
+    }
+
+    .footer {
+        padding: 60px 0;
+    }
+}
+
+/* ── 1440px ────────────────────────────────── */
+@media (max-width: 1440px) {
+    .container {
+        max-width: 1180px;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 4.5vw, 4.4rem);
+    }
+
+    .hero-top-subtitle p {
+        font-size: 1.3rem;
+    }
+
+    .our-edge-title {
+        font-size: clamp(2.5rem, 4.5vw, 4rem);
+    }
+
+    .edge-panel {
+        height: 400px;
+    }
+
+    .designed-main-title {
+        font-size: clamp(2.8rem, 5.5vw, 5rem);
+    }
+
+    .icon-star {
+        width: 220px;
+    }
+
+    .product-cards {
+        height: 420px;
+    }
+
+    .insurance-india-left .section-title {
+        font-size: clamp(2.2rem, 4vw, 3.8rem);
+    }
+
+    .icon-swirl {
+        width: 300px;
+    }
+
+    .build-main-title {
+        font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+    }
+
+    .icon-pill,
+    .icon-careers {
+        width: 300px;
+    }
+}
+
+/* ── 1366px ────────────────────────────────── */
+@media (max-width: 1366px) {
+    .container {
+        max-width: 1100px;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 4.2vw, 4rem);
+    }
+
+    .hero-top-subtitle p {
+        font-size: 1.2rem;
+    }
+
+    .hero-bottom-features {
+        font-size: 1rem;
+        gap: 30px;
+    }
+
+    .our-edge-title {
+        font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+    }
+
+    .edge-panel {
+        height: 380px;
+    }
+
+    .edge-panel-title {
+        font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    }
+
+    .designed-main-title {
+        font-size: clamp(2.6rem, 5vw, 4.5rem);
+    }
+
+    .icon-star {
+        width: 200px;
+    }
+
+    .product-cards {
+        height: 400px;
+    }
+
+    .start-content h2 {
+        font-size: clamp(1.8rem, 4vw, 3.6rem);
+    }
+
+    .insurance-india-left .section-title {
+        font-size: clamp(2rem, 3.8vw, 3.5rem);
+    }
+
+    .icon-swirl {
+        width: 270px;
+    }
+
+    .build-main-title {
+        font-size: clamp(2.4rem, 4.2vw, 4rem);
+    }
+
+    .partner-left h3 {
+        font-size: 1.5rem;
+    }
+
+    .icon-pill,
+    .icon-careers {
+        width: 280px;
+    }
+}
+
+/* ── 1280px ────────────────────────────────── */
+@media (max-width: 1280px) {
+    .container {
+        max-width: 1040px;
+    }
+
+    .nav-links {
+        gap: 22px;
+    }
+
+    .nav-links a {
+        font-size: 0.88rem;
+    }
+
+    .logo-img {
+        height: 40px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.8rem, 4vw, 3.6rem);
+    }
+
+    .hero-top-subtitle p {
+        font-size: 1.1rem;
+    }
+
+    .hero-bottom-features {
+        font-size: 0.95rem;
+        gap: 24px;
+        padding-bottom: 50px;
+    }
+
+    .our-edge-title {
+        font-size: clamp(2.2rem, 4vw, 3.2rem);
+    }
+
+    .edge-panel {
+        height: 360px;
+    }
+
+    .edge-panel-title {
+        font-size: clamp(1.5rem, 2.2vw, 2rem);
+    }
+
+    .edge-tab {
+        padding: 12px 22px;
+        font-size: 0.88rem;
+    }
+
+    .designed-main-title {
+        font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+    }
+
+    .designed-sub {
+        font-size: 0.95rem;
+    }
+
+    .icon-star {
+        width: 180px;
+    }
+
+    .product-cards {
+        height: 380px;
+    }
+
+    .card-overlay h3 {
+        font-size: 1.8rem;
+    }
+
+    .start-content h2 {
+        font-size: clamp(1.6rem, 3.8vw, 3.2rem);
+    }
+
+    .insurance-india-left .section-title {
+        font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+    }
+
+    .icon-swirl {
+        width: 240px;
+    }
+
+    .insurance-india {
+        padding: 90px 0;
+    }
+
+    .build-main-title {
+        font-size: clamp(2.2rem, 4vw, 3.6rem);
+    }
+
+    .partner-left h3 {
+        font-size: 1.4rem;
+    }
+
+    .partner-subtext {
+        font-size: 0.88rem;
+    }
+
+    .icon-pill,
+    .icon-careers {
+        width: 260px;
+    }
+
+    .footer-links-grid {
+        gap: 40px;
+    }
+}
+
+/* ── 1024px ────────────────────────────────── */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 900px;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    .nav-links a {
+        font-size: 0.82rem;
+    }
+
+    .logo-img {
+        height: 36px;
+    }
+
+    .navbar {
+        padding: 16px 0;
+    }
+
+    .hero-title {
+        font-size: clamp(1.6rem, 3.8vw, 3.2rem);
+    }
+
+    .hero-top-subtitle p {
+        font-size: 1rem;
+    }
+
+    .hero-content {
+        max-width: 900px;
+    }
+
+    .hero-bottom-features {
+        flex-direction: row;
+        gap: 20px;
+        padding-bottom: 40px;
+    }
+
+    .hero-feature {
+        max-width: 33%;
+        text-align: left;
+    }
+
+    .hero-feature-right {
+        text-align: left;
+    }
+
+    .hero-main {
+        padding-top: 6px;
+    }
+
+    .our-edge {
+        padding: 60px 0 40px;
+    }
+
+    .our-edge-title {
+        font-size: clamp(2rem, 3.8vw, 3rem);
+        margin-bottom: 20px;
+    }
+
+    .edge-panel {
+        height: 320px;
+    }
+
+    .edge-panel-title {
+        font-size: clamp(1.3rem, 2vw, 1.8rem);
+    }
+
+    .edge-panel-left {
+        padding: 24px 28px;
+        min-width: 220px;
+    }
+
+    .edge-tab {
+        padding: 10px 16px;
+        font-size: 0.82rem;
+    }
+
+    .designed-different {
+        padding: 60px 0;
+    }
+
+    .designed-main-title {
+        font-size: clamp(2rem, 4.5vw, 3.8rem);
+    }
+
+    .designed-sub {
+        font-size: 0.88rem;
+    }
+
+    .icon-star {
+        width: 150px;
+    }
+
+    .product-cards {
+        height: 340px;
+    }
+
+    .card-overlay h3 {
+        font-size: 1.5rem;
+    }
+
+    .card-overlay p {
+        font-size: 0.9rem;
+    }
+
+    .designed-header {
+        margin-bottom: 50px;
+    }
+
+    .start-customer {
+        padding: 100px 0;
+    }
+
+    .start-content h2 {
+        font-size: clamp(1.4rem, 3.5vw, 2.8rem);
+    }
+
+    .start-content .start-desc {
+        font-size: 1rem;
+    }
+
+    .insurance-india {
+        padding: 70px 0;
+    }
+
+    .insurance-india-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .insurance-india-left {
+        width: 100%;
+        text-align: center;
+    }
+
+    .insurance-india-left .section-title {
+        font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+        text-align: center;
+    }
+
+    .icon-swirl {
+        width: 200px;
+        margin: 0 auto;
+    }
+
+    .insurance-india-middle {
+        padding-top: 20px;
+    }
+
+    .insurance-india-right {
+        text-align: left;
+    }
+
+    .insurance-india-right h3 {
+        font-size: 1.5rem;
+        justify-content: center;
+    }
+
+    .insurance-india-right h3::before {
+        display: none;
+    }
+
+    .insurance-india-right p {
+        font-size: 1rem;
+    }
+
+    .build-insurance {
+        padding: 70px 0 60px;
+    }
+
+    .build-main-title {
+        font-size: clamp(2rem, 3.8vw, 3.2rem);
+        margin-bottom: 36px;
+    }
+
+    .build-tab {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+    }
+
+    .partner-left h3 {
+        font-size: 1.25rem;
+    }
+
+    .partner-subtext {
+        font-size: 0.82rem;
+    }
+
+    .p-feature h4 {
+        font-size: 0.88rem;
+    }
+
+    .p-feature p {
+        font-size: 0.78rem;
+    }
+
+    .icon-pill,
+    .icon-careers {
+        width: 220px;
+    }
+
+    .build-panel.active {
+        gap: 28px;
+    }
+
+    .footer {
+        padding: 40px 0;
+    }
+
+    .footer-links-grid {
+        gap: 30px;
+    }
+
+    .footer-link {
+        font-size: 0.82rem;
+    }
+}
+
+/* ── Mobile fallback (< 768px) ─────────────── */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #0d0d1a;
+        padding: 100px 40px 40px;
+        z-index: 150;
+        list-style: none;
+        margin: 0;
+        /* Hidden state */
+        opacity: 0;
+        transform: translateY(-20px);
+        pointer-events: none;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-links.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-links li:first-child {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-links a {
+        display: block;
+        font-family: 'TASA Orbiter', sans-serif;
+        font-size: clamp(2rem, 8vw, 3.5rem);
+        font-weight: 700;
+        color: #fff;
+        text-decoration: none;
+        padding: 22px 0;
+        letter-spacing: -0.5px;
+        transition: color 0.2s ease, padding-left 0.2s ease;
+    }
+
+    .nav-links a:hover {
+        color: #FFD24D;
+        padding-left: 12px;
+    }
+
+    .hero-image {
+        opacity: 1;
+    }
+
+    .hero-bg-overlay {
+        background: rgba(22, 0, 40, 0.65);
+    }
+
+    .hero-art-overlay {
+        top: 45vh;
+        bottom: auto;
+        right: -5vw;
+        height: 80vh;
+        transform: none;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        letter-spacing: -0.5px;
+    }
+
+    .hero-bottom-features {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .hero-feature {
+        max-width: 100%;
+    }
+
+    .designed-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .designed-icon-wrapper {
+        margin: 0 auto;
+        align-self: center;
+    }
+
+    .icon-star {
+        width: 140px;
+    }
+
+    .designed-bottom-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .designed-line-input {
+        width: 100%;
+        margin: 0;
+    }
+
+    .designed-signup {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .icon-pill,
+    .icon-careers {
+        transform: none;
+        margin-bottom: 20px;
+    }
+
+    .email-contact {
+        margin-top: 0;
+    }
+
+    .tab-content {
+        flex-direction: column;
+    }
+
+    .product-cards {
+        flex-direction: column;
+        height: 600px;
+    }
+
+    .start-content h2 {
+        white-space: normal;
+    }
+
+    .card {
+        height: auto;
+    }
+
+    .insurance-india-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .build-panel.active {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .partner-features {
+        flex-direction: column;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .careers-features {
+        grid-template-columns: 1fr;
+    }
+
+    /* ── Our Edge — Mobile redesign ─── */
+    .our-edge {
+        padding: 48px 0 40px;
+    }
+
+    .our-edge-title {
+        font-size: 2rem;
+        margin-bottom: 24px;
+    }
+
+    /* Make tab bar horizontally scrollable */
+    .edge-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        gap: 0;
+        padding-bottom: 4px;
+        border-bottom: 2px solid #eaeaea;
+        margin-bottom: 0;
+    }
+
+    .edge-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .edge-tab {
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        border-radius: 6px 6px 0 0;
+    }
+
+    /* Panel becomes vertical — left on top, image below */
+    .edge-panel {
+        display: none;
+        height: auto;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .edge-panel.active {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .edge-panel-left {
+        width: 100%;
+        min-width: unset;
+        padding: 28px 24px;
+        border-radius: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .edge-number {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .edge-panel-title {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+        margin-top: 0;
+        margin-bottom: 0;
+        flex: 1;
+    }
+
+    .edge-panel-desc {
+        width: 100%;
+        max-width: 100%;
+        font-size: 0.95rem;
+        margin-top: 8px;
+    }
+
+    .edge-panel-right {
+        width: 100%;
+        height: 220px;
+    }
+
+    .edge-panel-right img {
+        height: 100%;
+        object-position: center top;
+    }
+
+    .edge-dots {
+        margin-top: 20px;
+    }
+}
+
+/* ── Small Mobile (≤ 480px) ─────────────── */
+@media (max-width: 480px) {
+    .our-edge-title {
+        font-size: 1.6rem;
+    }
+
+    .designed-main-title {
+        font-size: clamp(2rem, 9vw, 2.8rem);
+    }
+
+    .icon-star {
+        width: 120px;
+    }
+
+    .edge-tab {
+        padding: 9px 16px;
+        font-size: 0.8rem;
+    }
+
+    .edge-panel-left {
+        padding: 22px 18px;
+        gap: 8px;
+    }
+
+    .edge-panel-title {
+        font-size: clamp(1.8rem, 7vw, 2.4rem);
+    }
+
+    .edge-panel-desc {
+        font-size: 0.88rem;
+    }
+
+    .edge-panel-right {
+        height: 180px;
+    }
+}

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protec General Insurance</title>
+    <meta name="description"
+        content="A new chapter in general insurance begins soon. Not just simpler. Not just digital. Just... smarter.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400..800&family=Inter:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="assets/images/protec_logo.png" alt="Protec General Insurance" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">Our Promise</a></li>
+                <li><a href="#">What's Coming?</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Join Us</a></li>
+            </ul>
+            <div class="hamburger-menu" id="mobile-menu-btn">
+                <svg id="pointsBurger" viewBox="0 0 200 200">
+                    <g fill="none" stroke="#333" stroke-width="10" stroke-linecap="round">
+                        <line id="line1_6" x1="40" y1="70" x2="160" y2="70" />
+                        <line id="line2_6" x1="40" y1="100" x2="160" y2="100" />
+                        <line id="line3_6" x1="40" y1="130" x2="160" y2="130" />
+                        <circle id="point1_6" cx="100" cy="85" r="5" opacity="0" />
+                        <circle id="point2_6" cx="100" cy="115" r="5" opacity="0" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-overlay"></div>
+        <img src="assets/images/hero_banner.png" alt="Father lifting his daughter" class="hero-image">
+        <img src="assets/images/protec_brandbook__v2.png" alt="Protec Art" class="hero-art-overlay">
+
+        <div class="hero-content">
+            <div class="hero-top-subtitle">
+                <p>Not just simple. Not just digital. Just... smarter.</p>
+            </div>
+
+            <div class="hero-main">
+                <h1 class="hero-title">
+                    <span style="display: block;">A NEW CHAPTER IN</span>
+                    <span style="display: block;">GENERAL INSURANCE</span>
+                    <span style="display: block;">BEGINS SOON</span>
+                </h1>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-hero-primary">Stay Tuned &rarr;</a>
+                    <a href="#" class="btn btn-hero-secondary">Join Our Journey &rarr;</a>
+                </div>
+            </div>
+
+            <div class="hero-bottom-features">
+                <div class="hero-feature">
+                    <p>Insurance that starts with you.<br><strong>Not policies. Not templates.<br>Not legacy
+                            thinking.</strong></p>
+                </div>
+                <div class="hero-feature">
+                    <p>At Protec Insurance, everything begins with the customer and that changes everything that
+                        follows.</p>
+                </div>
+                <div class="hero-feature hero-feature-right">
+                    <p><strong>Customer-first.<br>Smarter by design.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Edge Section -->
+    <section class="our-edge">
+        <div class="container">
+            <h2 class="our-edge-title">OUR EDGE</h2>
+
+            <!-- Tab Bar -->
+            <div class="edge-tabs">
+                <div class="edge-tab active" data-target="customer-first">Customer First</div>
+                <div class="edge-tab" data-target="smarter-insurance">Smarter Insurance</div>
+                <div class="edge-tab" data-target="ai-powered">AI-Powered</div>
+                <div class="edge-tab" data-target="trust">Trust</div>
+            </div>
+
+            <!-- Tab Panels -->
+            <div class="edge-panel active" id="customer-first">
+                <div class="edge-panel-left">
+                    <span class="edge-number">01</span>
+                    <h3 class="edge-panel-title">Customer<br>First</h3>
+                    <p class="edge-panel-desc">Everything begins with understanding real lives, not assumptions.</p>
+                </div>
+                <div class="edge-panel-right">
+                    <img src="assets/images/our_edge/customer _first.jpg" alt="Customer First - Family with agent">
+                </div>
+            </div>
+
+            <div class="edge-panel" id="smarter-insurance">
+                <div class="edge-panel-left">
+                    <span class="edge-number">02</span>
+                    <h3 class="edge-panel-title">Smarter<br>Insurance</h3>
+                    <p class="edge-panel-desc">Policies designed around your life, not the other way around.</p>
+                </div>
+                <div class="edge-panel-right">
+                    <img src="assets/images/our_edge/smarter_insurance​.jpg" alt="Smarter Insurance">
+                </div>
+            </div>
+
+            <div class="edge-panel" id="ai-powered">
+                <div class="edge-panel-left">
+                    <span class="edge-number">03</span>
+                    <h3 class="edge-panel-title">AI-<br>Powered</h3>
+                    <p class="edge-panel-desc">Technology that works quietly in the background, always for you.</p>
+                </div>
+                <div class="edge-panel-right">
+                    <img src="assets/images/our_edge/ai_powered.jpg" alt="AI Powered">
+                </div>
+            </div>
+
+            <div class="edge-panel" id="trust">
+                <div class="edge-panel-left">
+                    <span class="edge-number">04</span>
+                    <h3 class="edge-panel-title">Trust</h3>
+                    <p class="edge-panel-desc">Built on transparency, accountability and a promise we keep.</p>
+                </div>
+                <div class="edge-panel-right">
+                    <img src="assets/images/our_edge/trust.jpg" alt="Trust">
+                </div>
+            </div>
+
+            <!-- Dots -->
+            <div class="edge-dots">
+                <span class="edge-dot active" data-target="customer-first"></span>
+                <span class="edge-dot" data-target="smarter-insurance"></span>
+                <span class="edge-dot" data-target="ai-powered"></span>
+                <span class="edge-dot" data-target="trust"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Designed to Feel Different -->
+    <section class="designed-different">
+        <div class="container">
+            <div class="designed-header">
+                <div class="designed-title-row">
+                    <h2 class="designed-main-title">
+                        <span class="highlight-line">DESIGNED</span><br>
+                        <span class="highlight-line">TO FEEL DIFFERENT.</span><br>
+                        <span class="highlight-line">INSURANCE THAT</span><br>
+                        <span class="highlight-line">WORKS FOR YOU.</span>
+                    </h2>
+                    <div class="designed-icon-wrapper">
+                        <video src="assets/videos/purple_object_rotate.mp4" autoplay loop muted playsinline
+                            disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;"
+                            class="icon-star"></video>
+                    </div>
+                </div>
+
+                <div class="designed-bottom-row">
+                    <p class="designed-sub">Designed for your life,<br>powered by intelligence,<br>backed by real
+                        people.</p>
+                    <input type="email" class="designed-line-input" placeholder="Enter your email address">
+                    <div class="designed-signup">
+                        <span class="signup-text">Be the first to know</span>
+                        <button class="signup-btn">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-cards">
+                <div class="card active">
+                    <img src="assets/images/products_image.png" alt="Products">
+                    <div class="blue-tint"></div>
+                    <div class="blue-multiply"></div>
+                    <div class="card-overlay">
+                        <h3>Products</h3>
+                        <p>designed for the way you live</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets/images/our_edge/customer _first.jpg" alt="Service">
+                    <div class="blue-tint"></div>
+                    <div class="blue-multiply"></div>
+                    <div class="card-overlay">
+                        <h3>Service</h3>
+                        <p>handled with care, not call scripts</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets/images/our_edge/trust.jpg" alt="Claims">
+                    <div class="blue-tint"></div>
+                    <div class="blue-multiply"></div>
+                    <div class="card-overlay">
+                        <h3>Claims</h3>
+                        <p>that moves at the speed of now</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Start with Customer -->
+    <section class="start-customer">
+        <img src="assets/images/wavy_bg.png" alt="Abstract wavy background" class="wavy-bg">
+        <video src="assets/videos/protec_insurance.mp4" autoplay loop muted playsinline disablepictureinpicture
+            controlslist="nodownload" oncontextmenu="return false;" class="wavy-bg"></video>
+        <div class="container start-content">
+            <p class="small-title">Protec Insurance</p>
+            <h2>Start with the customer.<br>End with smarter protection.</h2>
+            <p class="start-desc">You don't need more insurance. You need better insurance.</p>
+        </div>
+    </section>
+
+    <!-- Insurance in India -->
+    <section class="insurance-india">
+        <div class="container insurance-india-container">
+            <div class="insurance-india-left">
+                <h2 class="section-title text-blue">INSURANCE IN INDIA HAS BEEN SOLD FOR DECADES.<br>WE'RE HERE TO
+                    DESIGN IT.</h2>
+            </div>
+            <div class="insurance-india-middle">
+                <video src="assets/videos/purple_abstract_swirl.mp4" autoplay loop muted playsinline
+                    disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;"
+                    class="floating-icon icon-swirl"></video>
+            </div>
+            <div class="insurance-india-right">
+                <h3>Our Story</h3>
+                <p>For most insurers, the policy comes first and the person comes second. Forms get longer. Fine print
+                    gets denser. The product never really changes, it just gets repackaged.</p>
+                <p>Protec begins on the other side of that equation. We're rebuilding general insurance around the way
+                    Indians actually live, work, and take risks today, using AI where it genuinely helps, making
+                    decisions fairer, faster, and easier to understand.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Build What Insurance -->
+    <section class="build-insurance">
+        <div class="container">
+            <h2 class="build-main-title">BUILD&nbsp; WHAT<br>INSURANCE SHOULD<br>HAVE&nbsp; BEEN</h2>
+
+            <div class="build-tabs">
+                <div class="build-tab active" data-tab="partner">Partner with Us</div>
+                <div class="build-tab" data-tab="careers">Careers</div>
+            </div>
+
+            <!-- Partner with Us Panel -->
+            <div class="build-content build-panel active" id="panel-partner">
+                <div class="partner-left">
+                    <h3>Partner for impact.</h3>
+                    <p class="partner-subtext">We're crafting an ecosystem for brokers, agents, and digital distributors
+                        to redefine protection reach across India.</p>
+
+                    <div class="partner-features">
+                        <div class="p-feature">
+                            <span class="bullet"></span>
+                            <div>
+                                <h4>First-Mover Edge</h4>
+                                <p>Shape the ecosystem before it's saturated.</p>
+                            </div>
+                        </div>
+                        <div class="p-feature">
+                            <span class="bullet"></span>
+                            <div>
+                                <h4>Built Together</h4>
+                                <p>We co-design distribution models, not just hand over a product catalogue.</p>
+                            </div>
+                        </div>
+                        <div class="p-feature">
+                            <span class="bullet"></span>
+                            <div>
+                                <h4>Smarter Tools</h4>
+                                <p>AI quoting, instant issuance, real-time dashboards.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="who-can-partner">
+                        <h4>Who can partner</h4>
+                        <p>Brokers | Agents | Digital Dist | Fintech | Affinity</p>
+                    </div>
+                </div>
+
+                <div class="partner-right">
+                    <video src="assets/videos/build_what.mp4" autoplay loop muted playsinline disablepictureinpicture
+                        controlslist="nodownload" oncontextmenu="return false;" class="floating-icon icon-pill"></video>
+                    <p class="email-contact">Reach out: <a href="mailto:Partner@protecins.com">Partner@protecins.com</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Careers Panel -->
+            <div class="build-content build-panel" id="panel-careers">
+                <div class="partner-left">
+                    <h3 class="careers-title">Work on what actually matters.</h3>
+                    <p class="partner-subtext">If you're curious, driven, and ready to challenge how things have always
+                        been done — you'll feel at home here.</p>
+
+                    <div class="partner-features careers-features">
+                        <div class="p-feature">
+                            <span class="bullet"></span>
+                            <div>
+                                <h4>Day-one ownership</h4>
+                                <p>Real problems, real decisions, from your first week.</p>
+                            </div>
+                        </div>
+                        <div class="p-feature">
+                            <span class="bullet"></span>
+                            <div>
+                                <h4>Build, don't inherit</h4>
+                                <p>Processes and culture are being written for the first time, by you.</p>
+                            </div>
+                        </div>
+                        <div class="p-feature">
+                            <span class="bullet"></span>
+                            <div>
+                                <h4>Grow with the company</h4>
+                                <p>Early joiners shape direction. Your roles will outlast any job description.</p>
+                            </div>
+                        </div>
+                        <div class="p-feature">
+                            <span class="bullet"></span>
+                            <div>
+                                <h4>Intelligence over hierarchy</h4>
+                                <p>The best idea wins, regardless of title.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="partner-right">
+                    <video src="assets/videos/careers_vid.mp4" autoplay loop muted playsinline disablepictureinpicture
+                        controlslist="nodownload" oncontextmenu="return false;"
+                        class="floating-icon icon-careers"></video>
+                    <p class="email-contact">Email: <a href="mailto:careers@protecins.com">careers@protecins.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-left">
+                <a href="#" class="logo">
+                    <img src="assets/images/protec_logo.png" alt="Protec General Insurance" class="logo-img">
+                </a>
+            </div>
+
+            <div class="footer-middle">
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm3.98-10.869a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <a href="#" class="footer-link">Our Promise</a>
+                        <a href="#" class="footer-link">What's Coming?</a>
+                    </div>
+                    <div class="footer-column">
+                        <a href="#" class="footer-link">About Us</a>
+                        <a href="#" class="footer-link">Join Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
