@@ -16,11 +16,18 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     font-family: var(--font-main);
     color: var(--text-dark);
     line-height: 1.6;
     background-color: var(--bg-light);
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
 }
 
 /* ── Custom Scrollbar ─────────────────────────── */
@@ -177,10 +184,10 @@ body {
    ============================================ */
 .hero {
     position: relative;
-    min-height: 100vh;
+    height: 110vh;
+    min-height: 110vh;
     background-color: #12021a;
     color: white;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
@@ -188,22 +195,22 @@ body {
 /* The photo — bleeds from center */
 .hero-image {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 110vh;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
     z-index: 1;
-    opacity: 0.9;
+    opacity: 1;
 }
 
 /* Yellow art line animation */
 .hero-art-overlay {
     position: absolute;
-    top: 5vh;
+    top: 10vh;
     right: -5vw;
-    height: 125vh;
+    height: 140vh;
     width: auto;
     max-width: none;
     z-index: 3;
@@ -213,21 +220,33 @@ body {
     /* Initially hidden */
     /* Reduced drop-shadows to improve animation performance and remove stuttering */
     filter: drop-shadow(1px 1px 0 #FFB800) drop-shadow(-1px -1px 0 #FFB800);
+    transition: filter 0.3s ease;
 }
 
-.hero-art-overlay.loaded {
-    animation: drawArt 4s cubic-bezier(0.21, 0.85, 0.35, 1) forwards;
+.hero-art-overlay.glow {
+    filter: drop-shadow(0 0 4px rgba(255, 184, 0, 0.4)) drop-shadow(1px 1px 0 #FFB800) drop-shadow(-1px -1px 0 #FFB800);
 }
 
-@keyframes drawArt {
-    0% {
-        clip-path: inset(0 0 100% 100%);
-    }
-
-    100% {
-        clip-path: inset(0 0 0 0);
-    }
+.face-glow {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(255, 184, 0, 0.25) 0%, rgba(255, 184, 0, 0) 60%);
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Below the art overlay */
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    mix-blend-mode: overlay;
 }
+
+.face-glow.active {
+    opacity: 1;
+}
+
+
 
 /* Dark gradient overlay fading left-to-right */
 .hero-bg-overlay {
@@ -236,8 +255,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(18, 2, 26, 0.5) 0%, rgba(18, 2, 26, 0.3) 50%, rgba(18, 2, 26, 0.1) 100%),
-        linear-gradient(to top, rgba(18, 2, 26, 0.7) 0%, transparent 25%);
+    background: linear-gradient(to right, rgba(18, 2, 26, 0.3) 0%, rgba(18, 2, 26, 0.15) 50%, rgba(18, 2, 26, 0.05) 100%),
+        linear-gradient(to top, rgba(18, 2, 26, 0.5) 0%, transparent 25%);
     z-index: 2;
 }
 
@@ -251,7 +270,7 @@ body {
     padding: 0 20px;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 110vh;
 }
 
 /* Subtitle at the very top */
@@ -334,7 +353,7 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     gap: 40px;
-    padding-bottom: 60px;
+    padding-bottom: 12vh;
     margin-top: auto;
     font-family: 'Inter', sans-serif;
     font-size: 1.1rem;
@@ -362,6 +381,8 @@ body {
    OUR EDGE SECTION
    ============================================ */
 .our-edge {
+    position: relative;
+    z-index: 10;
     padding: 80px 0 60px;
     background: #fff;
 }
@@ -1098,7 +1119,7 @@ body {
 .footer-column {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
 }
 
 .footer-link {
@@ -1676,7 +1697,7 @@ body {
     .nav-links.open {
         opacity: 1;
         transform: translateY(0);
-        pointer-events: all;
+        pointer-events: auto;
     }
 
     .nav-links li {
@@ -1707,6 +1728,12 @@ body {
 
     .hero-image {
         opacity: 1;
+        top: auto;
+        bottom: 0;
+        height: 65vh;
+        object-position: center 20%;
+        -webkit-mask-image: linear-gradient(to top, black 70%, transparent 100%);
+        mask-image: linear-gradient(to top, black 70%, transparent 100%);
     }
 
     .hero-bg-overlay {
@@ -1714,11 +1741,11 @@ body {
     }
 
     .hero-art-overlay {
-        top: 45vh;
+        top: 68vh;
         bottom: auto;
-        right: -5vw;
+        right: 5vw;
         height: 80vh;
-        transform: none;
+        transform: rotate(8deg) scaleX(1.15) translateX(-5vw);
     }
 
     .hero-title {
@@ -1942,4 +1969,80 @@ body {
     .edge-panel-right {
         height: 180px;
     }
+}
+
+/* ── GO TO TOP BUTTON ─────────────────────────────── */
+.go-to-top {
+    position: fixed;
+    bottom: 34px;
+    right: 34px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.9);
+    transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background: linear-gradient(135deg, #0442F2 0%, #7C3AED 100%);
+    box-shadow:
+        0 4px 20px rgba(4, 66, 242, 0.45),
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Shimmer overlay */
+.go-to-top::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+    border-radius: 16px;
+    pointer-events: none;
+}
+
+.go-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.go-to-top:hover {
+    background: linear-gradient(135deg, #0332c4 0%, #6d28d9 100%);
+    box-shadow:
+        0 6px 28px rgba(4, 66, 242, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+    transform: translateY(-3px) scale(1.05);
+}
+
+.go-to-top:active {
+    transform: translateY(0) scale(0.97);
+}
+
+/* Inner wrapper for arrow */
+.gtt-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Arrow SVG */
+.gtt-arrow {
+    width: 18px;
+    height: 18px;
+    stroke: #FFB800;
+    stroke-width: 2.8;
+    filter: drop-shadow(0 0 5px rgba(255, 184, 0, 0.6));
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+.go-to-top:hover .gtt-arrow {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 9px rgba(255, 184, 0, 0.9));
 }
