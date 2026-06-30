@@ -45,6 +45,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ── OUR STORY SLIDER ─────────────────────────────────
+    const storySlides = document.querySelectorAll('.story-slide');
+    const storyDots = document.querySelectorAll('.story-dot');
+    const storyPrev = document.getElementById('story-prev');
+    const storyNext = document.getElementById('story-next');
+    let currentStorySlide = 0;
+
+    function goToStorySlide(index) {
+        storySlides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+        storyDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+        currentStorySlide = index;
+    }
+
+    if (storyPrev && storyNext) {
+        storyPrev.addEventListener('click', () => {
+            let index = currentStorySlide - 1;
+            if (index < 0) index = storySlides.length - 1;
+            goToStorySlide(index);
+        });
+
+        storyNext.addEventListener('click', () => {
+            let index = currentStorySlide + 1;
+            if (index >= storySlides.length) index = 0;
+            goToStorySlide(index);
+        });
+
+        storyDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToStorySlide(index);
+            });
+        });
+    }
+
     // ── LENIS SMOOTH SCROLLING ────────────────────────────
     if (typeof Lenis !== 'undefined') {
         const lenis = new Lenis();
@@ -292,33 +329,12 @@ window.addEventListener('load', () => {
             '-=0.4'
         );
 
-        // Hero Art Overlay Scroll Animation
-        gsap.to(".hero-art-overlay", {
-            scrollTrigger: {
-                trigger: ".hero",
-                start: "top top",
-                end: "+=150%",
-                pin: true,
-                pinSpacing: true,
-                anticipatePin: 1,
-                scrub: true,
-                onUpdate: (self) => {
-                    const heroArt = document.querySelector('.hero-art-overlay');
-                    const faceGlow = document.querySelector('.face-glow');
-                    if (heroArt) {
-                        if (self.progress === 1) {
-                            heroArt.classList.add('glow');
-                            if (faceGlow) faceGlow.classList.add('active');
-                        } else {
-                            heroArt.classList.remove('glow');
-                            if (faceGlow) faceGlow.classList.remove('active');
-                        }
-                    }
-                }
-            },
+        // Hero Art Overlay Load Animation
+        heroTl.to(".hero-art-overlay", {
             clipPath: "inset(0% 0% 0% 0%)",
-            ease: "none"
-        });
+            duration: 1.5,
+            ease: "power3.inOut"
+        }, "-=0.8");
 
         // ══════════════════════════════════════════════════════
         // OUR EDGE SECTION

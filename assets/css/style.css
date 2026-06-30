@@ -16,7 +16,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     font-family: var(--font-main);
     color: var(--text-dark);
     line-height: 1.6;
@@ -184,8 +185,8 @@ body.no-scroll {
    ============================================ */
 .hero {
     position: relative;
-    height: 110vh;
-    min-height: 110vh;
+    height: 100vh;
+    min-height: 100vh;
     background-color: #12021a;
     color: white;
     display: flex;
@@ -197,20 +198,21 @@ body.no-scroll {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 110vh;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    object-position: top;
+    object-position: center 20%;
     z-index: 1;
     opacity: 1;
+    filter: saturate(1.15) contrast(1.05);
 }
 
 /* Yellow art line animation */
 .hero-art-overlay {
     position: absolute;
-    top: 10vh;
+    top: 0;
     right: -5vw;
-    height: 140vh;
+    height: 115%;
     width: auto;
     max-width: none;
     z-index: 3;
@@ -218,32 +220,6 @@ body.no-scroll {
     will-change: clip-path;
     clip-path: inset(0 0 100% 100%);
     /* Initially hidden */
-    /* Reduced drop-shadows to improve animation performance and remove stuttering */
-    filter: drop-shadow(1px 1px 0 #FFB800) drop-shadow(-1px -1px 0 #FFB800);
-    transition: filter 0.3s ease;
-}
-
-.hero-art-overlay.glow {
-    filter: drop-shadow(0 0 4px rgba(255, 184, 0, 0.4)) drop-shadow(1px 1px 0 #FFB800) drop-shadow(-1px -1px 0 #FFB800);
-}
-
-.face-glow {
-    position: absolute;
-    top: 45%;
-    left: 45%;
-    width: 60vw;
-    height: 60vw;
-    background: radial-gradient(circle, rgba(255, 184, 0, 0.25) 0%, rgba(255, 184, 0, 0) 60%);
-    transform: translate(-50%, -50%);
-    z-index: 2; /* Below the art overlay */
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    mix-blend-mode: overlay;
-}
-
-.face-glow.active {
-    opacity: 1;
 }
 
 
@@ -255,8 +231,8 @@ body.no-scroll {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(18, 2, 26, 0.3) 0%, rgba(18, 2, 26, 0.15) 50%, rgba(18, 2, 26, 0.05) 100%),
-        linear-gradient(to top, rgba(18, 2, 26, 0.5) 0%, transparent 25%);
+    background: linear-gradient(to right, rgba(18, 2, 26, 0.1) 0%, rgba(18, 2, 26, 0.05) 50%, rgba(18, 2, 26, 0) 100%),
+        linear-gradient(to top, rgba(18, 2, 26, 0.2) 0%, transparent 25%);
     z-index: 2;
 }
 
@@ -270,7 +246,7 @@ body.no-scroll {
     padding: 0 20px;
     display: flex;
     flex-direction: column;
-    min-height: 110vh;
+    min-height: 100vh;
 }
 
 /* Subtitle at the very top */
@@ -281,7 +257,7 @@ body.no-scroll {
 
 .hero-top-subtitle p {
     font-family: 'Inter', sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 400;
     opacity: 0.9;
     letter-spacing: 0.5px;
@@ -301,9 +277,9 @@ body.no-scroll {
     font-family: 'TASA Orbiter', 'Inter', sans-serif;
     font-size: clamp(2rem, 5vw, 4.8rem);
     /* Reduced font size */
-    font-weight: 800;
+    font-weight: 700;
     line-height: 0.88;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     letter-spacing: -1px;
     text-transform: uppercase;
     color: #fff;
@@ -328,12 +304,12 @@ body.no-scroll {
     background-color: #ffcc00;
     color: #000;
     border: none;
-    padding: 10px 24px;
+    padding: 8px 20px;
     /* Reduced padding */
     border-radius: 50px;
     font-family: 'Inter', sans-serif;
     font-weight: 800;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     /* Reduced font size */
     cursor: pointer;
     text-decoration: none;
@@ -449,10 +425,11 @@ body.no-scroll {
     width: 35%;
     min-width: 260px;
     background: linear-gradient(175deg, #0442F2 0%, #6C22E8 100%);
-    padding: 34px 38px 34px 38px;
-    /* Adjusted padding for 330px height */
+    padding: 34px 38px 90px 55px;
+    /* Adjusted padding */
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     color: #fff;
     position: relative;
     flex-shrink: 0;
@@ -470,7 +447,7 @@ body.no-scroll {
 
 .edge-panel-title {
     font-family: 'TASA Orbiter', 'Inter', sans-serif;
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-size: clamp(2.2rem, 4vw, 3rem);
     /* Increased title size to fit 330px height */
     font-weight: 800;
     line-height: 1.05;
@@ -481,9 +458,10 @@ body.no-scroll {
 
 .edge-panel-desc {
     font-family: 'Inter', sans-serif;
-    font-size: 0.92rem;
-    font-weight: 400;
-    line-height: 1.65;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 1.4;
     color: rgba(255, 255, 255, 0.88);
     max-width: 230px;
 }
@@ -802,81 +780,198 @@ body.no-scroll {
     margin: 0;
 }
 
-/* Insurance in India */
-.insurance-india {
-    padding: 120px 0;
+/* Our Story Slider */
+.our-story-slider {
+    padding: 100px 0;
     background: #fff;
+    position: relative;
+    overflow: hidden;
 }
 
-.insurance-india-container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 20px;
+.story-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
 }
 
-.insurance-india-left {
-    flex: 1.3;
-}
-
-.insurance-india-left .section-title {
-    font-family: 'TASA Orbiter', 'Inter', sans-serif;
-    font-size: clamp(2.5rem, 4.5vw, 4.2rem);
+.story-section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
     font-weight: 800;
-    line-height: 1;
+    margin-bottom: 80px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    gap: 20px;
+    color: #000;
+}
+
+.story-section-title::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background-color: #000;
+    flex-grow: 1;
+}
+
+.story-slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.story-slides {
+    display: grid;
+    width: 85%;
+}
+
+.story-slide {
+    grid-area: 1 / 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    gap: 20px;
+    z-index: 1;
+}
+
+.story-slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+.slide-left {
+    flex: 0 0 35%;
+    max-width: 35%;
+}
+
+.slide-left h2 {
+    font-family: 'TASA Orbiter', 'Inter', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.05;
     color: #0442F2;
     margin: 0;
     letter-spacing: -1px;
 }
 
-.insurance-india-middle {
-    flex: 0.8;
+.slide-middle {
+    flex: 0 0 26%;
+    max-width: 26%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 100px;
 }
 
 .icon-swirl {
-    width: 350px;
+    width: 250px;
     height: auto;
     mix-blend-mode: multiply;
-    filter: contrast(1.3) brightness(1.1);
+    filter: contrast(1.6) brightness(1.2);
 }
 
-.insurance-india-right {
-    flex: 1;
-    padding-top: 10px;
-}
-
-.insurance-india-right h3 {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 30px;
-    position: relative;
+.video-crop-wrapper {
+    width: 180px;
+    height: 180px;
+    overflow: hidden;
     display: flex;
+    justify-content: center;
     align-items: center;
-    white-space: nowrap;
-    color: #000;
 }
 
-.insurance-india-right h3::before {
-    content: '';
-    position: absolute;
-    right: calc(100% + 20px);
-    top: 50%;
-    width: 280px;
-    height: 1px;
-    background-color: #000;
+.icon-swirl-cropped {
+    width: 420px;
+    height: auto;
+    max-width: none;
+    mix-blend-mode: multiply;
+    filter: contrast(1.5) brightness(1.15);
 }
 
-.insurance-india-right p {
+.slide-3-video-wrapper {
+    width: 400px;
+    height: 280px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-15px) scale(0.55);
+}
+
+.icon-swirl-slide-3 {
+    width: 560px;
+    height: auto;
+    max-width: none;
+    flex-shrink: 0;
+    mix-blend-mode: multiply;
+    filter: contrast(1.6) brightness(1.2);
+}
+
+.slide-right {
+    flex: 0 0 39%;
+    max-width: 39%;
+}
+
+.slide-right p {
     font-family: 'Inter', sans-serif;
-    font-size: 1rem;
+    font-size: 1.05rem;
     line-height: 1.6;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.story-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    padding: 10px;
+}
+
+.story-arrow img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: transform 0.2s;
+}
+
+.story-arrow.right-arrow img {
+    transform: scale(1.5);
+    /* Scale up if it has internal padding */
+}
+
+.story-arrow.right-arrow:hover img {
+    transform: scale(1.6);
+}
+
+.story-arrow:hover img {
+    transform: scale(1.1);
+}
+
+.story-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
+}
+
+.story-dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid #0442F2;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.story-dot.active {
+    background-color: #0442F2;
 }
 
 /* Build What Insurance */
@@ -1740,17 +1835,103 @@ body.no-scroll {
         background: rgba(22, 0, 40, 0.65);
     }
 
+    /* About Us - Mobile Responsiveness */
+    .our-story-slider {
+        padding: 60px 0 40px;
+    }
+
+    .story-section-title {
+        margin-bottom: 30px;
+    }
+
+    .story-container {
+        padding: 0 20px;
+    }
+
+    .story-slider-wrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .story-slides {
+        width: 100%;
+        flex: 0 0 100%;
+        order: 1;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .story-arrow.left-arrow {
+        order: 2;
+        margin-right: 12px;
+        margin-top: 16px;
+    }
+
+    .story-arrow.right-arrow {
+        order: 3;
+        margin-left: 12px;
+        margin-top: 16px;
+    }
+
+    .story-slide {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        min-width: 0;
+    }
+
+    .slide-left,
+    .slide-middle,
+    .slide-right {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .slide-left h2 {
+        font-size: clamp(2.4rem, 10vw, 3rem);
+        text-align: center;
+        width: 100%;
+    }
+
+    .slide-right p {
+        text-align: justify;
+        font-size: 1rem;
+        padding: 0 25px 15px 25px;
+    }
+
+    .story-arrow.right-arrow img {
+        transform: scale(1.8);
+    }
+
+    .story-dots {
+        display: none !important;
+    }
+
     .hero-art-overlay {
-        top: 68vh;
+        top: 60vh;
         bottom: auto;
-        right: 5vw;
-        height: 80vh;
-        transform: rotate(8deg) scaleX(1.15) translateX(-5vw);
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+        transform: none;
     }
 
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.6rem;
         letter-spacing: -0.5px;
+        line-height: 1.1;
+    }
+
+    .btn,
+    .btn-hero-primary,
+    .btn-hero-secondary {
+        padding: 6px 16px;
+        font-size: 0.75rem;
+        width: fit-content;
     }
 
     .hero-bottom-features {
@@ -1999,7 +2180,7 @@ body.no-scroll {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
     border-radius: 16px;
     pointer-events: none;
 }
@@ -2015,7 +2196,7 @@ body.no-scroll {
     box-shadow:
         0 6px 28px rgba(4, 66, 242, 0.6),
         0 0 0 1px rgba(255, 255, 255, 0.12) inset;
-    transform: translateY(-3px) scale(1.05);
+    transform: translateY(-3px);
 }
 
 .go-to-top:active {
@@ -2045,4 +2226,10 @@ body.no-scroll {
 .go-to-top:hover .gtt-arrow {
     transform: translateY(-2px);
     filter: drop-shadow(0 0 9px rgba(255, 184, 0, 0.9));
+}
+
+@media (min-width: 375px) and (max-width: 480px) {
+    .hero-art-overlay {
+        top: 50vh;
+    }
 }
