@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProTec General Insurance | Footer Section</title>
+  <style>
+    :root {
+      --protec-blue: #162B75;
+      --protec-purple: #6D35C4;
+      --protec-yellow: #FFC83D;
+      --protec-light: #F6F8FF;
+      --protec-text: #172033;
+      --protec-muted: #667085;
+      --protec-border: #E4E7EC;
+      --protec-white: #FFFFFF;
+      --shadow: 0 16px 45px rgba(20, 32, 80, 0.16);
+      --radius-lg: 22px;
+      --radius-md: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--protec-text);
+      background: #ffffff;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-demo {
+      min-height: 40vh;
+      display: grid;
+      place-items: center;
+      padding: 56px 20px;
+      background:
+        radial-gradient(circle at top right, rgba(109, 53, 196, 0.18), transparent 32%),
+        linear-gradient(135deg, #F7F9FF, #FFFFFF);
+      text-align: center;
+    }
+
+    .page-demo h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 54px);
+      color: var(--protec-blue);
+      letter-spacing: -1px;
+    }
+
+    .page-demo p {
+      margin: 0;
+      color: var(--protec-muted);
+      font-size: 18px;
+      max-width: 720px;
+    }
+
+    .site-footer {
+      position: relative;
+      background:
+        linear-gradient(145deg, rgba(22, 43, 117, 0.98), rgba(63, 32, 135, 0.98)),
+        var(--protec-blue);
+      color: var(--protec-white);
+      overflow: hidden;
+    }
+
+    .site-footer::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -220px;
+      top: -240px;
+      border-radius: 50%;
+      background: rgba(255, 200, 61, 0.16);
+    }
+
+    .site-footer::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      left: -160px;
+      bottom: -160px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 56px 24px 28px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.35fr repeat(4, 1fr);
+      gap: 34px;
+      align-items: start;
+    }
+
+    .brand-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .logo-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background:
+        linear-gradient(135deg, var(--protec-yellow), #FFE59A);
+      color: var(--protec-blue);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      box-shadow: 0 10px 22px rgba(255, 200, 61, 0.22);
+    }
+
+    .brand-logo strong {
+      display: block;
+      font-size: 21px;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-logo span {
+      display: block;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.76);
+      margin-top: 1px;
+    }
+
+    .brand-card p {
+      margin: 0 0 20px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 14px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--protec-yellow);
+      color: var(--protec-blue);
+      box-shadow: 0 12px 22px rgba(255, 200, 61, 0.22);
+    }
+
+    .btn-secondary {
+      border-color: rgba(255, 255, 255, 0.28);
+      color: var(--protec-white);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-col h3 {
+      margin: 0 0 16px;
+      font-size: 16px;
+      color: var(--protec-white);
+      letter-spacing: 0.2px;
+    }
+
+    .footer-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .footer-links a::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 200, 61, 0.72);
+      flex: 0 0 auto;
+    }
+
+    .footer-links a:hover {
+      color: var(--protec-white);
+      transform: translateX(2px);
+    }
+
+    .registered-office {
+      position: relative;
+      z-index: 1;
+      max-width: 1180px;
+      margin: 20px auto 0;
+      padding: 0 24px 34px;
+    }
+
+    .registered-office-card {
+      display: grid;
+      grid-template-columns: 1.1fr 2.2fr;
+      gap: 20px;
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+    }
+
+    .registered-office-card h3 {
+      margin: 0;
+      color: var(--protec-yellow);
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .registered-office-card p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 14px;
+    }
+
+    .footer-bottom {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 18px 24px 28px;
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+    }
+
+    .footer-bottom a {
+      color: var(--protec-yellow);
+      font-weight: 700;
+    }
+
+    .fraud-scroll-widget {
+      position: relative;
+      z-index: 2;
+      max-width: 1180px;
+      width: calc(100% - 48px);
+      margin: 0 auto 20px;
+      border-radius: 999px;
+      background: #111827;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+    }
+
+    .fraud-scroll-inner {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--protec-white);
+      white-space: nowrap;
+      font-size: 13px;
+    }
+
+    .fraud-label {
+      position: relative;
+      z-index: 2;
+      background: var(--protec-yellow);
+      color: var(--protec-blue);
+      font-weight: 800;
+      padding: 12px 14px;
+      flex: 0 0 auto;
+    }
+
+    .fraud-marquee {
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .fraud-marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 28s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .content-section {
+      background: var(--protec-light);
+      padding: 56px 20px;
+    }
+
+    .content-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      gap: 26px;
+    }
+
+    .section-card {
+      background: var(--protec-white);
+      border: 1px solid var(--protec-border);
+      border-radius: var(--radius-lg);
+      padding: clamp(22px, 4vw, 34px);
+      box-shadow: 0 12px 32px rgba(22, 43, 117, 0.08);
+    }
+
+    .section-eyebrow {
+      margin: 0 0 8px;
+      color: var(--protec-purple);
+      font-weight: 800;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    .section-card h2 {
+      margin: 0 0 16px;
+      color: var(--protec-blue);
+      font-size: clamp(24px, 3vw, 34px);
+      letter-spacing: -0.4px;
+    }
+
+    .section-card h3 {
+      margin: 22px 0 10px;
+      color: var(--protec-blue);
+      font-size: 19px;
+    }
+
+    .section-card p,
+    .section-card li {
+      color: #344054;
+      font-size: 15px;
+    }
+
+    .section-card ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+    }
+
+    .notice-box {
+      border-left: 5px solid var(--protec-yellow);
+      background: #FFF8E6;
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin: 16px 0;
+    }
+
+    .notice-box strong {
+      display: block;
+      color: var(--protec-blue);
+      margin-bottom: 4px;
+    }
+
+    .bod-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .bod-member {
+      border: 1px solid var(--protec-border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      background: #FCFCFD;
+    }
+
+    .bod-member strong {
+      display: block;
+      color: var(--protec-blue);
+    }
+
+    .bod-member span {
+      display: block;
+      color: var(--protec-muted);
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    .about-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .tab-button {
+      border: 1px solid var(--protec-border);
+      background: #FFFFFF;
+      color: var(--protec-blue);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .tab-button.active {
+      background: var(--protec-blue);
+      color: #FFFFFF;
+      border-color: var(--protec-blue);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .contact-card {
+      background: #F9FAFB;
+      border: 1px solid var(--protec-border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .contact-list div {
+      background: #FFFFFF;
+      border: 1px solid var(--protec-border);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      color: #344054;
+      font-size: 14px;
+    }
+
+    .lead-form {
+      display: grid;
+      gap: 13px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      font-size: 13px;
+      color: #344054;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--protec-border);
+      border-radius: 12px;
+      padding: 12px;
+      font: inherit;
+      color: var(--protec-text);
+      background: #FFFFFF;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--protec-purple);
+      box-shadow: 0 0 0 4px rgba(109, 53, 196, 0.10);
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #344054;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .checkbox-row input {
+      width: auto;
+      margin-top: 3px;
+    }
+
+    .form-submit {
+      border: none;
+      background: linear-gradient(135deg, var(--protec-blue), var(--protec-purple));
+      color: white;
+      border-radius: 999px;
+      padding: 13px 18px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 14px 24px rgba(22, 43, 117, 0.18);
+    }
+
+    .pdf-link-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .pdf-link-list a {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      padding: 15px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--protec-border);
+      background: #FFFFFF;
+      color: var(--protec-blue);
+      font-weight: 800;
+    }
+
+    .pdf-link-list a span {
+      color: var(--protec-muted);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    @media (max-width: 980px) {
+      .footer-top {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .brand-card {
+        grid-column: 1 / -1;
+      }
+
+      .registered-office-card,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .footer-top,
+      .bod-grid,
+      .field-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        padding-top: 38px;
+      }
+
+      .footer-bottom {
+        padding-bottom: 28px;
+      }
+
+      .fraud-scroll-widget {
+        width: calc(100% - 24px);
+        margin: 0 auto 18px;
+        border-radius: 18px;
+      }
+
+      .fraud-scroll-inner {
+        align-items: stretch;
+      }
+
+      .fraud-label {
+        display: grid;
+        place-items: center;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section class="page-demo">
+      <div>
+        <h1>Footer Section Preview</h1>
+        <p>This HTML contains the ProTec bottom page footer, fraud scroll message, registered office, BOD section, legal
+          document links, contact block and lead capture CTA form.</p>
+      </div>
+    </section>
+
+    <!-- FRAUD AWARENESS MICRO PAGE CONTENT -->
+    <section class="content-section" id="fraud-awareness">
+      <div class="content-wrap">
+        <article class="section-card">
+          <p class="section-eyebrow">Fraud Awareness</p>
+          <h2>Important Customer Advisory</h2>
+
+          <div class="notice-box">
+            <strong>IRDAI Caution</strong>
+            IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of
+            premiums. Public receiving such phone calls are requested to lodge a police complaint.
+          </div>
+
+          <h3>Prohibition of Rebates</h3>
+          <p><strong>SECTION 41 OF INSURANCE ACT, 1938, amended as per the Insurance Laws (Amendment) Act, 2015</strong>
+          </p>
+          <p>No person shall allow or offer to allow either directly or indirectly as an inducement to any person to
+            take out or renew or continue insurance in respect of any kind of risk relating to lives or property in
+            India any rebate of the whole or part of the commission payable or any rebate of the premium shown on the
+            policy nor shall any person taking out or renewing or continuing a policy accept any rebate except such
+            rebate as may be allowed in accordance with the prospectus or tables of the Insurers.</p>
+          <p>Any person making default in complying with the provisions of this section shall be liable for a penalty
+            which may extend to ten lakh rupees.</p>
+
+          <h3>Prohibition on Unsolicited Calls</h3>
+          <p>In compliance with TRAI's Do Not Disturb (DND) Registry and IRDAI guidelines, the Company shall not make
+            unsolicited commercial communications to registered DND subscribers. If you receive any unsolicited
+            communication purportedly from the Company, please report it to the Grievance Officer immediately.</p>
+
+          <h3>Reporting Cyber Crimes</h3>
+          <p><strong>Helpline 155260</strong> – National Helpline and reporting platform by Ministry of Home Affairs
+            (MHA).</p>
+          <ul>
+            <li>Helps in preventing financial loss.</li>
+            <li>Operated by concerned State Police.</li>
+            <li>Uses new-age technologies to take action against digital fraud in real-time.</li>
+            <li>Supports integrated response with Law Enforcement Agencies and Financial Intermediaries.</li>
+            <li>More information: <a href="https://cybercrime.gov.in/Webform/Helpline.aspx" target="_blank"
+                rel="noopener">cybercrime.gov.in</a></li>
+          </ul>
+
+          <h3>Digital Police Portal</h3>
+          <p><a href="https://digitalpolice.gov.in/Default.aspx" target="_blank" rel="noopener">digitalpolice.gov.in</a>
+            is a platform for citizens to file crime-related complaints online and seek antecedent verification of
+            prospective employees, including domestic help, drivers, tenants or for any other purpose. Citizens can also
+            seek certification of their own antecedents.</p>
+        </article>
+
+        <!-- ABOUT US / BOARD OF DIRECTORS TAB SECTION -->
+        <article class="section-card" id="board-of-directors">
+          <p class="section-eyebrow">About Us</p>
+          <h2>About ProTec</h2>
+
+          <div class="about-tabs" role="tablist" aria-label="About Us Tabs">
+            <button class="tab-button active" type="button" data-tab="overview">Company Overview</button>
+            <button class="tab-button" type="button" data-tab="bod">Board of Directors</button>
+          </div>
+
+          <div class="tab-panel active" id="tab-overview">
+            <p>ProTec General Insurance Limited is building a new-age, customer-first general insurance company with a
+              focus on simple protection, digital journeys and responsible governance.</p>
+          </div>
+
+          <div class="tab-panel" id="tab-bod">
+            <div class="bod-grid">
+              <div class="bod-member"><strong>Mr. Aditya Sharma</strong><span>Managing Director & CEO</span></div>
+              <div class="bod-member"><strong>Mr. Pheroze Mistry</strong><span>Non-Executive Director</span></div>
+              <div class="bod-member"><strong>Mr. Mehli Mistry</strong><span>Non-Executive Director</span></div>
+              <div class="bod-member"><strong>Mr. Divya Sehgal</strong><span>Non-Executive Director</span></div>
+              <div class="bod-member"><strong>Mr. D K Mittal</strong><span>Independent Director</span></div>
+              <div class="bod-member"><strong>Mr. Sunil Gulati</strong><span>Independent Director</span></div>
+              <div class="bod-member"><strong>Mr. M S Sreedhar</strong><span>Independent Director</span></div>
+              <div class="bod-member"><strong>Mrs. Santosh Agarwal</strong><span>Independent Director</span></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- LEGAL DOCUMENTS SECTION -->
+        <article class="section-card" id="legal-documents">
+          <p class="section-eyebrow">Legal</p>
+          <h2>Policies & Governance Documents</h2>
+          <p>These footer links can be connected to PDF documents once the final approved documents are uploaded to the
+            website CMS.</p>
+
+          <div class="pdf-link-list">
+            <a href="/documents/advertising-policy.pdf" target="_blank" rel="noopener">
+              Advertising Policy <span>PDF</span>
+            </a>
+            <a href="/documents/corporate-governance.pdf" target="_blank" rel="noopener">
+              Corporate Governance <span>PDF</span>
+            </a>
+            <a href="/documents/procurement-vendor-registration.pdf" target="_blank" rel="noopener">
+              Procurement / Vendor Registration <span>PDF</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- CONTACT / LEAD CAPTURE SECTION -->
+        <article class="section-card" id="contact-us">
+          <p class="section-eyebrow">Stay Tuned</p>
+          <h2>How can we help?</h2>
+
+          <div class="contact-grid">
+            <div class="contact-card">
+              <h3>Contact ProTec</h3>
+              <p>Connect with us for insurance queries, service support or business interest.</p>
+              <div class="contact-list">
+                <div><strong>WhatsApp:</strong> XXXXXXXXXX</div>
+                <div><strong>Email:</strong> <a href="mailto:procare@protecins.com">procare@protecins.com</a></div>
+                <div><strong>Toll Free:</strong> XXXXXXXXX</div>
+                <div><strong>LinkedIn:</strong> <a
+                    href="https://www.linkedin.com/company/protec-general-insurance-limited/" target="_blank"
+                    rel="noopener">Visit our LinkedIn page</a></div>
+              </div>
+            </div>
+
+            <form class="lead-form" id="leadCaptureForm">
+              <div class="field-row">
+                <label>
+                  Full Name
+                  <input type="text" name="fullName" placeholder="Enter your name" required />
+                </label>
+                <label>
+                  Mobile Number
+                  <input type="tel" name="mobile" placeholder="Enter mobile number" required />
+                </label>
+              </div>
+
+              <div class="field-row">
+                <label>
+                  Email ID
+                  <input type="email" name="email" placeholder="Enter email address" required />
+                </label>
+                <label>
+                  Type of Insurance
+                  <select name="insuranceType" required>
+                    <option value="">Select insurance type</option>
+                    <option>Motor Insurance</option>
+                    <option>Health Insurance</option>
+                    <option>Property / Fire Insurance</option>
+                    <option>Commercial Lines</option>
+                    <option>Marine Insurance</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                Message / Requirement
+                <textarea name="message" rows="4" placeholder="Tell us how we can help"></textarea>
+              </label>
+
+              <label class="checkbox-row">
+                <input type="checkbox" name="whatsappConsent" required />
+                <span>I agree to receive WhatsApp communication from ProTec General Insurance Limited for my enquiry and
+                  service-related communication.</span>
+              </label>
+
+              <label class="checkbox-row">
+                <input type="checkbox" name="promoConsent" required />
+                <span>I agree to receive promotional and informational communication through calls, SMS, email, WhatsApp
+                  and other channels, subject to applicable laws.</span>
+              </label>
+
+              <button class="form-submit" type="submit">Submit Interest</button>
+            </form>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER SECTION -->
+  <footer class="site-footer" id="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="brand-card">
+          <div class="brand-logo">
+            <div class="logo-mark">P</div>
+            <div>
+              <strong>ProTec General Insurance</strong>
+              <span>Simple. Digital. Responsible.</span>
+            </div>
+          </div>
+          <p>Building customer-first general insurance experiences with responsible protection, digital journeys and
+            trusted service support.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact-us">Stay Tuned</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/company/protec-general-insurance-limited/"
+              target="_blank" rel="noopener">Follow on LinkedIn</a>
+          </div>
+        </div>
+
+        <nav class="footer-col" aria-label="Services">
+          <h3>Services</h3>
+          <ul class="footer-links">
+            <li><a href="#fraud-awareness">Fraud Awareness</a></li>
+            <li><a href="#contact-us">Contact Us</a></li>
+            <li><a href="#contact-us">Stay Tuned</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Legal">
+          <h3>Legal</h3>
+          <ul class="footer-links">
+            <li><a href="/documents/advertising-policy.pdf" target="_blank" rel="noopener">Advertising Policy</a></li>
+            <li><a href="/documents/corporate-governance.pdf" target="_blank" rel="noopener">Corporate Governance</a>
+            </li>
+            <li><a href="/documents/procurement-vendor-registration.pdf" target="_blank" rel="noopener">Procurement /
+                Vendor Registration</a></li>
+            <li><a href="#fraud-awareness">Section 41 & Rebate Prohibition</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="About Us">
+          <h3>About Us</h3>
+          <ul class="footer-links">
+            <li><a href="#board-of-directors">Board of Directors</a></li>
+            <li><a href="#board-of-directors">Company Overview</a></li>
+            <li><a href="#legal-documents">Governance Documents</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Others">
+          <h3>Others</h3>
+          <ul class="footer-links">
+            <li><a href="https://www.linkedin.com/company/protec-general-insurance-limited/" target="_blank"
+                rel="noopener">LinkedIn</a></li>
+            <li><a href="#fraud-awareness">Cyber Crime Reporting</a></li>
+            <li><a href="#legal-documents">Downloads</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="registered-office">
+      <div class="registered-office-card">
+        <h3>Registered Office</h3>
+        <p>
+          <strong>ProTec General Insurance Limited</strong><br />
+          REGISTERED ADDRESS:<br />
+          14 FLR-2, 44 DADY SHETH H, CAWASJI PATEL RD HC FORT,<br />
+          Town Hall (Mumbai), Mumbai – 400001, Maharashtra
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© <span id="footerYear"></span> ProTec General Insurance Limited. All rights reserved.</div>
+      <div>
+        Need help? <a href="mailto:procare@protecins.com">procare@protecins.com</a>
+      </div>
+    </div>
+
+    <!-- IN-PAGE CAUTION SCROLL MESSAGE -->
+    <aside class="fraud-scroll-widget" aria-label="Caution scroll message">
+      <div class="fraud-scroll-inner">
+        <div class="fraud-label">Caution</div>
+        <div class="fraud-marquee">
+          <span>IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of
+            premiums. Public receiving such phone calls are requested to lodge a police complaint.</span>
+        </div>
+      </div>
+    </aside>
+  </footer>
+
+
+  <script>
+    document.getElementById("footerYear").textContent = new Date().getFullYear();
+
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const tabPanels = document.querySelectorAll(".tab-panel");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selected = button.dataset.tab;
+
+        tabButtons.forEach((btn) => btn.classList.remove("active"));
+        tabPanels.forEach((panel) => panel.classList.remove("active"));
+
+        button.classList.add("active");
+        document.getElementById(`tab-${selected}`).classList.add("active");
+      });
+    });
+
+    document.getElementById("leadCaptureForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      alert("Thank you. Your interest has been captured. Please connect this form to your CRM/API endpoint before production use.");
+      this.reset();
+    });
+  </script>
+</body>
+
+</html>
