@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protec General Insurance | Stay Tuned</title>
-    <meta name="description"
-        content="Contact ProTec General Insurance for insurance queries, service support or business interest.">
+    <title>Protec General Insurance | About Us</title>
+    <meta name="description" content="About ProTec General Insurance - Board of Directors and Company Overview">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -22,14 +21,14 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo">
+            <a href="index.php" class="logo">
                 <img src="assets/images/protec_logo.png" alt="Protec General Insurance" class="logo-img">
             </a>
             <ul class="nav-links">
-                <li><a href="index.html#our-edge">Our Promise</a></li>
-                <li><a href="index.html#designed-different">What's Coming?</a></li>
-                <li><a href="index.html#about-us">About Us</a></li>
-                <li><a href="index.html#join-us">Join Us</a></li>
+                <li><a href="index.php#our-edge">Our Promise</a></li>
+                <li><a href="index.php#designed-different">What's Coming?</a></li>
+                <li><a href="index.php#about-us">About Us</a></li>
+                <li><a href="index.php#join-us">Join Us</a></li>
             </ul>
             <div class="hamburger-menu" id="mobile-menu-btn">
                 <svg id="pointsBurger" viewBox="0 0 200 200">
@@ -47,77 +46,41 @@
 
     <!-- Main Content -->
     <main style="padding-top: 30px;">
-        <section class="content-section" id="contact-us">
+        <section class="content-section" id="board-of-directors">
             <div class="content-wrap">
                 <article class="section-card">
-                    <p class="section-eyebrow">Stay Tuned</p>
-                    <h2>How can we help?</h2>
+                    <p class="section-eyebrow">About Us</p>
+                    <h2>About ProTec</h2>
 
-                    <div class="contact-grid">
-                        <div class="contact-card">
-                            <h3>Contact ProTec</h3>
-                            <p>Connect with us for insurance queries, service support or business interest.</p>
-                            <div class="contact-list">
-                                <div><strong>WhatsApp:</strong> XXXXXXXXXX</div>
-                                <div><strong>Email:</strong> <a
-                                        href="mailto:procare@protecins.com">procare@protecins.com</a></div>
-                                <div><strong>Toll Free:</strong> XXXXXXXXX</div>
-                                <div><strong>LinkedIn:</strong> <a
-                                        href="https://www.linkedin.com/company/protec-general-insurance-limited/"
-                                        target="_blank" rel="noopener">Visit our LinkedIn page</a></div>
+                    <div class="about-tabs" role="tablist" aria-label="About Us Tabs">
+                        <button class="tab-button active" type="button" data-tab="overview">Company Overview</button>
+                        <button class="tab-button" type="button" data-tab="bod">Board of Directors</button>
+                    </div>
+
+                    <div class="tab-panel active" id="tab-overview">
+                        <p>ProTec General Insurance Limited is building a new-age, customer-first general insurance
+                            company with a focus on simple protection, digital journeys and responsible governance.</p>
+                    </div>
+
+                    <div class="tab-panel" id="tab-bod">
+                        <div class="bod-grid">
+                            <div class="bod-member"><strong>Mr. Aditya Sharma</strong><span>Managing Director &
+                                    CEO</span></div>
+                            <div class="bod-member"><strong>Mr. Pheroze Mistry</strong><span>Non-Executive
+                                    Director</span></div>
+                            <div class="bod-member"><strong>Mr. Mehli Mistry</strong><span>Non-Executive Director</span>
                             </div>
+                            <div class="bod-member"><strong>Mr. Divya Sehgal</strong><span>Non-Executive Director</span>
+                            </div>
+                            <div class="bod-member"><strong>Mr. D K Mittal</strong><span>Independent Director</span>
+                            </div>
+                            <div class="bod-member"><strong>Mr. Sunil Gulati</strong><span>Independent Director</span>
+                            </div>
+                            <div class="bod-member"><strong>Mr. M S Sreedhar</strong><span>Independent Director</span>
+                            </div>
+                            <div class="bod-member"><strong>Mrs. Santosh Agarwal</strong><span>Independent
+                                    Director</span></div>
                         </div>
-
-                        <form class="lead-form" id="leadCaptureForm">
-                            <div class="field-row">
-                                <label>
-                                    Full Name
-                                    <input type="text" name="fullName" placeholder="Enter your name" required />
-                                </label>
-                                <label>
-                                    Mobile Number
-                                    <input type="tel" name="mobile" placeholder="Enter mobile number" required />
-                                </label>
-                            </div>
-
-                            <div class="field-row">
-                                <label>
-                                    Email ID
-                                    <input type="email" name="email" placeholder="Enter email address" required />
-                                </label>
-                                <label>
-                                    Type of Insurance
-                                    <select name="insuranceType" required>
-                                        <option value="">Select insurance type</option>
-                                        <option>Motor Insurance</option>
-                                        <option>Health Insurance</option>
-                                        <option>Property / Fire Insurance</option>
-                                        <option>Commercial Lines</option>
-                                        <option>Marine Insurance</option>
-                                        <option>Other</option>
-                                    </select>
-                                </label>
-                            </div>
-
-                            <label>
-                                Message / Requirement
-                                <textarea name="message" rows="4" placeholder="Tell us how we can help"></textarea>
-                            </label>
-
-                            <label class="checkbox-row">
-                                <input type="checkbox" name="whatsappConsent" required />
-                                <span>I agree to receive WhatsApp communication from ProTec General Insurance Limited
-                                    for my enquiry and service-related communication.</span>
-                            </label>
-
-                            <label class="checkbox-row">
-                                <input type="checkbox" name="promoConsent" required />
-                                <span>I agree to receive promotional and informational communication through calls, SMS,
-                                    email, WhatsApp and other channels, subject to applicable laws.</span>
-                            </label>
-
-                            <button class="form-submit" type="submit">Submit Interest</button>
-                        </form>
                     </div>
                 </article>
             </div>
@@ -140,7 +103,7 @@
                         journeys
                         and trusted service support.</p>
                     <div class="cta-row">
-                        <a class="btn btn-primary" href="stay_tuned.html">Stay Tuned</a>
+                        <a class="btn btn-primary" href="stay_tuned.php">Stay Tuned</a>
                         <a class="btn btn-secondary"
                             href="https://www.linkedin.com/company/protec-general-insurance-limited/" target="_blank"
                             rel="noopener">Follow on LinkedIn</a>
@@ -150,28 +113,28 @@
                 <nav class="footer-col" aria-label="Services">
                     <h3>Services</h3>
                     <ul class="footer-links">
-                        <li><a href="fraud_awareness.html">Fraud Awareness</a></li>
-                        <li><a href="stay_tuned.html">Contact Us</a></li>
-                        <li><a href="stay_tuned.html">Stay Tuned</a></li>
+                        <li><a href="fraud_awareness.php">Fraud Awareness</a></li>
+                        <li><a href="stay_tuned.php">Contact Us</a></li>
+                        <li><a href="stay_tuned.php">Stay Tuned</a></li>
                     </ul>
                 </nav>
 
                 <nav class="footer-col" aria-label="Legal">
                     <h3>Legal</h3>
                     <ul class="footer-links">
-                        <li><a href="legal.html">Advertising Policy</a></li>
-                        <li><a href="legal.html">Corporate Governance</a></li>
-                        <li><a href="legal.html">Procurement / Vendor Registration</a></li>
-                        <li><a href="fraud_awareness.html">Section 41 & Rebate Prohibition</a></li>
+                        <li><a href="legal.php">Advertising Policy</a></li>
+                        <li><a href="legal.php">Corporate Governance</a></li>
+                        <li><a href="legal.php">Procurement / Vendor Registration</a></li>
+                        <li><a href="fraud_awareness.php">Section 41 & Rebate Prohibition</a></li>
                     </ul>
                 </nav>
 
                 <nav class="footer-col" aria-label="About Us">
                     <h3>About Us</h3>
                     <ul class="footer-links">
-                        <li><a href="aboutus.html">Board of Directors</a></li>
-                        <li><a href="aboutus.html">Company Overview</a></li>
-                        <li><a href="legal.html">Governance Documents</a></li>
+                        <li><a href="aboutus.php">Board of Directors</a></li>
+                        <li><a href="aboutus.php">Company Overview</a></li>
+                        <li><a href="legal.php">Governance Documents</a></li>
                     </ul>
                 </nav>
 
@@ -180,8 +143,8 @@
                     <ul class="footer-links">
                         <li><a href="https://www.linkedin.com/company/protec-general-insurance-limited/" target="_blank"
                                 rel="noopener">LinkedIn</a></li>
-                        <li><a href="fraud_awareness.html">Cyber Crime Reporting</a></li>
-                        <li><a href="legal.html">Downloads</a></li>
+                        <li><a href="fraud_awareness.php">Cyber Crime Reporting</a></li>
+                        <li><a href="legal.php">Downloads</a></li>
                     </ul>
                 </nav>
             </div>
@@ -222,10 +185,19 @@
     <script>
         document.getElementById("footerYear").textContent = new Date().getFullYear();
 
-        document.getElementById("leadCaptureForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-            alert("Thank you. Your interest has been captured. Please connect this form to your CRM/API endpoint before production use.");
-            this.reset();
+        const tabButtons = document.querySelectorAll(".tab-button");
+        const tabPanels = document.querySelectorAll(".tab-panel");
+
+        tabButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const selected = button.dataset.tab;
+
+                tabButtons.forEach((btn) => btn.classList.remove("active"));
+                tabPanels.forEach((panel) => panel.classList.remove("active"));
+
+                button.classList.add("active");
+                document.getElementById(`tab-${selected}`).classList.add("active");
+            });
         });
     </script>
 

@@ -15,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
 </head>
 
 <body>
@@ -63,7 +63,7 @@
                     <span style="display: block;">BEGINS SOON</span>
                 </h1>
                 <div class="hero-buttons">
-                    <a href="stay_tuned.html" class="btn btn-hero-primary">Stay Tuned &rarr;</a>
+                    <a href="stay_tuned.php" class="btn btn-hero-primary">Stay Tuned &rarr;</a>
                     <a href="#" class="btn btn-hero-secondary">Join Our Journey &rarr;</a>
                 </div>
             </div>
@@ -431,7 +431,7 @@
                         journeys
                         and trusted service support.</p>
                     <div class="cta-row">
-                        <a class="btn btn-primary" href="stay_tuned.html">Stay Tuned</a>
+                        <a class="btn btn-primary" href="stay_tuned.php">Stay Tuned</a>
                         <a class="btn btn-secondary"
                             href="https://www.linkedin.com/company/protec-general-insurance-limited/" target="_blank"
                             rel="noopener">Follow on LinkedIn</a>
@@ -441,28 +441,28 @@
                 <nav class="footer-col" aria-label="Services">
                     <h3>Services</h3>
                     <ul class="footer-links">
-                        <li><a href="fraud_awareness.html">Fraud Awareness</a></li>
-                        <li><a href="stay_tuned.html">Contact Us</a></li>
-                        <li><a href="stay_tuned.html">Stay Tuned</a></li>
+                        <li><a href="fraud_awareness.php">Fraud Awareness</a></li>
+                        <li><a href="stay_tuned.php">Contact Us</a></li>
+                        <li><a href="stay_tuned.php">Stay Tuned</a></li>
                     </ul>
                 </nav>
 
                 <nav class="footer-col" aria-label="Legal">
                     <h3>Legal</h3>
                     <ul class="footer-links">
-                        <li><a href="legal.html">Advertising Policy</a></li>
-                        <li><a href="legal.html">Corporate Governance</a></li>
-                        <li><a href="legal.html">Procurement / Vendor Registration</a></li>
-                        <li><a href="fraud_awareness.html">Section 41 & Rebate Prohibition</a></li>
+                        <li><a href="legal.php">Advertising Policy</a></li>
+                        <li><a href="legal.php">Corporate Governance</a></li>
+                        <li><a href="legal.php">Procurement / Vendor Registration</a></li>
+                        <li><a href="fraud_awareness.php">Section 41 & Rebate Prohibition</a></li>
                     </ul>
                 </nav>
 
                 <nav class="footer-col" aria-label="About Us">
                     <h3>About Us</h3>
                     <ul class="footer-links">
-                        <li><a href="aboutus.html">Board of Directors</a></li>
-                        <li><a href="aboutus.html">Company Overview</a></li>
-                        <li><a href="legal.html">Governance Documents</a></li>
+                        <li><a href="aboutus.php">Board of Directors</a></li>
+                        <li><a href="aboutus.php">Company Overview</a></li>
+                        <li><a href="legal.php">Governance Documents</a></li>
                     </ul>
                 </nav>
 
@@ -471,8 +471,8 @@
                     <ul class="footer-links">
                         <li><a href="https://www.linkedin.com/company/protec-general-insurance-limited/" target="_blank"
                                 rel="noopener">LinkedIn</a></li>
-                        <li><a href="fraud_awareness.html">Cyber Crime Reporting</a></li>
-                        <li><a href="legal.html">Downloads</a></li>
+                        <li><a href="fraud_awareness.php">Cyber Crime Reporting</a></li>
+                        <li><a href="legal.php">Downloads</a></li>
                     </ul>
                 </nav>
             </div>
