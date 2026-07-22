@@ -2509,6 +2509,8 @@ body.no-scroll {
 .fraud-marquee {
   overflow: hidden;
   flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .fraud-marquee span {
