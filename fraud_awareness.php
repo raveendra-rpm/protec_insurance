@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protec General Insurance | Legal</title>
-    <meta name="description" content="Legal Documents - Policies & Governance Documents by Protec General Insurance">
+    <title>Protec General Insurance | Fraud Awareness</title>
+    <meta name="description" content="Fraud Awareness - Important Customer Advisory by Protec General Insurance">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -21,14 +21,14 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo">
+            <a href="index.php" class="logo">
                 <img src="assets/images/protec_logo.png" alt="Protec General Insurance" class="logo-img">
             </a>
             <ul class="nav-links">
-                <li><a href="index.html#our-edge">Our Promise</a></li>
-                <li><a href="index.html#designed-different">What's Coming?</a></li>
-                <li><a href="index.html#about-us">About Us</a></li>
-                <li><a href="index.html#join-us">Join Us</a></li>
+                <li><a href="index.php#our-edge">Our Promise</a></li>
+                <li><a href="index.php#designed-different">What's Coming?</a></li>
+                <li><a href="index.php#about-us">About Us</a></li>
+                <li><a href="index.php#join-us">Join Us</a></li>
             </ul>
             <div class="hamburger-menu" id="mobile-menu-btn">
                 <svg id="pointsBurger" viewBox="0 0 200 200">
@@ -46,25 +46,56 @@
 
     <!-- Main Content -->
     <main style="padding-top: 30px;">
-        <section class="content-section" id="legal-documents">
+        <section class="content-section" id="fraud-awareness">
             <div class="content-wrap">
                 <article class="section-card">
-                    <p class="section-eyebrow">Legal</p>
-                    <h2>Policies & Governance Documents</h2>
-                    <p>These footer links can be connected to PDF documents once the final approved documents are
-                        uploaded to the website CMS.</p>
+                    <p class="section-eyebrow">Fraud Awareness</p>
+                    <h2>Important Customer Advisory</h2>
 
-                    <div class="pdf-link-list">
-                        <a href="/documents/advertising-policy.pdf" target="_blank" rel="noopener">
-                            Advertising Policy <span>PDF</span>
-                        </a>
-                        <a href="/documents/corporate-governance.pdf" target="_blank" rel="noopener">
-                            Corporate Governance <span>PDF</span>
-                        </a>
-                        <a href="/documents/procurement-vendor-registration.pdf" target="_blank" rel="noopener">
-                            Procurement / Vendor Registration <span>PDF</span>
-                        </a>
+                    <div class="notice-box">
+                        <strong>IRDAI Caution</strong>
+                        IRDAI is not involved in activities like selling insurance policies, announcing bonus or
+                        investment of premiums. Public receiving such phone calls are requested to lodge a police
+                        complaint.
                     </div>
+
+                    <h3>Prohibition of Rebates</h3>
+                    <p><strong>SECTION 41 OF INSURANCE ACT, 1938, amended as per the Insurance Laws (Amendment) Act,
+                            2015</strong></p>
+                    <p>No person shall allow or offer to allow either directly or indirectly as an inducement to any
+                        person to take out or renew or continue insurance in respect of any kind of risk relating to
+                        lives or property in India any rebate of the whole or part of the commission payable or any
+                        rebate of the premium shown on the policy nor shall any person taking out or renewing or
+                        continuing a policy accept any rebate except such rebate as may be allowed in accordance with
+                        the prospectus or tables of the Insurers.</p>
+                    <p>Any person making default in complying with the provisions of this section shall be liable for a
+                        penalty which may extend to ten lakh rupees.</p>
+
+                    <h3>Prohibition on Unsolicited Calls</h3>
+                    <p>In compliance with TRAI's Do Not Disturb (DND) Registry and IRDAI guidelines, the Company shall
+                        not make unsolicited commercial communications to registered DND subscribers. If you receive any
+                        unsolicited communication purportedly from the Company, please report it to the Grievance
+                        Officer immediately.</p>
+
+                    <h3>Reporting Cyber Crimes</h3>
+                    <p><strong>Helpline 155260</strong> – National Helpline and reporting platform by Ministry of Home
+                        Affairs (MHA).</p>
+                    <ul>
+                        <li>Helps in preventing financial loss.</li>
+                        <li>Operated by concerned State Police.</li>
+                        <li>Uses new-age technologies to take action against digital fraud in real-time.</li>
+                        <li>Supports integrated response with Law Enforcement Agencies and Financial Intermediaries.
+                        </li>
+                        <li>More information: <a href="https://cybercrime.gov.in/Webform/Helpline.aspx" target="_blank"
+                                rel="noopener">cybercrime.gov.in</a></li>
+                    </ul>
+
+                    <h3>Digital Police Portal</h3>
+                    <p><a href="https://digitalpolice.gov.in/Default.aspx" target="_blank"
+                            rel="noopener">digitalpolice.gov.in</a> is a platform for citizens to file crime-related
+                        complaints online and seek antecedent verification of prospective employees, including domestic
+                        help, drivers, tenants or for any other purpose. Citizens can also seek certification of their
+                        own antecedents.</p>
                 </article>
             </div>
         </section>
@@ -86,7 +117,7 @@
                         journeys
                         and trusted service support.</p>
                     <div class="cta-row">
-                        <a class="btn btn-primary" href="stay_tuned.html">Stay Tuned</a>
+                        <a class="btn btn-primary" href="stay_tuned.php">Stay Tuned</a>
                         <a class="btn btn-secondary"
                             href="https://www.linkedin.com/company/protec-general-insurance-limited/" target="_blank"
                             rel="noopener">Follow on LinkedIn</a>
@@ -96,28 +127,28 @@
                 <nav class="footer-col" aria-label="Services">
                     <h3>Services</h3>
                     <ul class="footer-links">
-                        <li><a href="fraud_awareness.html">Fraud Awareness</a></li>
-                        <li><a href="stay_tuned.html">Contact Us</a></li>
-                        <li><a href="stay_tuned.html">Stay Tuned</a></li>
+                        <li><a href="fraud_awareness.php">Fraud Awareness</a></li>
+                        <li><a href="stay_tuned.php">Contact Us</a></li>
+                        <li><a href="stay_tuned.php">Stay Tuned</a></li>
                     </ul>
                 </nav>
 
                 <nav class="footer-col" aria-label="Legal">
                     <h3>Legal</h3>
                     <ul class="footer-links">
-                        <li><a href="legal.html">Advertising Policy</a></li>
-                        <li><a href="legal.html">Corporate Governance</a></li>
-                        <li><a href="legal.html">Procurement / Vendor Registration</a></li>
-                        <li><a href="fraud_awareness.html">Section 41 & Rebate Prohibition</a></li>
+                        <li><a href="legal.php">Advertising Policy</a></li>
+                        <li><a href="legal.php">Corporate Governance</a></li>
+                        <li><a href="legal.php">Procurement / Vendor Registration</a></li>
+                        <li><a href="fraud_awareness.php">Section 41 & Rebate Prohibition</a></li>
                     </ul>
                 </nav>
 
                 <nav class="footer-col" aria-label="About Us">
                     <h3>About Us</h3>
                     <ul class="footer-links">
-                        <li><a href="aboutus.html">Board of Directors</a></li>
-                        <li><a href="aboutus.html">Company Overview</a></li>
-                        <li><a href="legal.html">Governance Documents</a></li>
+                        <li><a href="aboutus.php">Board of Directors</a></li>
+                        <li><a href="aboutus.php">Company Overview</a></li>
+                        <li><a href="legal.php">Governance Documents</a></li>
                     </ul>
                 </nav>
 
@@ -126,8 +157,8 @@
                     <ul class="footer-links">
                         <li><a href="https://www.linkedin.com/company/protec-general-insurance-limited/" target="_blank"
                                 rel="noopener">LinkedIn</a></li>
-                        <li><a href="fraud_awareness.html">Cyber Crime Reporting</a></li>
-                        <li><a href="legal.html">Downloads</a></li>
+                        <li><a href="fraud_awareness.php">Cyber Crime Reporting</a></li>
+                        <li><a href="legal.php">Downloads</a></li>
                     </ul>
                 </nav>
             </div>
