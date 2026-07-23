@@ -64,7 +64,7 @@
                     <span style="display: block;">BEGINS SOON</span>
                 </h1>
                 <div class="hero-buttons">
-                    <a href="stay_tuned.php" class="btn btn-hero-primary">Stay Tuned &rarr;</a>
+                    <a href="staytuned.php" class="btn btn-hero-primary">Stay Tuned &rarr;</a>
                     <a href="#" class="btn btn-hero-secondary">Join Our Journey &rarr;</a>
                 </div>
             </div>
@@ -432,7 +432,7 @@
                         journeys
                         and trusted service support.</p>
                     <div class="cta-row">
-                        <a class="btn btn-primary" href="stay_tuned.php">Stay Tuned</a>
+                        <a class="btn btn-primary" href="staytuned.php">Stay Tuned</a>
                         <a class="btn btn-secondary"
                             href="https://www.linkedin.com/company/protec-general-insurance-limited/" target="_blank"
                             rel="noopener">Follow on LinkedIn</a>
@@ -443,8 +443,8 @@
                     <h3>Services</h3>
                     <ul class="footer-links">
                         <li><a href="fraud_awareness.php">Fraud Awareness</a></li>
-                        <li><a href="stay_tuned.php">Contact Us</a></li>
-                        <li><a href="stay_tuned.php">Stay Tuned</a></li>
+                        <li><a href="staytuned.php">Contact Us</a></li>
+                        <li><a href="staytuned.php">Stay Tuned</a></li>
                     </ul>
                 </nav>
 
