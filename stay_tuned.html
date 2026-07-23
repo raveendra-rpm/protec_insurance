@@ -222,10 +222,41 @@
     <script>
         document.getElementById("footerYear").textContent = new Date().getFullYear();
 
-        document.getElementById("leadCaptureForm").addEventListener("submit", function (event) {
+        document.getElementById("leadCaptureForm").addEventListener("submit", async function (event) {
             event.preventDefault();
-            alert("Thank you. Your interest has been captured. Please connect this form to your CRM/API endpoint before production use.");
-            this.reset();
+
+            // Get form data
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('.form-submit');
+            const originalBtnText = submitBtn.textContent;
+
+            // Change button text to show loading state
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+
+            try {
+                // Send data to our new PHP script
+                const response = await fetch('submit_lead.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    alert(result.message); // Show success message from PHP
+                    this.reset(); // Clear the form
+                } else {
+                    alert(result.message || 'Something went wrong. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('Failed to connect to the server. Please ensure XAMPP is running and you are accessing this via localhost.');
+            } finally {
+                // Restore button state
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            }
         });
     </script>
 
