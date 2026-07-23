@@ -297,6 +297,46 @@ $insurance_types = array_unique(array_filter(array_column($leads, 'insurance_typ
             box-shadow: 0 0 0 3px rgba(4,66,242,0.2);
         }
 
+        /* Fix Chrome autofill background in dark theme */
+        .form-input:-webkit-autofill,
+        .form-input:-webkit-autofill:hover, 
+        .form-input:-webkit-autofill:focus, 
+        .form-input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px #1a1025 inset !important;
+            -webkit-text-fill-color: #fff !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        .pwd-input-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .pwd-input-wrap .form-input {
+            padding-right: 48px;
+        }
+        .pwd-toggle {
+            position: absolute;
+            right: 12px;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            cursor: pointer;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s ease;
+            z-index: 5;
+        }
+        .pwd-toggle:hover {
+            color: #fff;
+        }
+        .pwd-toggle svg {
+            width: 18px;
+            height: 18px;
+        }
+
         .login-btn {
             width: 100%;
             padding: 15px;
@@ -879,7 +919,15 @@ $insurance_types = array_unique(array_filter(array_column($leads, 'insurance_typ
             </div>
             <div class="form-group">
                 <label class="form-label" for="password">Password</label>
-                <input type="password" class="form-input" id="password" name="password" placeholder="••••••••" required autocomplete="current-password">
+                <div class="pwd-input-wrap">
+                    <input type="password" class="form-input" id="password" name="password" placeholder="••••••••" required autocomplete="current-password">
+                    <button type="button" class="pwd-toggle" onclick="togglePwd('password', this)" tabindex="-1">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
             </div>
             <button type="submit" name="login" class="login-btn">
                 <span>Sign In to Dashboard →</span>
@@ -1142,11 +1190,21 @@ $insurance_types = array_unique(array_filter(array_column($leads, 'insurance_typ
         <div class="modal-body">
             <div class="modal-field" style="margin-bottom: 15px;">
                 <div class="modal-field-label">New Password</div>
-                <input type="password" id="newPwd" class="form-input" placeholder="Enter new password" style="margin-top:5px;" required>
+                <div class="pwd-input-wrap" style="margin-top:5px;">
+                    <input type="password" id="newPwd" class="form-input" placeholder="Enter new password" required>
+                    <button type="button" class="pwd-toggle" onclick="togglePwd('newPwd', this)" tabindex="-1">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </button>
+                </div>
             </div>
             <div class="modal-field" style="margin-bottom: 25px;">
                 <div class="modal-field-label">Confirm Password</div>
-                <input type="password" id="confirmPwd" class="form-input" placeholder="Confirm new password" style="margin-top:5px;" required>
+                <div class="pwd-input-wrap" style="margin-top:5px;">
+                    <input type="password" id="confirmPwd" class="form-input" placeholder="Confirm new password" required>
+                    <button type="button" class="pwd-toggle" onclick="togglePwd('confirmPwd', this)" tabindex="-1">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </button>
+                </div>
             </div>
             <button class="modal-action-btn btn-mark-contacted" id="btnChangePwd" onclick="changePassword()" style="width: 100%;">
                 Update Password
@@ -1184,6 +1242,8 @@ $insurance_types = array_unique(array_filter(array_column($leads, 'insurance_typ
 <script>
 let currentTab = 'all';
 let currentLeadId = null;
+
+
 
 function switchTab(tab, btnElement) {
     currentTab = tab;
@@ -1493,6 +1553,24 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 <?php endif; ?>
 
+<script>
+function togglePwd(inputId, btn) {
+    const input = document.getElementById(inputId);
+    if (input.type === 'password') {
+        input.type = 'text';
+        btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"></path>
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+        </svg>`;
+    } else {
+        input.type = 'password';
+        btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+        </svg>`;
+    }
+}
+</script>
 </body>
 </html>
 

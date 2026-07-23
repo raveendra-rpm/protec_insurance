@@ -1,0 +1,19 @@
+# ─── ProTec General Insurance — Apache Config ───────────────────────────────
+
+# Disable directory listing (important for security)
+Options -Indexes
+
+# Block direct access to sensitive files
+<FilesMatch "^(config\.php|database\.sql|\.gitignore|\.env)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Session security is handled by the server default
+
+# Force HTTPS for protecins.com (Ignored on localhost)
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} !^localhost
+RewriteCond %{HTTP_HOST} !^127\.0\.0\.1
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
