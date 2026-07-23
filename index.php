@@ -12,9 +12,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400..800&family=Inter:wght@300;400;600;800&display=swap"
         rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="preload" as="image" href="assets/images/hero_banner.jpg">
     <link rel="stylesheet" href="assets/css/style.css?v=2">
 </head>
 
@@ -48,8 +49,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-bg-overlay"></div>
-        <img src="assets/images/hero_banner.jpg" alt="Father lifting his daughter" class="hero-image">
-        <img src="assets/images/protec_brandbook__v2.png" alt="Protec Art" class="hero-art-overlay">
+        <img src="assets/images/hero_banner.jpg" alt="Father lifting his daughter" class="hero-image" loading="eager" fetchpriority="high">
+        <img src="assets/images/protec_brandbook__v2.png" alt="Protec Art" class="hero-art-overlay" loading="eager" fetchpriority="high">
 
         <div class="hero-content">
             <div class="hero-top-subtitle">
