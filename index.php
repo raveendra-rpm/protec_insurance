@@ -255,25 +255,28 @@
 
                 <div class="story-slides">
                     <!-- Slide 1 -->
-                    <div class="story-slide active" data-index="0">
+
+                    <div class="story-slide" data-index="2">
                         <div class="slide-left">
-                            <h2>BUILDING<br>INSURANCE<br>AROUND<br>PEOPLE</h2>
+                            <h2>LED BY<br>EXPERTS.<br>BUILT BY<br>INNOVATORS.</h2>
                         </div>
                         <div class="slide-middle">
-                            <video src="assets/videos/purple_abstract_swirl.mp4" autoplay loop muted playsinline
-                                disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;"
-                                class="icon-swirl"></video>
+                            <div class="slide-3-video-wrapper">
+                                <video src="assets/videos/animte_vids.mp4" autoplay loop muted playsinline
+                                    disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;"
+                                    class="icon-swirl-slide-3"></video>
+                            </div>
                         </div>
                         <div class="slide-right">
-                            <p>For too long, insurance has been built around products rather than people. Policies
-                                become more complex, forms get longer, and customers are left to navigate the fine
-                                print. Protec starts with the customer.</p>
-                            <p>We are building smarter insurance solutions for the way Indians live, work, and manage
-                                risk today. Combining deep insurance expertise with AI and digital technology, we make
-                                insurance simpler, faster, more transparent, and easier to understand.</p>
+                            <p>Protec is led by seasoned insurance leader Mr. Aditya Sharma, Co-founder and Managing
+                    Director & CEO. A Fellow of the Insurance Institute of India (FIII), he brings over 25 years of
+experience scaling businesses, leading high-performing teams, and driving growth across
+distribution, risk and operations.</p>
+                            <p>Under his leadership, Protec has assembled a team of
+accomplished insurance professionals, distribution leaders and technology experts, united by a
+shared purpose: making insurance simpler, smarter and more customer-centric.</p>
                         </div>
                     </div>
-
                     <!-- Slide 2 -->
                     <div class="story-slide" data-index="1">
                         <div class="slide-left">
@@ -298,24 +301,22 @@
                     </div>
 
                     <!-- Slide 3 -->
-                    <div class="story-slide" data-index="2">
+                    <div class="story-slide active" data-index="0">
                         <div class="slide-left">
-                            <h2>LED BY<br>EXPERTS.<br>BUILT BY<br>INNOVATORS.</h2>
+                            <h2>BUILDING<br>INSURANCE<br>AROUND<br>PEOPLE</h2>
                         </div>
                         <div class="slide-middle">
-                            <div class="slide-3-video-wrapper">
-                                <video src="assets/videos/animte_vids.mp4" autoplay loop muted playsinline
-                                    disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;"
-                                    class="icon-swirl-slide-3"></video>
-                            </div>
+                            <video src="assets/videos/purple_abstract_swirl.mp4" autoplay loop muted playsinline
+                                disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;"
+                                class="icon-swirl"></video>
                         </div>
                         <div class="slide-right">
-                            <p>Protec's leadership team brings together experienced general insurance professionals and
-                                technology leaders united by a common purpose: making insurance work better for
-                                customers.</p>
-                            <p>With decades of expertise across underwriting, claims, distribution, risk management, and
-                                technology, we are building an insurer that combines operational excellence with
-                                innovation to deliver smarter customer experiences.</p>
+                            <p>For too long, insurance has been built around products rather than people. Policies
+                                become more complex, forms get longer, and customers are left to navigate the fine
+                                print. Protec starts with the customer.</p>
+                            <p>We are building smarter insurance solutions for the way Indians live, work, and manage
+                                risk today. Combining deep insurance expertise with AI and digital technology, we make
+                                insurance simpler, faster, more transparent, and easier to understand.</p>
                         </div>
                     </div>
                 </div>
