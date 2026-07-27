@@ -4,8 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/images/protec_favicon.png?v=<?= @filemtime('assets/images/protec_favicon.png') ?: time() ?>">
     <title>Protec General Insurance | Fraud Awareness</title>
     <meta name="description" content="Fraud Awareness - Important Customer Advisory by Protec General Insurance">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <?php
+        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+        $baseUrl = $protocol . ($_SERVER['HTTP_HOST'] ?? 'protecins.com') . rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
+        $ogImage = $baseUrl . "assets/images/protec_logo.png";
+    ?>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= $baseUrl . 'fraudawareness.php' ?>">
+    <meta property="og:title" content="Protec General Insurance | Fraud Awareness">
+    <meta property="og:description" content="Fraud Awareness - Important Customer Advisory by Protec General Insurance">
+    <meta property="og:image" content="<?= $ogImage ?>">
+    <meta property="og:image:secure_url" content="<?= $ogImage ?>">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:site_name" content="Protec General Insurance">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Protec General Insurance | Fraud Awareness">
+    <meta name="twitter:description" content="Fraud Awareness - Important Customer Advisory by Protec General Insurance">
+    <meta name="twitter:image" content="<?= $ogImage ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -14,7 +35,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=<?= @filemtime('assets/css/style.css') ?: '3' ?>">
 </head>
 
 <body>
@@ -47,56 +68,70 @@
     <!-- Main Content -->
     <main style="padding-top: 30px;">
         <section class="content-section" id="fraud-awareness">
-            <div class="content-wrap">
-                <article class="section-card">
-                    <p class="section-eyebrow">Fraud Awareness</p>
-                    <h2>Important Customer Advisory</h2>
+            <div class="fraud-awareness-container">
+                <!-- Header Advisory Banner -->
+                <article class="fraud-hero-card">
+                    <div class="fraud-hero-header">
+                        <p class="fraud-hero-eyebrow">Fraud Awareness</p>
+                        <h2>Important Customer Advisory</h2>
+                    </div>
 
-                    <div class="notice-box">
+                    <div class="fraud-caution-box">
                         <strong>IRDAI Caution</strong>
                         IRDAI is not involved in activities like selling insurance policies, announcing bonus or
                         investment of premiums. Public receiving such phone calls are requested to lodge a police
                         complaint.
                     </div>
-
-                    <h3>Prohibition of Rebates</h3>
-                    <p><strong>SECTION 41 OF INSURANCE ACT, 1938, amended as per the Insurance Laws (Amendment) Act,
-                            2015</strong></p>
-                    <p>No person shall allow or offer to allow either directly or indirectly as an inducement to any
-                        person to take out or renew or continue insurance in respect of any kind of risk relating to
-                        lives or property in India any rebate of the whole or part of the commission payable or any
-                        rebate of the premium shown on the policy nor shall any person taking out or renewing or
-                        continuing a policy accept any rebate except such rebate as may be allowed in accordance with
-                        the prospectus or tables of the Insurers.</p>
-                    <p>Any person making default in complying with the provisions of this section shall be liable for a
-                        penalty which may extend to ten lakh rupees.</p>
-
-                    <h3>Prohibition on Unsolicited Calls</h3>
-                    <p>In compliance with TRAI's Do Not Disturb (DND) Registry and IRDAI guidelines, the Company shall
-                        not make unsolicited commercial communications to registered DND subscribers. If you receive any
-                        unsolicited communication purportedly from the Company, please report it to the Grievance
-                        Officer immediately.</p>
-
-                    <h3>Reporting Cyber Crimes</h3>
-                    <p><strong>Helpline 155260</strong> – National Helpline and reporting platform by Ministry of Home
-                        Affairs (MHA).</p>
-                    <ul>
-                        <li>Helps in preventing financial loss.</li>
-                        <li>Operated by concerned State Police.</li>
-                        <li>Uses new-age technologies to take action against digital fraud in real-time.</li>
-                        <li>Supports integrated response with Law Enforcement Agencies and Financial Intermediaries.
-                        </li>
-                        <li>More information: <a href="https://cybercrime.gov.in/Webform/Helpline.aspx" target="_blank"
-                                rel="noopener">cybercrime.gov.in</a></li>
-                    </ul>
-
-                    <h3>Digital Police Portal</h3>
-                    <p><a href="https://digitalpolice.gov.in/Default.aspx" target="_blank"
-                            rel="noopener">digitalpolice.gov.in</a> is a platform for citizens to file crime-related
-                        complaints online and seek antecedent verification of prospective employees, including domestic
-                        help, drivers, tenants or for any other purpose. Citizens can also seek certification of their
-                        own antecedents.</p>
                 </article>
+
+                <!-- Topic Advisory Cards Grid -->
+                <div class="fraud-cards-grid">
+                    <article class="fraud-topic-card">
+                        <h3>Prohibition of Rebates</h3>
+                        <p><strong>SECTION 41 OF INSURANCE ACT, 1938, amended as per the Insurance Laws (Amendment) Act,
+                                2015</strong></p>
+                        <p>No person shall allow or offer to allow either directly or indirectly as an inducement to any
+                            person to take out or renew or continue insurance in respect of any kind of risk relating to
+                            lives or property in India any rebate of the whole or part of the commission payable or any
+                            rebate of the premium shown on the policy nor shall any person taking out or renewing or
+                            continuing a policy accept any rebate except such rebate as may be allowed in accordance with
+                            the prospectus or tables of the Insurers.</p>
+                        <p>Any person making default in complying with the provisions of this section shall be liable for a
+                            penalty which may extend to ten lakh rupees.</p>
+                    </article>
+
+                    <article class="fraud-topic-card">
+                        <h3>Prohibition on Unsolicited Calls</h3>
+                        <p>In compliance with TRAI's Do Not Disturb (DND) Registry and IRDAI guidelines, the Company shall
+                            not make unsolicited commercial communications to registered DND subscribers. If you receive any
+                            unsolicited communication purportedly from the Company, please report it to the Grievance
+                            Officer immediately.</p>
+                    </article>
+
+                    <article class="fraud-topic-card">
+                        <h3>Reporting Cyber Crimes</h3>
+                        <p><strong>Helpline 155260</strong> – National Helpline and reporting platform by Ministry of Home
+                            Affairs (MHA).</p>
+                        <ul>
+                            <li>Helps in preventing financial loss.</li>
+                            <li>Operated by concerned State Police.</li>
+                            <li>Uses new-age technologies to take action against digital fraud in real-time.</li>
+                            <li>Supports integrated response with Law Enforcement Agencies and Financial Intermediaries.
+                            </li>
+                            <li>More information: <a href="https://cybercrime.gov.in/Webform/Helpline.aspx" target="_blank"
+                                    rel="noopener">cybercrime.gov.in</a></li>
+                        </ul>
+                    </article>
+
+                    <article class="fraud-topic-card">
+                        <h3>Digital Police Portal</h3>
+                        <p><a href="https://digitalpolice.gov.in/Default.aspx" target="_blank"
+                                rel="noopener">digitalpolice.gov.in</a> is a platform for citizens to file crime-related
+                            complaints online and seek antecedent verification of prospective employees, including domestic
+                            help, drivers, tenants or for any other purpose. Citizens can also seek certification of their
+                            own antecedents.</p>
+                    </article>
+                </div>
             </div>
         </section>
     </main>
@@ -107,19 +142,17 @@
             <div class="footer-top">
                 <div class="brand-card">
                     <div class="brand-logo">
-                        <div class="logo-mark">P</div>
-                        <div>
-                            <strong>ProTec General Insurance</strong>
-                            <span>Simple. Digital. Responsible.</span>
-                        </div>
+                        <a href="index.php" class="footer-logo-link">
+                            <img src="assets/images/protec_logo.png" alt="ProTec General Insurance" class="footer-logo-img">
+                        </a>
                     </div>
                     <p>Building customer-first general insurance experiences with responsible protection, digital
                         journeys
                         and trusted service support.</p>
                     <div class="cta-row">
-                        <a class="btn btn-primary" href="staytuned.php">Stay Tuned</a>
+                        <a class="btn btn-primary" href="index.php#designed-different">Stay Tuned</a>
                         <a class="btn btn-secondary"
-                            href="https://www.linkedin.com/company/protec-general-insurance-limited/" target="_blank"
+                            href="https://www.linkedin.com/company/protec-insurance/" target="_blank"
                             rel="noopener">Follow on LinkedIn</a>
                     </div>
                 </div>
@@ -127,9 +160,9 @@
                 <nav class="footer-col" aria-label="Services">
                     <h3>Services</h3>
                     <ul class="footer-links">
-                        <li><a href="fraud_awareness.php">Fraud Awareness</a></li>
+                        <li><a href="fraudawareness.php">Fraud Awareness</a></li>
                         <li><a href="staytuned.php">Contact Us</a></li>
-                        <li><a href="staytuned.php">Stay Tuned</a></li>
+                        <li><a href="index.php#designed-different">Stay Tuned</a></li>
                     </ul>
                 </nav>
 
@@ -139,7 +172,7 @@
                         <li><a href="legal.php">Advertising Policy</a></li>
                         <li><a href="legal.php">Corporate Governance</a></li>
                         <li><a href="legal.php">Procurement / Vendor Registration</a></li>
-                        <li><a href="fraud_awareness.php">Section 41 & Rebate Prohibition</a></li>
+                        <li><a href="fraudawareness.php">Section 41 & Rebate Prohibition</a></li>
                     </ul>
                 </nav>
 
@@ -155,9 +188,7 @@
                 <nav class="footer-col" aria-label="Others">
                     <h3>Others</h3>
                     <ul class="footer-links">
-                        <li><a href="https://www.linkedin.com/company/protec-general-insurance-limited/" target="_blank"
-                                rel="noopener">LinkedIn</a></li>
-                        <li><a href="fraud_awareness.php">Cyber Crime Reporting</a></li>
+                        <li><a href="fraudawareness.php">Cyber Crime Reporting</a></li>
                         <li><a href="legal.php">Downloads</a></li>
                     </ul>
                 </nav>

@@ -64,10 +64,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
     } 
     elseif ($_POST['action'] === 'delete_leads') {
         $ids = json_decode($_POST['ids']);
+        $table = (isset($_POST['table']) && $_POST['table'] === 'newsletter') ? 'newsletter_subscribers' : 'contact_leads';
         if (is_array($ids) && count($ids) > 0) {
             $ids = array_map('intval', $ids);
             $ids_str = implode(',', $ids);
-            $sql = "DELETE FROM contact_leads WHERE id IN ($ids_str)";
+            $sql = "DELETE FROM $table WHERE id IN ($ids_str)";
             if ($conn->query($sql) === TRUE) {
                 echo json_encode(['success' => true]);
             } else {
@@ -103,10 +104,13 @@ $is_logged_in = isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_i
 
 // If logged in, fetch data
 $leads = [];
+$newsletter_subscribers = [];
 $total_leads = 0;
 $today_leads = 0;
 $pending_leads = 0;
 $contacted_leads_count = 0;
+$total_newsletters = 0;
+$today_newsletters = 0;
 
 if ($is_logged_in) {
     require_once 'config.php';
@@ -116,7 +120,16 @@ if ($is_logged_in) {
         die("Database Connection Failed: " . $conn->connect_error);
     }
 
-    // Fetch all leads
+    // Ensure newsletter_subscribers table exists
+    $conn->query("CREATE TABLE IF NOT EXISTS `newsletter_subscribers` (
+        `id` int(11) NOT NULL AUTO_INCREMENT,
+        `email` varchar(150) NOT NULL,
+        `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (`id`),
+        UNIQUE KEY `email` (`email`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+
+    // Fetch all leads from Contact Us (staytuned.php)
     $sql = "SELECT * FROM contact_leads ORDER BY created_at DESC";
     $result = $conn->query($sql);
     if ($result && $result->num_rows > 0) {
@@ -125,7 +138,17 @@ if ($is_logged_in) {
         }
     }
 
+    // Fetch all newsletter subscribers from Designed to Feel Different section
+    $sql_nw = "SELECT * FROM newsletter_subscribers ORDER BY created_at DESC";
+    $res_nw = $conn->query($sql_nw);
+    if ($res_nw && $res_nw->num_rows > 0) {
+        while ($row = $res_nw->fetch_assoc()) {
+            $newsletter_subscribers[] = $row;
+        }
+    }
+
     $total_leads = count($leads);
+    $total_newsletters = count($newsletter_subscribers);
     $today = date('Y-m-d');
     foreach ($leads as $lead) {
         if (isset($lead['created_at']) && strpos($lead['created_at'], $today) === 0) {
@@ -135,6 +158,12 @@ if ($is_logged_in) {
             $contacted_leads_count++;
         } else {
             $pending_leads++;
+        }
+    }
+
+    foreach ($newsletter_subscribers as $ns) {
+        if (isset($ns['created_at']) && strpos($ns['created_at'], $today) === 0) {
+            $today_newsletters++;
         }
     }
 
@@ -149,6 +178,7 @@ $insurance_types = array_unique(array_filter(array_column($leads, 'insurance_typ
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/images/protec_favicon.png?v=<?= @filemtime('assets/images/protec_favicon.png') ?: time() ?>">
     <title>Admin Panel — Protec General Insurance</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -705,13 +735,35 @@ $insurance_types = array_unique(array_filter(array_column($leads, 'insurance_typ
         .empty-icon { font-size: 3rem; margin-bottom: 16px; }
         .empty-state p { font-size: 0.95rem; }
 
-        /* Table footer count */
-        .table-footer {
-            padding: 16px 26px;
+        /* Clickable stat card */
+        .stat-card.clickable-card { cursor: pointer; }
+        .stat-card.clickable-card:hover { border-color: var(--primary-blue); box-shadow: 0 10px 30px rgba(4,66,242,0.25); transform: translateY(-4px); }
+
+        /* Date Range Filter Toolbar */
+        .date-filter-wrap { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.04); padding: 5px 14px; border-radius: 12px; border: 1px solid var(--border-glass); }
+        .date-label { font-size: 0.78rem; color: rgba(255,255,255,0.65); font-weight: 600; }
+        .date-input { background: transparent; border: none; color: #fff; font-family: var(--font-body); font-size: 0.82rem; outline: none; cursor: pointer; }
+        .date-input::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; opacity: 0.6; transition: 0.2s; }
+        .date-input::-webkit-calendar-picker-indicator:hover { opacity: 1; }
+        .btn-reset-date { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: #FCA5A5; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: 0.2s; display: none; }
+        .btn-reset-date:hover { background: rgba(239,68,68,0.3); color: #fff; }
+
+        /* Table footer count & pagination */
+        .table-footer-pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 26px;
             border-top: 1px solid var(--border-glass);
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.35);
+            flex-wrap: wrap;
+            gap: 15px;
         }
+        .pagination-info { font-size: 0.84rem; color: rgba(255,255,255,0.5); font-weight: 500; }
+        .pagination-btns { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+        .page-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); color: #fff; padding: 7px 14px; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); }
+        .page-btn:hover:not(:disabled) { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); transform: translateY(-1px); }
+        .page-btn.active { background: var(--primary-blue); border-color: var(--primary-blue); color: #fff; box-shadow: 0 4px 12px rgba(4,66,242,0.4); }
+        .page-btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
 
         /* ─── PRINT ──────────────────────────────── */
         @media print {
@@ -984,32 +1036,45 @@ $insurance_types = array_unique(array_filter(array_column($leads, 'insurance_typ
             <div class="stat-number"><?php echo $today_leads; ?></div>
             <div class="stat-label">Today's Leads</div>
         </div>
+        <div class="stat-card clickable-card" onclick="switchTab('newsletter', document.getElementById('tabNewsletter'))" title="Click to view all newsletter subscribers">
+            <div class="stat-icon purple">📧</div>
+            <div class="stat-number"><?php echo $total_newsletters; ?></div>
+            <div class="stat-label">Newsletter Signups</div>
+        </div>
     </div>
 
     <!-- Tabs Row -->
     <div class="dashboard-tabs">
-        <button class="tab-btn active" onclick="switchTab('all', this)">All Lead Submissions</button>
-        <button class="tab-btn" onclick="switchTab('contacted', this)">Contacted Leads</button>
+        <button class="tab-btn active" id="tabAll" onclick="switchTab('all', this)">All Lead Submissions (<?php echo $total_leads; ?>)</button>
+        <button class="tab-btn" id="tabContacted" onclick="switchTab('contacted', this)">Contacted Leads</button>
+        <button class="tab-btn" id="tabNewsletter" onclick="switchTab('newsletter', this)">Newsletter Signups (<?php echo $total_newsletters; ?>)</button>
     </div>
 
     <!-- Table Card -->
     <div class="table-card">
         <div class="table-toolbar">
-            <div class="table-toolbar-title">All Lead Submissions</div>
+            <div class="table-toolbar-title" id="toolbarTitle">All Lead Submissions</div>
             <div class="table-toolbar-right">
+                <div class="date-filter-wrap" title="Filter by date range">
+                    <span class="date-label">From:</span>
+                    <input type="date" id="startDate" class="date-input" onchange="onFilterChange()">
+                    <span class="date-label">To:</span>
+                    <input type="date" id="endDate" class="date-input" onchange="onFilterChange()">
+                    <button class="btn-reset-date" id="btnResetDate" onclick="clearDateFilter()">Clear</button>
+                </div>
                 <button class="btn-delete-selected" id="btnDeleteSelected" onclick="deleteSelectedLeads()">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
                     Delete Selected
                 </button>
-                <input type="search" class="search-box" id="searchInput" placeholder="🔍  Search leads..." oninput="filterTable()" autocomplete="nope" readonly onfocus="this.removeAttribute('readonly');">
-                <button class="export-btn" onclick="exportToCSV()">
+                <input type="search" class="search-box" id="searchInput" placeholder="🔍  Search..." oninput="onFilterChange()" autocomplete="nope" readonly onfocus="this.removeAttribute('readonly');">
+                <button class="export-btn" onclick="exportToCSV()" title="Download Excel compatible spreadsheet">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    Export CSV
+                    Download Excel
                 </button>
             </div>
         </div>
 
-        <div class="table-wrapper">
+        <div class="table-wrapper" id="leadsTableWrapper">
             <table id="leadsTable">
                 <thead>
                     <tr>
@@ -1026,8 +1091,8 @@ $insurance_types = array_unique(array_filter(array_column($leads, 'insurance_typ
                 </thead>
                 <tbody id="tableBody">
                     <?php if (empty($leads)): ?>
-                    <tr>
-                        <td colspan="8">
+                    <tr id="emptyLeadRow">
+                        <td colspan="9">
                             <div class="empty-state">
                                 <div class="empty-icon">📭</div>
                                 <p>No leads found yet. They'll appear here as users submit the form.</p>
@@ -1041,8 +1106,9 @@ $insurance_types = array_unique(array_filter(array_column($leads, 'insurance_typ
                             $wa  = !empty($lead['whatsapp_consent']) ? '1' : '0';
                             $pro = !empty($lead['promo_consent']) ? '1' : '0';
                             $is_contacted = !empty($lead['is_contacted']) ? '1' : '0';
+                            $date_str = isset($lead['created_at']) ? substr($lead['created_at'], 0, 10) : '';
                         ?>
-                        <tr data-id="<?php echo $lead['id']; ?>" data-contacted="<?php echo $is_contacted; ?>" onclick="window.location.href='lead_details.php?id=<?php echo htmlspecialchars($lead['id'], ENT_QUOTES); ?>'">
+                        <tr data-id="<?php echo $lead['id']; ?>" data-contacted="<?php echo $is_contacted; ?>" data-date="<?php echo $date_str; ?>" onclick="window.location.href='leaddetails.php?id=<?php echo htmlspecialchars($lead['id'], ENT_QUOTES); ?>'">
                             <td class="col-checkbox" onclick="event.stopPropagation();">
                                 <input type="checkbox" class="custom-checkbox lead-checkbox" value="<?php echo $lead['id']; ?>" onclick="updateDeleteBtn()">
                             </td>
@@ -1096,8 +1162,58 @@ $insurance_types = array_unique(array_filter(array_column($leads, 'insurance_typ
             </table>
         </div>
 
-        <div class="table-footer">
-            Showing <span id="rowCount"><?php echo count($leads); ?></span> of <?php echo $total_leads; ?> leads
+        <!-- Newsletter Subscribers Table -->
+        <div class="table-wrapper" id="newsletterTableWrapper" style="display: none;">
+            <table id="newsletterTable">
+                <thead>
+                    <tr>
+                        <th class="col-checkbox"><input type="checkbox" class="custom-checkbox" id="selectAllNw" onclick="toggleAll(this)"></th>
+                        <th>ID</th>
+                        <th>Date & Time</th>
+                        <th>Email Address</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="newsletterTableBody">
+                    <?php if (empty($newsletter_subscribers)): ?>
+                    <tr id="emptyNewsletterRow">
+                        <td colspan="6">
+                            <div class="empty-state">
+                                <div class="empty-icon">📧</div>
+                                <p>No newsletter subscribers found yet.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php else: ?>
+                        <?php foreach ($newsletter_subscribers as $ns): ?>
+                        <?php $date_str_nw = isset($ns['created_at']) ? substr($ns['created_at'], 0, 10) : ''; ?>
+                        <tr data-id="<?php echo $ns['id']; ?>" data-contacted="0" data-date="<?php echo $date_str_nw; ?>">
+                            <td class="col-checkbox" onclick="event.stopPropagation();">
+                                <input type="checkbox" class="custom-checkbox lead-checkbox" value="<?php echo $ns['id']; ?>" onclick="updateDeleteBtn()">
+                            </td>
+                            <td class="td-id">#<?php echo str_pad(htmlspecialchars($ns['id']), 4, '0', STR_PAD_LEFT); ?></td>
+                            <td class="td-date">
+                                <?php
+                                    $dt_nw = isset($ns['created_at']) ? new DateTime($ns['created_at']) : null;
+                                    echo $dt_nw ? $dt_nw->format('d M Y') . '<br><span style="font-size:0.75rem;opacity:0.5;">' . $dt_nw->format('h:i A') . '</span>' : '—';
+                                ?>
+                            </td>
+                            <td style="font-size: 0.96rem; font-weight: 600; color: #fff;"><?php echo htmlspecialchars($ns['email']); ?></td>
+                            <td><span class="badge badge-yes" style="background: rgba(16, 185, 129, 0.18); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.4); padding: 5px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;">✅ Active Subscriber</span></td>
+                            <td>
+                                <a href="mailto:<?php echo htmlspecialchars($ns['email']); ?>" class="export-btn" style="display:inline-flex; padding: 6px 14px; font-size: 0.78rem; background: var(--bg-card); color:#fff; border:1px solid var(--border-glass); text-decoration:none; font-weight:500;">✉️ Send Mail</a>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-footer-pagination">
+            <div class="pagination-info" id="paginationInfo">Showing 0 of 0 records</div>
+            <div class="pagination-btns" id="paginationBtns"></div>
         </div>
     </div>
 </main>
@@ -1242,43 +1358,68 @@ $insurance_types = array_unique(array_filter(array_column($leads, 'insurance_typ
 <script>
 let currentTab = 'all';
 let currentLeadId = null;
-
-
+let currentPage = 1;
+const itemsPerPage = 20;
 
 function switchTab(tab, btnElement) {
     currentTab = tab;
+    currentPage = 1;
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    btnElement.classList.add('active');
+    if (btnElement) btnElement.classList.add('active');
     
-    if (tab === 'contacted') {
+    const titleEl = document.getElementById('toolbarTitle');
+    const leadsWrap = document.getElementById('leadsTableWrapper');
+    const newsletterWrap = document.getElementById('newsletterTableWrapper');
+
+    if (tab === 'newsletter') {
+        if (titleEl) titleEl.textContent = 'Newsletter Subscribers';
+        if (leadsWrap) leadsWrap.style.display = 'none';
+        if (newsletterWrap) newsletterWrap.style.display = '';
         document.body.classList.add('show-checkboxes');
     } else {
-        document.body.classList.remove('show-checkboxes');
-        document.querySelectorAll('.lead-checkbox').forEach(cb => cb.checked = false);
-        document.getElementById('selectAll').checked = false;
+        if (titleEl) titleEl.textContent = tab === 'all' ? 'All Lead Submissions' : 'Contacted Leads';
+        if (leadsWrap) leadsWrap.style.display = '';
+        if (newsletterWrap) newsletterWrap.style.display = 'none';
+        if (tab === 'contacted') {
+            document.body.classList.add('show-checkboxes');
+        } else {
+            document.body.classList.remove('show-checkboxes');
+        }
     }
+    
+    document.querySelectorAll('.lead-checkbox').forEach(cb => cb.checked = false);
+    if (document.getElementById('selectAll')) document.getElementById('selectAll').checked = false;
+    if (document.getElementById('selectAllNw')) document.getElementById('selectAllNw').checked = false;
     
     updateDeleteBtn();
     filterTable();
 }
 
 function toggleAll(source) {
-    const visibleCheckboxes = document.querySelectorAll('#tableBody tr:not([style*="display: none"]) .lead-checkbox');
+    const selector = currentTab === 'newsletter' 
+        ? '#newsletterTableBody tr:not([style*="display: none"]) .lead-checkbox' 
+        : '#tableBody tr:not([style*="display: none"]) .lead-checkbox';
+    const visibleCheckboxes = document.querySelectorAll(selector);
     visibleCheckboxes.forEach(cb => cb.checked = source.checked);
     updateDeleteBtn();
 }
 
 function updateDeleteBtn() {
-    if (currentTab !== 'contacted') {
+    if (currentTab !== 'contacted' && currentTab !== 'newsletter') {
         document.getElementById('btnDeleteSelected').style.display = 'none';
         return;
     }
     const checked = document.querySelectorAll('.lead-checkbox:checked').length;
     document.getElementById('btnDeleteSelected').style.display = checked > 0 ? 'flex' : 'none';
     
-    const visible = document.querySelectorAll('#tableBody tr:not([style*="display: none"]) .lead-checkbox').length;
-    if (visible > 0) {
-        document.getElementById('selectAll').checked = (checked === visible);
+    const selector = currentTab === 'newsletter'
+        ? '#newsletterTableBody tr:not([style*="display: none"]) .lead-checkbox'
+        : '#tableBody tr:not([style*="display: none"]) .lead-checkbox';
+    const visible = document.querySelectorAll(selector).length;
+    const selectAllId = currentTab === 'newsletter' ? 'selectAllNw' : 'selectAll';
+    const selectAllElem = document.getElementById(selectAllId);
+    if (visible > 0 && selectAllElem) {
+        selectAllElem.checked = (checked === visible && checked > 0);
     }
 }
 
@@ -1286,7 +1427,8 @@ function deleteSelectedLeads() {
     const checked = document.querySelectorAll('.lead-checkbox:checked');
     if (checked.length === 0) return;
     
-    document.getElementById('deleteModalText').textContent = `Are you sure you want to permanently delete ${checked.length} lead(s)?`;
+    const label = currentTab === 'newsletter' ? 'subscriber(s)' : 'lead(s)';
+    document.getElementById('deleteModalText').textContent = `Are you sure you want to permanently delete ${checked.length} ${label}?`;
     document.getElementById('deleteModal').classList.add('open');
 }
 
@@ -1299,6 +1441,7 @@ function confirmDeleteLeads() {
     if (checked.length === 0) return;
     
     const ids = Array.from(checked).map(cb => cb.value);
+    const tableParam = currentTab === 'newsletter' ? 'newsletter' : 'leads';
     
     const btn = document.getElementById('btnConfirmDelete');
     btn.innerHTML = 'Deleting...';
@@ -1307,19 +1450,21 @@ function confirmDeleteLeads() {
     fetch('admin.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: 'action=delete_leads&ids=' + encodeURIComponent(JSON.stringify(ids))
+        body: `action=delete_leads&table=${tableParam}&ids=` + encodeURIComponent(JSON.stringify(ids))
     })
     .then(r => r.json())
     .then(data => {
         if (data.success) {
             ids.forEach(id => {
-                const row = document.querySelector(`tr[data-id='${id}']`);
+                const selector = currentTab === 'newsletter' ? `#newsletterTableBody tr[data-id='${id}']` : `#tableBody tr[data-id='${id}']`;
+                const row = document.querySelector(selector);
                 if (row) row.remove();
             });
-            document.getElementById('selectAll').checked = false;
+            const selectAllElem = document.getElementById(currentTab === 'newsletter' ? 'selectAllNw' : 'selectAll');
+            if (selectAllElem) selectAllElem.checked = false;
             filterTable();
             updateDeleteBtn();
-            showToast('Success!', `${ids.length} lead(s) deleted permanently.`, 'success');
+            showToast('Success!', `${ids.length} item(s) deleted permanently.`, 'success');
             closeDeleteModal();
         } else {
             showToast('Error', data.error, 'error');
@@ -1490,50 +1635,168 @@ function closeModalOnBg(e) {
 // Close on Escape key
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
+function onFilterChange() {
+    currentPage = 1;
+    filterTable();
+}
+
+function clearDateFilter() {
+    document.getElementById('startDate').value = '';
+    document.getElementById('endDate').value = '';
+    onFilterChange();
+}
+
 function filterTable() {
     const searchInput = document.getElementById('searchInput');
     const q = searchInput ? searchInput.value.toLowerCase() : '';
-    const rows = document.querySelectorAll('#tableBody tr');
-    let visible = 0;
+    const startDate = document.getElementById('startDate') ? document.getElementById('startDate').value : '';
+    const endDate = document.getElementById('endDate') ? document.getElementById('endDate').value : '';
+    
+    const btnResetDate = document.getElementById('btnResetDate');
+    if (btnResetDate) {
+        btnResetDate.style.display = (startDate || endDate) ? 'inline-block' : 'none';
+    }
+    
+    const targetBodyId = currentTab === 'newsletter' ? '#newsletterTableBody' : '#tableBody';
+    const rows = document.querySelectorAll(`${targetBodyId} tr`);
+    
+    let matchingRows = [];
     rows.forEach(row => {
-        if (!row.hasAttribute('data-contacted')) return; // ignore empty state row
+        if (!row.hasAttribute('data-id')) {
+            row.style.display = 'none';
+            return;
+        }
         
         const txt = row.textContent.toLowerCase();
         const showSearch = txt.includes(q);
+        
+        const rowDate = row.getAttribute('data-date') || '';
+        let showDate = true;
+        if (startDate && rowDate < startDate) showDate = false;
+        if (endDate && rowDate > endDate) showDate = false;
 
         const contacted = row.getAttribute('data-contacted');
-        const showTab = (currentTab === 'all' && contacted !== '1') || 
-                     (currentTab === 'contacted' && contacted === '1');
+        let showTab = true;
+        if (currentTab === 'all') showTab = (contacted !== '1');
+        else if (currentTab === 'contacted') showTab = (contacted === '1');
+        else if (currentTab === 'newsletter') showTab = true;
         
-        const show = showSearch && showTab;
-        row.style.display = show ? '' : 'none';
-        if (show) visible++;
+        if (showSearch && showDate && showTab) {
+            matchingRows.push(row);
+        } else {
+            row.style.display = 'none';
+        }
     });
     
-    document.getElementById('rowCount').textContent = visible;
+    if (matchingRows.length === 0 && rows.length > 0) {
+        const emptyRow = currentTab === 'newsletter' ? document.getElementById('emptyNewsletterRow') : document.getElementById('emptyLeadRow');
+        if (emptyRow) emptyRow.style.display = '';
+    }
+    
+    const totalItems = matchingRows.length;
+    const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
+    if (currentPage > totalPages) currentPage = totalPages;
+    
+    const startIdx = (currentPage - 1) * itemsPerPage;
+    const endIdx = Math.min(startIdx + itemsPerPage, totalItems);
+    
+    matchingRows.forEach((row, idx) => {
+        if (idx >= startIdx && idx < endIdx) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+    
+    const infoEl = document.getElementById('paginationInfo');
+    const btnsEl = document.getElementById('paginationBtns');
+    
+    if (infoEl) {
+        if (totalItems === 0) {
+            infoEl.textContent = `No matching records found`;
+        } else {
+            infoEl.textContent = `Showing ${startIdx + 1} to ${endIdx} of ${totalItems} records`;
+        }
+    }
+    
+    if (btnsEl) {
+        btnsEl.innerHTML = '';
+        if (totalPages > 1) {
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'page-btn';
+            prevBtn.textContent = '← Prev';
+            prevBtn.disabled = (currentPage === 1);
+            prevBtn.onclick = () => { if (currentPage > 1) { currentPage--; filterTable(); } };
+            btnsEl.appendChild(prevBtn);
+            
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+                    const pgBtn = document.createElement('button');
+                    pgBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+                    pgBtn.textContent = i;
+                    pgBtn.onclick = () => { currentPage = i; filterTable(); };
+                    btnsEl.appendChild(pgBtn);
+                } else if (i === currentPage - 3 || i === currentPage + 3) {
+                    const dots = document.createElement('span');
+                    dots.textContent = '...';
+                    dots.style.color = 'rgba(255,255,255,0.4)';
+                    dots.style.margin = '0 4px';
+                    btnsEl.appendChild(dots);
+                }
+            }
+            
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'page-btn';
+            nextBtn.textContent = 'Next →';
+            nextBtn.disabled = (currentPage === totalPages);
+            nextBtn.onclick = () => { if (currentPage < totalPages) { currentPage++; filterTable(); } };
+            btnsEl.appendChild(nextBtn);
+        }
+    }
+    
     updateDeleteBtn();
 }
 
 function exportToCSV() {
     let csv = [];
-    const rows = document.querySelectorAll("table tr");
+    const activeTableId = currentTab === 'newsletter' ? '#newsletterTable' : '#leadsTable';
+    const rows = document.querySelectorAll(`${activeTableId} tr`);
     
     for (let i = 0; i < rows.length; i++) {
-        if (rows[i].style.display === 'none') continue;
+        if (rows[i].style.display === 'none' && !rows[i].hasAttribute('data-id')) continue;
+        
+        if (rows[i].hasAttribute('data-id')) {
+            const searchInput = document.getElementById('searchInput');
+            const q = searchInput ? searchInput.value.toLowerCase() : '';
+            const startDate = document.getElementById('startDate') ? document.getElementById('startDate').value : '';
+            const endDate = document.getElementById('endDate') ? document.getElementById('endDate').value : '';
+            const rowDate = rows[i].getAttribute('data-date') || '';
+            
+            if (q && !rows[i].textContent.toLowerCase().includes(q)) continue;
+            if (startDate && rowDate < startDate) continue;
+            if (endDate && rowDate > endDate) continue;
+            
+            const contacted = rows[i].getAttribute('data-contacted');
+            if (currentTab === 'all' && contacted === '1') continue;
+            if (currentTab === 'contacted' && contacted !== '1') continue;
+        }
         
         let row = [], cols = rows[i].querySelectorAll("td, th");
         
-        for (let j = 1; j < cols.length; j++) {
+        for (let j = 0; j < cols.length; j++) {
+            if (cols[j].classList.contains('col-checkbox') || cols[j].innerText.includes('Action')) continue;
             let data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, " ").replace(/"/g, '""');
             data = data.replace('click for details', '').trim();
             row.push('"' + data + '"');
         }
-        csv.push(row.join(","));
+        if (row.length > 0) csv.push(row.join(","));
     }
 
-    const csvFile = new Blob([csv.join("\n")], {type: "text/csv"});
+    const bom = "\uFEFF";
+    const csvFile = new Blob([bom + csv.join("\n")], {type: "text/csv;charset=utf-8;"});
     const downloadLink = document.createElement("a");
-    downloadLink.download = "protec_leads_" + new Date().toISOString().slice(0,10) + ".csv";
+    const prefix = currentTab === 'newsletter' ? "protec_newsletter_subscribers_" : "protec_leads_";
+    downloadLink.download = prefix + new Date().toISOString().slice(0,10) + ".csv";
     downloadLink.href = window.URL.createObjectURL(csvFile);
     downloadLink.style.display = "none";
     document.body.appendChild(downloadLink);

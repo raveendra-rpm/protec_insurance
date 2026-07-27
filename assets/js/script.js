@@ -505,4 +505,127 @@ window.addEventListener('load', () => {
             });
         });
     }
+
+    // ── DESKTOP STICKY HEADER ON SCROLL TO OUR EDGE ──
+    const navbar = document.querySelector('.navbar');
+    const edgeSection = document.getElementById('our-edge') || document.querySelector('.our-edge');
+
+    if (navbar && edgeSection) {
+        // Create placeholder to prevent layout jumps when navbar position becomes fixed
+        const navPlaceholder = document.createElement('div');
+        navPlaceholder.style.display = 'none';
+        navbar.parentNode.insertBefore(navPlaceholder, navbar.nextSibling);
+
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth > 768) {
+                const triggerPoint = edgeSection.offsetTop - (navbar.offsetHeight || 80);
+                if (window.scrollY >= triggerPoint && triggerPoint > 0) {
+                    if (!navbar.classList.contains('sticky-header')) {
+                        navPlaceholder.style.height = navbar.offsetHeight + 'px';
+                        navPlaceholder.style.display = 'block';
+                        navbar.classList.add('sticky-header');
+                    }
+                } else {
+                    if (navbar.classList.contains('sticky-header')) {
+                        navbar.classList.remove('sticky-header');
+                        navPlaceholder.style.display = 'none';
+                    }
+                }
+            } else {
+                if (navbar.classList.contains('sticky-header')) {
+                    navbar.classList.remove('sticky-header');
+                    navPlaceholder.style.display = 'none';
+                }
+            }
+        }, { passive: true });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 768 && navbar.classList.contains('sticky-header')) {
+                navbar.classList.remove('sticky-header');
+                navPlaceholder.style.display = 'none';
+            }
+        });
+    }
+
+    // ── DESIGNED TO FEEL DIFFERENT: SIGN UP NEWSLETTER ──
+    const signupBtn = document.querySelector('.signup-btn');
+    const signupInput = document.querySelector('.designed-line-input');
+
+    if (signupBtn && signupInput) {
+        const handleSignup = async () => {
+            const email = signupInput.value.trim();
+            if (!email || !email.includes('@') || !email.includes('.')) {
+                showToastNotification('Error', 'Please enter a valid email address.', 'error');
+                signupInput.focus();
+                return;
+            }
+
+            const originalBtnText = signupBtn.textContent;
+            signupBtn.textContent = 'Submitting...';
+            signupBtn.disabled = true;
+
+            try {
+                const formData = new FormData();
+                formData.append('email', email);
+
+                const response = await fetch('submitsignup.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    showToastNotification('Success!', result.message, 'success');
+                    signupInput.value = '';
+                } else {
+                    showToastNotification('Error', result.message || 'Something went wrong. Please try again.', 'error');
+                }
+            } catch (error) {
+                console.error('Error submitting signup:', error);
+                showToastNotification('Connection Error', 'Failed to connect to the server. Please check your connection.', 'error');
+            } finally {
+                signupBtn.textContent = originalBtnText;
+                signupBtn.disabled = false;
+            }
+        };
+
+        signupBtn.addEventListener('click', handleSignup);
+        signupInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleSignup();
+            }
+        });
+    }
+
+    function showToastNotification(title, msg, type = 'success') {
+        if (typeof showToast === 'function') {
+            showToast(title, msg, type);
+            return;
+        }
+        let container = document.getElementById('toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toast-container';
+            container.className = 'toast-container';
+            document.body.appendChild(container);
+        }
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        const icon = type === 'success' ? '✅' : '⚠️';
+        toast.innerHTML = `
+            <div class="toast-icon">${icon}</div>
+            <div class="toast-content">
+                <div class="toast-title">${title}</div>
+                <div class="toast-msg">${msg}</div>
+            </div>
+        `;
+        container.appendChild(toast);
+        requestAnimationFrame(() => toast.classList.add('show'));
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 400);
+        }, 4000);
+    }
 });

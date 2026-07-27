@@ -53,6 +53,7 @@ $is_contacted = !empty($lead['is_contacted']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/images/protec_favicon.png?v=<?= @filemtime('assets/images/protec_favicon.png') ?: time() ?>">
     <title>Lead Details — Protec Admin</title>
     <link href="https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400..800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -324,7 +325,7 @@ function markContacted(id) {
     btn.textContent = 'Updating...';
     btn.style.pointerEvents = 'none';
 
-    fetch('lead_details.php', {
+    fetch('leaddetails.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: 'action=mark_contacted&lead_id=' + id

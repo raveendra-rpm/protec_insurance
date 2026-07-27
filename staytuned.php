@@ -4,9 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protec General Insurance | Stay Tuned</title>
+    <link rel="icon" type="image/png" href="assets/images/protec_favicon.png?v=<?= @filemtime('assets/images/protec_favicon.png') ?: time() ?>">
+    <title>Protec General Insurance | Contact Us</title>
     <meta name="description"
         content="Contact ProTec General Insurance for insurance queries, service support or business interest.">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <?php
+        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+        $baseUrl = $protocol . ($_SERVER['HTTP_HOST'] ?? 'protecins.com') . rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
+        $ogImage = $baseUrl . "assets/images/protec_logo.png";
+    ?>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= $baseUrl . 'staytuned.php' ?>">
+    <meta property="og:title" content="Protec General Insurance | Contact Us">
+    <meta property="og:description" content="Contact ProTec General Insurance for insurance queries, service support or business interest.">
+    <meta property="og:image" content="<?= $ogImage ?>">
+    <meta property="og:image:secure_url" content="<?= $ogImage ?>">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:site_name" content="Protec General Insurance">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Protec General Insurance | Contact Us">
+    <meta name="twitter:description" content="Contact ProTec General Insurance for insurance queries, service support or business interest.">
+    <meta name="twitter:image" content="<?= $ogImage ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -15,7 +36,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="assets/css/style.css?v=2">
+    <link rel="stylesheet" href="assets/css/style.css?v=<?= @filemtime('assets/css/style.css') ?: '3' ?>">
 </head>
 
 <body>
@@ -50,7 +71,7 @@
         <section class="content-section" id="contact-us">
             <div class="content-wrap">
                 <article class="section-card">
-                    <p class="section-eyebrow">Stay Tuned</p>
+                    <p class="section-eyebrow">Contact Us</p>
                     <h2>How can we help?</h2>
 
                     <div class="contact-grid">
@@ -63,7 +84,7 @@
                                         href="mailto:procare@protecins.com">procare@protecins.com</a></div>
                                 <div><strong>Toll Free:</strong> XXXXXXXXX</div>
                                 <div><strong>LinkedIn:</strong> <a
-                                        href="https://www.linkedin.com/company/protec-general-insurance-limited/"
+                                        href="https://www.linkedin.com/company/protec-insurance/"
                                         target="_blank" rel="noopener">Visit our LinkedIn page</a></div>
                             </div>
                         </div>
@@ -130,19 +151,17 @@
             <div class="footer-top">
                 <div class="brand-card">
                     <div class="brand-logo">
-                        <div class="logo-mark">P</div>
-                        <div>
-                            <strong>ProTec General Insurance</strong>
-                            <span>Simple. Digital. Responsible.</span>
-                        </div>
+                        <a href="index.php" class="footer-logo-link">
+                            <img src="assets/images/protec_logo.png" alt="ProTec General Insurance" class="footer-logo-img">
+                        </a>
                     </div>
                     <p>Building customer-first general insurance experiences with responsible protection, digital
                         journeys
                         and trusted service support.</p>
                     <div class="cta-row">
-                        <a class="btn btn-primary" href="staytuned.php">Stay Tuned</a>
+                        <a class="btn btn-primary" href="index.php#designed-different">Stay Tuned</a>
                         <a class="btn btn-secondary"
-                            href="https://www.linkedin.com/company/protec-general-insurance-limited/" target="_blank"
+                            href="https://www.linkedin.com/company/protec-insurance/" target="_blank"
                             rel="noopener">Follow on LinkedIn</a>
                     </div>
                 </div>
@@ -150,9 +169,9 @@
                 <nav class="footer-col" aria-label="Services">
                     <h3>Services</h3>
                     <ul class="footer-links">
-                        <li><a href="fraud_awareness.php">Fraud Awareness</a></li>
+                        <li><a href="fraudawareness.php">Fraud Awareness</a></li>
                         <li><a href="staytuned.php">Contact Us</a></li>
-                        <li><a href="staytuned.php">Stay Tuned</a></li>
+                        <li><a href="index.php#designed-different">Stay Tuned</a></li>
                     </ul>
                 </nav>
 
@@ -162,7 +181,7 @@
                         <li><a href="legal.php">Advertising Policy</a></li>
                         <li><a href="legal.php">Corporate Governance</a></li>
                         <li><a href="legal.php">Procurement / Vendor Registration</a></li>
-                        <li><a href="fraud_awareness.php">Section 41 & Rebate Prohibition</a></li>
+                        <li><a href="fraudawareness.php">Section 41 & Rebate Prohibition</a></li>
                     </ul>
                 </nav>
 
@@ -178,9 +197,7 @@
                 <nav class="footer-col" aria-label="Others">
                     <h3>Others</h3>
                     <ul class="footer-links">
-                        <li><a href="https://www.linkedin.com/company/protec-general-insurance-limited/" target="_blank"
-                                rel="noopener">LinkedIn</a></li>
-                        <li><a href="fraud_awareness.php">Cyber Crime Reporting</a></li>
+                        <li><a href="fraudawareness.php">Cyber Crime Reporting</a></li>
                         <li><a href="legal.php">Downloads</a></li>
                     </ul>
                 </nav>
@@ -260,7 +277,7 @@
 
             try {
 
-                const response = await fetch('submit_lead.php', {
+                const response = await fetch('submitlead.php', {
                     method: 'POST',
                     body: formData
                 });
