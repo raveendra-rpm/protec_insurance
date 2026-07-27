@@ -267,13 +267,13 @@
                             </div>
                         </div>
                         <div class="slide-right">
-                            <p>Protec is led by seasoned insurance leader Mr. Aditya Sharma, Co-founder and Managing
-                    Director & CEO. A Fellow of the Insurance Institute of India (FIII), he brings over 25 years of
-experience scaling businesses, leading high-performing teams, and driving growth across
-distribution, risk and operations.</p>
+                            <p>Protec is led by seasoned insurance leader <strong>Mr. Aditya Sharma</strong>, Co-founder and <strong>Managing
+                            Director & CEO</strong>. A Fellow of the Insurance Institute of India (FIII), he brings over 25 years of
+                            experience scaling businesses, leading high-performing teams, and driving growth across
+                            distribution, risk and operations.</p>
                             <p>Under his leadership, Protec has assembled a team of
-accomplished insurance professionals, distribution leaders and technology experts, united by a
-shared purpose: making insurance simpler, smarter and more customer-centric.</p>
+                            accomplished insurance professionals, distribution leaders and technology experts, united by a
+                            shared purpose: <strong>making insurance simpler, smarter and more customer-centric.</strong></p>
                         </div>
                     </div>
                     <!-- Slide 2 -->
