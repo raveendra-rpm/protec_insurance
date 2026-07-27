@@ -255,8 +255,7 @@
 
                 <div class="story-slides">
                     <!-- Slide 1 -->
-
-                    <div class="story-slide" data-index="2">
+                    <div class="story-slide active" data-index="0">
                         <div class="slide-left">
                             <h2>LED BY<br>EXPERTS.<br>BUILT BY<br>INNOVATORS.</h2>
                         </div>
@@ -301,7 +300,7 @@ shared purpose: making insurance simpler, smarter and more customer-centric.</p>
                     </div>
 
                     <!-- Slide 3 -->
-                    <div class="story-slide active" data-index="0">
+                    <div class="story-slide" data-index="2">
                         <div class="slide-left">
                             <h2>BUILDING<br>INSURANCE<br>AROUND<br>PEOPLE</h2>
                         </div>
