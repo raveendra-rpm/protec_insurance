@@ -273,7 +273,7 @@
                             distribution, risk and operations.</p>
                             <p>Under his leadership, Protec has assembled a team of
                             accomplished insurance professionals, distribution leaders and technology experts, united by a
-                            shared purpose: <strong>making insurance simpler, smarter and more customer-centric.</strong></p>
+                            shared purpose: <strong>making insurance simpler, smarter and more customer-centric.</strong>*(subject to regulatory approvals)</p>
                         </div>
                     </div>
                     <!-- Slide 2 -->
