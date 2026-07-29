@@ -1,5 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ── CHROMAKEY VIDEO TO CANVAS ─────────────────────────
+    const starVideo = document.getElementById('star-video');
+    const starCanvas = document.getElementById('star-canvas');
+    if (starVideo && starCanvas) {
+        const ctx = starCanvas.getContext('2d', { willReadFrequently: true });
+        
+        starVideo.addEventListener('loadedmetadata', () => {
+            starCanvas.width = starVideo.videoWidth || 500;
+            starCanvas.height = starVideo.videoHeight || 500;
+        });
+
+        function processFrame() {
+            if (starVideo.paused || starVideo.ended) return;
+            
+            ctx.drawImage(starVideo, 0, 0, starCanvas.width, starCanvas.height);
+            let frame = ctx.getImageData(0, 0, starCanvas.width, starCanvas.height);
+            let l = frame.data.length / 4;
+            
+            for (let i = 0; i < l; i++) {
+                let r = frame.data[i * 4 + 0];
+                let g = frame.data[i * 4 + 1];
+                let b = frame.data[i * 4 + 2];
+                // Make white/light gray pixels transparent
+                if (r > 240 && g > 240 && b > 240) {
+                    frame.data[i * 4 + 3] = 0; // Set alpha to 0
+                }
+            }
+            ctx.putImageData(frame, 0, 0);
+            requestAnimationFrame(processFrame);
+        }
+
+        starVideo.addEventListener('play', () => {
+            requestAnimationFrame(processFrame);
+        });
+        
+        // Ensure video plays
+        starVideo.play().catch(e => console.log('Auto-play prevented:', e));
+    }
+
     // ── OUR EDGE ─────────────────────────────────────────
     const edgeTabs = document.querySelectorAll('.edge-tab');
     const edgePanels = document.querySelectorAll('.edge-panel');

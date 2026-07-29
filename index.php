@@ -86,7 +86,7 @@
                 </h1>
                 <div class="hero-buttons">
                     <a href="#designed-different" class="btn btn-hero-primary">Stay Tuned &rarr;</a>
-                    <a href="#" class="btn btn-hero-secondary">Join Our Journey &rarr;</a>
+                    <a href="#join-us" class="btn btn-hero-secondary">Join Our Journey &rarr;</a>
                 </div>
             </div>
 
@@ -182,9 +182,8 @@
                         <span class="highlight-line">WORKS FOR YOU.</span>
                     </h2>
                     <div class="designed-icon-wrapper">
-                        <video src="assets/videos/purple_object_rotate.mp4" autoplay loop muted playsinline
-                            disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;"
-                            class="icon-star"></video>
+                        <video id="star-video" src="assets/videos/purple_object_rotate.mp4" autoplay loop muted playsinline disablepictureinpicture style="display:none;"></video>
+                        <canvas id="star-canvas" class="icon-star"></canvas>
                     </div>
                 </div>
 
@@ -470,9 +469,9 @@
                 <nav class="footer-col" aria-label="Legal">
                     <h3>Legal</h3>
                     <ul class="footer-links">
-                        <li><a href="legal.php">Advertising Policy</a></li>
-                        <li><a href="legal.php">Corporate Governance</a></li>
-                        <li><a href="legal.php">Procurement / Vendor Registration</a></li>
+                        <li style="display: none;"><a href="legal.php">Advertising Policy</a></li>
+                        <li style="display: none;"><a href="legal.php">Corporate Governance</a></li>
+                        <li style="display: none;"><a href="legal.php">Procurement / Vendor Registration</a></li>
                         <li><a href="fraudawareness.php">Section 41 & Rebate Prohibition</a></li>
                     </ul>
                 </nav>
@@ -482,7 +481,7 @@
                     <ul class="footer-links">
                         <li><a href="aboutus.php">Board of Directors</a></li>
                         <li><a href="aboutus.php">Company Overview</a></li>
-                        <li><a href="legal.php">Governance Documents</a></li>
+                        <li style="display: none;"><a href="legal.php">Governance Documents</a></li>
                     </ul>
                 </nav>
 
@@ -490,7 +489,7 @@
                     <h3>Others</h3>
                     <ul class="footer-links">
                         <li><a href="fraudawareness.php">Cyber Crime Reporting</a></li>
-                        <li><a href="legal.php">Downloads</a></li>
+                        <li style="display: none;"><a href="legal.php">Downloads</a></li>
                     </ul>
                 </nav>
             </div>
