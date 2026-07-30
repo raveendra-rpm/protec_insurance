@@ -246,7 +246,7 @@ body.no-scroll {
     position: absolute;
     top: 0;
     right: -5vw;
-    height: 115%;
+    height: 105%;
     width: auto;
     max-width: none;
     z-index: 3;
@@ -265,8 +265,7 @@ body.no-scroll {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(18, 2, 26, 0.1) 0%, rgba(18, 2, 26, 0.05) 50%, rgba(18, 2, 26, 0) 100%),
-        linear-gradient(to top, rgba(18, 2, 26, 0.2) 0%, transparent 25%);
+    background: rgba(136, 67, 193, 0.24);
     z-index: 2;
 }
 
@@ -925,7 +924,7 @@ body.no-scroll {
 }
 
 .icon-swirl-cropped {
-    width: 420px;
+    width: 310px;
     height: auto;
     max-width: none;
     mix-blend-mode: multiply;
@@ -944,7 +943,7 @@ body.no-scroll {
 }
 
 .icon-swirl-slide-3 {
-    width: 647px;
+    width: 420px;
     height: auto;
     max-width: none;
     flex-shrink: 0;
@@ -1864,23 +1863,23 @@ body.no-scroll {
 
     .hero,
     .hero-content {
-        height: 100dvh;
-        min-height: 100dvh;
-        max-height: 100dvh;
+        height: 100svh;
+        min-height: 100svh;
+        max-height: 90vh;
     }
 
     .hero-image {
         opacity: 1;
         top: auto;
         bottom: 0;
-        height: 65vh;
+        height: 104svh;
         object-position: center 20%;
         -webkit-mask-image: linear-gradient(to top, black 70%, transparent 100%);
         mask-image: linear-gradient(to top, black 70%, transparent 100%);
     }
 
     .hero-bg-overlay {
-        background: rgba(22, 0, 40, 0.65);
+        background: rgba(136, 67, 193, 0.24);
     }
 
     /* About Us - Mobile Responsiveness */
@@ -1959,7 +1958,7 @@ body.no-scroll {
     }
 
     .hero-art-overlay {
-        top: 50vh;
+        top: 15vh;
         bottom: auto;
         left: -10%;
         right: auto;
@@ -2174,6 +2173,10 @@ body.no-scroll {
         font-size: clamp(2rem, 9vw, 2.8rem);
     }
 
+    .slide-middle {
+        height: 16vh;
+    }
+
     .icon-star {
         width: 120px;
     }
@@ -2279,7 +2282,37 @@ body.no-scroll {
 
 @media (min-width: 375px) and (max-width: 480px) {
     .hero-art-overlay {
-        top: 50vh;
+        top: 33vh;
+    }
+
+    .icon-swirl-slide-3 {
+        width: 486px;
+    }
+
+    .icon-swirl-cropped {
+        width: 353px;
+    }
+}
+
+@media (max-width: 374px) {
+    .hero-art-overlay {
+        top: 42vh;
+    }
+
+    .hero-bottom-features {
+        padding-top: 5rem;
+    }
+
+    .hero-image {
+        bottom: -0.5rem;
+    }
+
+    .icon-swirl-slide-3 {
+        width: 450px;
+    }
+
+    .icon-swirl-cropped {
+        width: 348px;
     }
 }
 
