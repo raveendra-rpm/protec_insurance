@@ -359,7 +359,8 @@ body.no-scroll {
 /* 3-column text strip at the bottom */
 .hero-bottom-features {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
     gap: 40px;
     padding-bottom: 12vh;
@@ -384,6 +385,55 @@ body.no-scroll {
 
 .hero-feature-right {
     text-align: left;
+}
+
+/* Hero Split Layout */
+.hero-layout-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+    gap: 40px;
+    padding-top: 40px;
+}
+
+.hero-left-col {
+    flex: 0 0 35%;
+}
+
+.hero-right-col {
+    flex: 0 0 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .hero-layout-grid {
+        flex-direction: column;
+        padding-top: 20px;
+        gap: 15px;
+        justify-content: flex-start;
+    }
+    .hero-left-col {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    .hero-right-col {
+        flex: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding-bottom: 200px;
+    }
+    .hero-bottom-features {
+        padding-bottom: 0;
+        margin-top: 0;
+        gap: 20px;
+    }
 }
 
 /* ============================================
@@ -1117,7 +1167,7 @@ body.no-scroll {
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.6;
     margin-bottom: 0;
-    max-width: 340px;
+    max-width: 450px;
 }
 
 .partner-features {
@@ -1198,7 +1248,7 @@ body.no-scroll {
 }
 
 .email-contact a {
-    color: #00C493;
+    color: var(--accent-yellow);
     text-decoration: none;
     font-weight: 700;
 }
@@ -3214,4 +3264,45 @@ textarea:focus {
     color: var(--protec-purple);
     border-bottom-color: var(--protec-purple);
     background: rgba(255, 200, 61, 0.15);
+}
+
+/* Hero Registration Marquee */
+.hero-marquee-wrapper {
+    background: var(--primary-blue);
+    color: var(--text-light);
+    padding: 12px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+}
+
+.hero-marquee {
+    display: flex;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.hero-marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    animation: hero-marquee-anim 25s linear infinite;
+}
+
+.hero-marquee-wrapper:hover .hero-marquee span {
+    animation-play-state: paused;
+}
+
+@keyframes hero-marquee-anim {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
 }

@@ -84,27 +84,40 @@
                     <span style="display: block;">GENERAL INSURANCE</span>
                     <span style="display: block;">BEGINS SOON</span>
                 </h1>
-                <div class="hero-buttons">
-                    <a href="#designed-different" class="btn btn-hero-primary">Stay Tuned &rarr;</a>
-                    <a href="#join-us" class="btn btn-hero-secondary">Join Our Journey &rarr;</a>
-                </div>
             </div>
 
-            <div class="hero-bottom-features">
-                <div class="hero-feature">
-                    <p>Insurance that starts with you.<br><strong>Not policies. Not templates.<br>Not legacy
-                            thinking.</strong></p>
+            <div class="hero-layout-grid">
+                <div class="hero-left-col">
+                    <div class="hero-bottom-features">
+                        <div class="hero-feature">
+                            <p><strong>Insurance that starts with you.</strong><br>Not policies.<br>Not templates.<br>Not legacy thinking.</p>
+                        </div>
+                        <div class="hero-feature">
+                            <p>At Protec Insurance, everything begins with the customer and that changes everything that
+                                follows.</p>
+                        </div>
+                        <div class="hero-feature hero-feature-right">
+                            <p><strong>Customer-first.<br>Smarter by design.</strong></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="hero-feature">
-                    <p>At Protec Insurance, everything begins with the customer and that changes everything that
-                        follows.</p>
-                </div>
-                <div class="hero-feature hero-feature-right">
-                    <p><strong>Customer-first.<br>Smarter by design.</strong></p>
+
+                <div class="hero-right-col">
+                    <div class="hero-buttons">
+                        <a href="#designed-different" class="btn btn-hero-primary">Stay Tuned &rarr;</a>
+                        <a href="#join-us" class="btn btn-hero-secondary">Join Our Journey &rarr;</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Hero Registration Marquee -->
+    <div class="hero-marquee-wrapper">
+        <div class="hero-marquee">
+            <span>Protec General Insurance Limited has received its Certificate of Registration from IRDAI. We look forward to serving you soon</span>
+        </div>
+    </div>
 
     <!-- Our Promise (Our Edge) Section -->
     <section id="our-edge" class="our-edge">
@@ -136,7 +149,7 @@
                     <p class="edge-panel-desc">Policies designed around your life, not the other way around.</p>
                 </div>
                 <div class="edge-panel-right">
-                    <img src="assets/images/our_edge/smarter_insurance​.jpg" alt="Smarter Insurance">
+                    <img src="assets/images/our_edge/smarter_insurance.jpg" alt="Smarter Insurance">
                 </div>
             </div>
 
@@ -188,8 +201,6 @@
                 </div>
 
                 <div class="designed-bottom-row">
-                    <p class="designed-sub">Designed for your life,<br>powered by intelligence,<br>backed by real
-                        people.</p>
                     <input type="email" class="designed-line-input" placeholder="Enter your email address">
                     <div class="designed-signup">
                         <span class="signup-text">Be the first to know</span>
@@ -236,7 +247,6 @@
         <video src="assets/videos/protec_insurance.mp4" autoplay loop muted playsinline disablepictureinpicture
             controlslist="nodownload" oncontextmenu="return false;" class="wavy-bg"></video>
         <div class="container start-content">
-            <p class="small-title">Protec Insurance</p>
             <h2>Start with the customer.<br>End with smarter protection.</h2>
             <p class="start-desc">You don't need more insurance. You need better insurance.</p>
         </div>
@@ -266,13 +276,12 @@
                             </div>
                         </div>
                         <div class="slide-right">
-                            <p>Protec is led by seasoned insurance leader <strong>Mr. Aditya Sharma</strong>, Co-founder and <strong>Managing
-                            Director & CEO</strong>. A Fellow of the Insurance Institute of India (FIII), he brings over 25 years of
+                            <p>Protec is led by seasoned insurance leader <strong>Mr. Aditya Sharma</strong>, Co-founder and Managing Director & CEO *. A Fellow of the Insurance Institute of India (FIII), he brings over 25 years of
                             experience scaling businesses, leading high-performing teams, and driving growth across
                             distribution, risk and operations.</p>
                             <p>Under his leadership, Protec has assembled a team of
                             accomplished insurance professionals, distribution leaders and technology experts, united by a
-                            shared purpose: <strong>making insurance simpler, smarter and more customer-centric.</strong>*(subject to regulatory approvals)</p>
+                            shared purpose: <strong>making insurance simpler, smarter and more customer-centric.</strong> <small style="font-size: 0.75em;">*(subject to regulatory approvals)</small></p>
                         </div>
                     </div>
                     <!-- Slide 2 -->
@@ -345,9 +354,8 @@
             <!-- Partner with Us Panel -->
             <div class="build-content build-panel active" id="panel-partner">
                 <div class="partner-left">
-                    <h3>Partner for impact.</h3>
-                    <p class="partner-subtext">We're crafting an ecosystem for brokers, agents, and digital distributors
-                        to redefine protection reach across India.</p>
+                    <h3>partner with us</h3>
+                    <p class="partner-subtext">We're crafting an ecosystem to redefine protection reach across India. If you're passionate about building distribution and creating extraordinary customer experiences, we'd love to build with you.</p>
 
                     <div class="partner-features">
                         <div class="p-feature">
@@ -373,16 +381,16 @@
                         </div>
                     </div>
 
-                    <div class="who-can-partner">
+                    <!-- <div class="who-can-partner">
                         <h4>Who can partner</h4>
                         <p>Brokers | Agents | Digital Dist | Fintech | Affinity</p>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="partner-right">
                     <video src="assets/videos/build_what.mp4" autoplay loop muted playsinline disablepictureinpicture
                         controlslist="nodownload" oncontextmenu="return false;" class="floating-icon icon-pill"></video>
-                    <p class="email-contact">Reach out: <a href="mailto:Partner@protecins.com">Partner@protecins.com</a>
+                    <p class="email-contact">Reach out: <a href="mailto:partner@protecins.com">partner@protecins.com</a>
                     </p>
                 </div>
             </div>
@@ -476,19 +484,18 @@
                     </ul>
                 </nav>
 
-                <nav class="footer-col" aria-label="About Us">
-                    <h3>About Us</h3>
+                <nav class="footer-col" aria-label="Important Links">
+                    <h3>Important Links</h3>
                     <ul class="footer-links">
                         <li><a href="aboutus.php">Board of Directors</a></li>
-                        <li><a href="aboutus.php">Company Overview</a></li>
                         <li style="display: none;"><a href="legal.php">Governance Documents</a></li>
+                        <li><a href="fraudawareness.php">Cyber Crime Reporting</a></li>
                     </ul>
                 </nav>
 
-                <nav class="footer-col" aria-label="Others">
+                <nav class="footer-col" aria-label="Others" style="display: none;">
                     <h3>Others</h3>
                     <ul class="footer-links">
-                        <li><a href="fraudawareness.php">Cyber Crime Reporting</a></li>
                         <li style="display: none;"><a href="legal.php">Downloads</a></li>
                     </ul>
                 </nav>
@@ -502,7 +509,7 @@
                     <strong>ProTec General Insurance Limited</strong><br />
                     REGISTERED ADDRESS:<br />
                     14 FLR-2, 44 DADY SHETH H, CAWASJI PATEL RD HC FORT,<br />
-                    Town Hall (Mumbai), Mumbai – 400001, Maharashtra
+                    Town Hall, Mumbai - 400001, Maharashtra
                 </p>
             </div>
         </div>
