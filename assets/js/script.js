@@ -336,10 +336,10 @@ window.addEventListener('load', () => {
         // ══════════════════════════════════════════════════════
         const heroTl = gsap.timeline({ delay: 0.15 });
 
-        // Subtitle: fade + blur in
+        // Subtitle: fade in (removed blur for performance)
         heroTl.fromTo('.hero-top-subtitle p',
-            { opacity: 0, filter: 'blur(8px)', y: -12 },
-            { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.9, ease: 'power3.out' }
+            { opacity: 0, y: -12 },
+            { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }
         );
 
         // Title lines: clip-path reveal (slide up from bottom)
