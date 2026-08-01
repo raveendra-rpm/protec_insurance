@@ -105,7 +105,7 @@
                         journeys
                         and trusted service support.</p>
                     <div class="cta-row">
-                        <a class="btn btn-primary" href="#designed-different">Stay Tuned</a>
+                        <a class="btn btn-primary" href="index.php#designed-different">Stay Tuned</a>
                         <a class="btn btn-secondary"
                             href="https://www.linkedin.com/company/protec-insurance/" target="_blank"
                             rel="noopener">Follow on LinkedIn</a>
@@ -117,7 +117,7 @@
                     <ul class="footer-links">
                         <li><a href="fraudawareness.php">Fraud Awareness</a></li>
                         <li><a href="staytuned.php">Contact Us</a></li>
-                        <li><a href="#designed-different">Stay Tuned</a></li>
+                        <li><a href="index.php#designed-different">Stay Tuned</a></li>
                     </ul>
                 </nav>
 
@@ -134,7 +134,7 @@
                 <nav class="footer-col" aria-label="Important Links">
                     <h3>Important Links</h3>
                     <ul class="footer-links">
-                        <li><a href="aboutus.php">Board of Directors</a></li>
+                        <li style="display: none;"><a href="aboutus.php">Board of Directors</a></li>
                         <li style="display: none;"><a href="legal.php">Governance Documents</a></li>
                         <li><a href="fraudawareness.php">Cyber Crime Reporting</a></li>
                     </ul>

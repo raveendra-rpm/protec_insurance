@@ -281,7 +281,7 @@
                             distribution, risk and operations.</p>
                             <p>Under his leadership, Protec has assembled a team of
                             accomplished insurance professionals, distribution leaders and technology experts, united by a
-                            shared purpose: <strong>making insurance simpler, smarter and more customer-centric.</strong> <small style="font-size: 0.75em;">*(subject to regulatory approvals)</small></p>
+                            shared purpose: <strong>making insurance simpler, smarter and more customer-centric.</strong> <small style="font-size: 0.75em; font-style: italic;">*(subject to regulatory approvals)</small></p>
                         </div>
                     </div>
                     <!-- Slide 2 -->
@@ -487,7 +487,7 @@
                 <nav class="footer-col" aria-label="Important Links">
                     <h3>Important Links</h3>
                     <ul class="footer-links">
-                        <li><a href="aboutus.php">Board of Directors</a></li>
+                        <li style="display: none;"><a href="aboutus.php">Board of Directors</a></li>
                         <li style="display: none;"><a href="legal.php">Governance Documents</a></li>
                         <li><a href="fraudawareness.php">Cyber Crime Reporting</a></li>
                     </ul>
