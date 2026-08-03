@@ -390,6 +390,33 @@ body.no-scroll {
     text-align: left;
 }
 
+@media (min-width: 769px) {
+    .hero-bottom-features {
+        transform: translateY(80px);
+        /* Moved down per user request */
+    }
+
+    .hero-feature-unique {
+        padding-bottom: 7rem;
+        margin-top: -3rem;
+    }
+
+    .hero-feature-unique+.hero-feature {
+        margin-top: -3.5rem;
+        /* Further reduced negative margin to push it down a bit more */
+    }
+
+    .hero-feature-right {
+        margin-top: -1.5rem;
+        /* Pull third text up to reduce the gap */
+    }
+
+    .hero-buttons {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+}
+
 /* Hero Split Layout */
 .hero-layout-grid {
     display: flex;
@@ -418,16 +445,23 @@ body.no-scroll {
         min-height: 100vh;
         padding-bottom: 60px;
     }
+
     .hero-layout-grid {
         flex-direction: column;
         padding-top: 20px;
-        gap: 15px;
-        justify-content: flex-start;
+        gap: 20px;
+        /* 20px gap between sections */
+        justify-content: flex-end;
+        /* Align all items to the bottom */
+        margin-top: auto;
+        /* Push to the very bottom */
     }
+
     .hero-left-col {
         flex: 0 0 auto;
         width: 100%;
     }
+
     .hero-right-col {
         flex: 0 0 auto;
         width: 100%;
@@ -436,29 +470,22 @@ body.no-scroll {
         justify-content: flex-start;
         align-items: flex-start;
         padding-bottom: 20px;
-        margin-top: -10px;
+        margin-top: 0;
     }
+
     .hero-bottom-features {
         padding-bottom: 0;
         margin-top: 0;
-        gap: 20px;
+        gap: 8px;
+        /* Minimal gap so text blocks are close together */
     }
-    
-    .hero-bottom-features .hero-feature:nth-child(1) {
-        margin-top: -15px;
-    }
-    
-    .hero-bottom-features .hero-feature:nth-child(2) {
-        margin-top: 20px;
-        position: relative;
-        top: 130px;
-    }
-    
+
+    .hero-bottom-features .hero-feature:nth-child(1),
+    .hero-bottom-features .hero-feature:nth-child(2),
     .hero-bottom-features .hero-feature:nth-child(3) {
-        margin-top: 0px;
-        margin-bottom: 15px;
-        position: relative;
-        top: 130px;
+        margin-top: 0;
+        position: static;
+        top: auto;
     }
 }
 
@@ -985,7 +1012,7 @@ body.no-scroll {
 .icon-swirl {
     width: 250px;
     height: auto;
-    mix-blend-mode: multiply;
+    background-color: transparent;
     filter: contrast(1.6) brightness(1.2);
     object-fit: cover;
 }
@@ -1003,7 +1030,7 @@ body.no-scroll {
     width: 310px;
     height: auto;
     max-width: none;
-    mix-blend-mode: multiply;
+    background-color: transparent;
     filter: contrast(1.5) brightness(1.15);
     object-fit: cover;
 }
@@ -1023,7 +1050,7 @@ body.no-scroll {
     height: auto;
     max-width: none;
     flex-shrink: 0;
-    mix-blend-mode: multiply;
+    background-color: transparent;
     filter: contrast(1.6) brightness(1.2);
     object-fit: cover;
 }
@@ -1687,13 +1714,13 @@ body.no-scroll {
     }
 
     .hero-bottom-features {
-        flex-direction: row;
+        flex-direction: column;
         gap: 20px;
         padding-bottom: 40px;
     }
 
     .hero-feature {
-        max-width: 33%;
+        max-width: 100%;
         text-align: left;
     }
 
@@ -1961,6 +1988,7 @@ body.no-scroll {
     /* About Us - Mobile Responsiveness */
     .our-story-slider {
         padding: 60px 0 40px;
+        background-color: #ffffff !important;
     }
 
     .story-section-title {
@@ -2060,7 +2088,7 @@ body.no-scroll {
     .hero-bottom-features {
         flex-direction: column;
         gap: 16px;
-        padding-bottom: 18vh;
+        /* padding-bottom: 18vh; */
     }
 
     .hero-feature {
@@ -2358,7 +2386,7 @@ body.no-scroll {
 
 @media (min-width: 375px) and (max-width: 480px) {
     .hero-art-overlay {
-        top: 33vh;
+        top: 25vh;
     }
 
     .icon-swirl-slide-3 {
@@ -2372,7 +2400,7 @@ body.no-scroll {
 
 @media (max-width: 374px) {
     .hero-art-overlay {
-        top: 42vh;
+        top: 25vh;
     }
 
     .hero-bottom-features {

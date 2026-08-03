@@ -79,10 +79,8 @@
                             <h3>Contact ProTec</h3>
                             <p>Connect with us for insurance queries, service support or business interest.</p>
                             <div class="contact-list">
-                                <div><strong>WhatsApp:</strong> XXXXXXXXXX</div>
                                 <div><strong>Email:</strong> <a
                                         href="mailto:procare@protecins.com">procare@protecins.com</a></div>
-                                <div><strong>Toll Free:</strong> XXXXXXXXX</div>
                                 <div><strong>LinkedIn:</strong> <a
                                         href="https://www.linkedin.com/company/protec-insurance/"
                                         target="_blank" rel="noopener">Visit our LinkedIn page</a></div>
@@ -97,14 +95,14 @@
                                 </label>
                                 <label>
                                     Mobile Number
-                                    <input type="tel" name="mobile" placeholder="Enter mobile number" required />
+                                    <input type="tel" name="mobile" placeholder="Enter mobile number" pattern="[0-9]{10}" minlength="10" maxlength="10" title="Please enter exactly 10 digits" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required />
                                 </label>
                             </div>
 
                             <div class="field-row">
                                 <label>
                                     Email ID
-                                    <input type="email" name="email" placeholder="Enter email address" required />
+                                    <input type="email" name="email" placeholder="Enter email address" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address (e.g. name@domain.com)" required />
                                 </label>
                                 <label>
                                     Type of Insurance
@@ -127,7 +125,7 @@
 
                             <label class="checkbox-row">
                                 <input type="checkbox" name="whatsappConsent" required />
-                                <span>I agree to receive WhatsApp communication from ProTec General Insurance Limited
+                                <span>I agree to receive WhatsApp communication from ProTec
                                     for my enquiry and service-related communication.</span>
                             </label>
 
@@ -207,7 +205,7 @@
             <div class="registered-office-card">
                 <h3>Registered Office</h3>
                 <p>
-                    <strong>ProTec General Insurance Limited</strong><br />
+                    <strong>ProTec</strong><br />
                     REGISTERED ADDRESS:<br />
                     14 FLR-2, 44 DADY SHETH H, CAWASJI PATEL RD HC FORT,<br />
                     Town Hall, Mumbai – 400001, Maharashtra
@@ -216,7 +214,7 @@
         </div>
 
         <div class="footer-bottom">
-            <div>© <span id="footerYear"></span> ProTec General Insurance Limited. All rights reserved.</div>
+            <div>© <span id="footerYear"></span> ProTec. All rights reserved.</div>
             <div>
                 Need help? <a href="mailto:procare@protecins.com">procare@protecins.com</a>
             </div>
@@ -229,7 +227,7 @@
                 <div class="fraud-marquee">
                     <span>IRDAI is not involved in activities like selling insurance policies, announcing bonus or
                         investment of premiums. Public receiving such phone calls are requested to lodge a police
-                        complaint.</span>
+                        complaint. &nbsp;&nbsp;|&nbsp;&nbsp; This is a corporate website for information purpose only. It does not constitute an advertisement or solicitation of general insurance business.</span>
                 </div>
             </div>
         </aside>

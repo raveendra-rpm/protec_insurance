@@ -89,12 +89,11 @@
             <div class="hero-layout-grid">
                 <div class="hero-left-col">
                     <div class="hero-bottom-features">
+                        <!-- <div class="hero-feature hero-feature-unique">
+                            <p><strong>Insurance that starts with you.</strong><br>Not policies.<br>Not templates.<br>Not legacy thinking.</p>
+                        </div> -->
                         <div class="hero-feature">
                             <p><strong>Insurance that starts with you.</strong><br>Not policies.<br>Not templates.<br>Not legacy thinking.</p>
-                        </div>
-                        <div class="hero-feature">
-                            <p>At Protec Insurance, everything begins with the customer and that changes everything that
-                                follows.</p>
                         </div>
                         <div class="hero-feature hero-feature-right">
                             <p><strong>Customer-first.<br>Smarter by design.</strong></p>
@@ -115,7 +114,7 @@
     <!-- Hero Registration Marquee -->
     <div class="hero-marquee-wrapper">
         <div class="hero-marquee">
-            <span>Protec General Insurance Limited has received its Certificate of Registration from IRDAI. We look forward to serving you soon</span>
+            <span>ProTec has received its Certificate of Registration from IRDAI. We look forward to serving you soon</span>
         </div>
     </div>
 
@@ -270,9 +269,10 @@
                         </div>
                         <div class="slide-middle">
                             <div class="slide-3-video-wrapper">
-                                <video src="assets/videos/animte_vids.mp4" autoplay loop muted playsinline
+                                <video id="slide-1-video" src="assets/videos/animte_vids.mp4" autoplay loop muted playsinline
                                     disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;"
-                                    class="icon-swirl-slide-3"></video>
+                                    class="icon-swirl-slide-3" style="display:none;"></video>
+                                <canvas id="slide-1-canvas" class="icon-swirl-slide-3"></canvas>
                             </div>
                         </div>
                         <div class="slide-right">
@@ -291,9 +291,10 @@
                         </div>
                         <div class="slide-middle">
                             <div class="video-crop-wrapper">
-                                <video src="assets/videos/animation_vids.mp4" autoplay loop muted playsinline
+                                <video id="slide-2-video" src="assets/videos/animation_vids.mp4" autoplay loop muted playsinline
                                     disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;"
-                                    class="icon-swirl-cropped"></video>
+                                    class="icon-swirl-cropped" style="display:none;"></video>
+                                <canvas id="slide-2-canvas" class="icon-swirl-cropped"></canvas>
                             </div>
                         </div>
                         <div class="slide-right">
@@ -313,9 +314,10 @@
                             <h2>BUILDING<br>INSURANCE<br>AROUND<br>PEOPLE</h2>
                         </div>
                         <div class="slide-middle">
-                            <video src="assets/videos/purple_abstract_swirl.mp4" autoplay loop muted playsinline
+                            <video id="slide-3-video" src="assets/videos/purple_abstract_swirl.mp4" autoplay loop muted playsinline
                                 disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;"
-                                class="icon-swirl"></video>
+                                class="icon-swirl" style="display:none;"></video>
+                            <canvas id="slide-3-canvas" class="icon-swirl"></canvas>
                         </div>
                         <div class="slide-right">
                             <p>For too long, insurance has been built around products rather than people. Policies
@@ -506,7 +508,7 @@
             <div class="registered-office-card">
                 <h3>Registered Office</h3>
                 <p>
-                    <strong>ProTec General Insurance Limited</strong><br />
+                    <strong>ProTec</strong><br />
                     REGISTERED ADDRESS:<br />
                     14 FLR-2, 44 DADY SHETH H, CAWASJI PATEL RD HC FORT,<br />
                     Town Hall, Mumbai - 400001, Maharashtra
@@ -515,7 +517,7 @@
         </div>
 
         <div class="footer-bottom">
-            <div>© <span id="footerYear"></span> ProTec General Insurance Limited. All rights reserved.</div>
+            <div>© <span id="footerYear"></span> ProTec. All rights reserved.</div>
             <div>
                 Need help? <a href="mailto:procare@protecins.com">procare@protecins.com</a>
             </div>
@@ -528,7 +530,7 @@
                 <div class="fraud-marquee">
                     <span>IRDAI is not involved in activities like selling insurance policies, announcing bonus or
                         investment of premiums. Public receiving such phone calls are requested to lodge a police
-                        complaint.</span>
+                        complaint. | This is a corporate website for information purpose only. It does not constitute an advertisement or solicitation of general insurance business.</span>
                 </div>
             </div>
         </aside>

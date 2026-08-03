@@ -79,7 +79,7 @@
                     </div>
 
                     <div class="tab-panel active" id="tab-overview">
-                        <p>ProTec General Insurance Limited is building a new-age, customer-first general insurance
+                        <p>ProTec is building a new-age, customer-first general insurance
                             company with a focus on simple protection, digital journeys and responsible governance.</p>
                     </div>
 
@@ -170,7 +170,7 @@
             <div class="registered-office-card">
                 <h3>Registered Office</h3>
                 <p>
-                    <strong>ProTec General Insurance Limited</strong><br />
+                    <strong>ProTec</strong><br />
                     REGISTERED ADDRESS:<br />
                     14 FLR-2, 44 DADY SHETH H, CAWASJI PATEL RD HC FORT,<br />
                     Town Hall, Mumbai – 400001, Maharashtra
@@ -179,7 +179,7 @@
         </div>
 
         <div class="footer-bottom">
-            <div>© <span id="footerYear"></span> ProTec General Insurance Limited. All rights reserved.</div>
+            <div>© <span id="footerYear"></span> ProTec. All rights reserved.</div>
             <div>
                 Need help? <a href="mailto:procare@protecins.com">procare@protecins.com</a>
             </div>
@@ -192,7 +192,7 @@
                 <div class="fraud-marquee">
                     <span>IRDAI is not involved in activities like selling insurance policies, announcing bonus or
                         investment of premiums. Public receiving such phone calls are requested to lodge a police
-                        complaint.</span>
+                        complaint. &nbsp;&nbsp;|&nbsp;&nbsp; This is a corporate website for information purpose only. It does not constitute an advertisement or solicitation of general insurance business.</span>
                 </div>
             </div>
         </aside>
