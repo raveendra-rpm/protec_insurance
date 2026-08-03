@@ -151,7 +151,7 @@
                 <nav class="footer-col" aria-label="Important Links">
                     <h3>Important Links</h3>
                     <ul class="footer-links">
-                        <li style="display: none;"><a href="aboutus.php">Board of Directors</a></li>
+                        <li style="display: none;><a href="aboutus.php">Board of Directors</a></li>
                         <li style="display: none;"><a href="legal.php">Governance Documents</a></li>
                         <li><a href="fraudawareness.php">Cyber Crime Reporting</a></li>
                     </ul>
@@ -186,13 +186,12 @@
         </div>
 
         <!-- IN-PAGE CAUTION SCROLL MESSAGE -->
+        <!-- IN-PAGE CAUTION SCROLL MESSAGE -->
         <aside class="fraud-scroll-widget" aria-label="Caution scroll message">
             <div class="fraud-scroll-inner">
                 <div class="fraud-label">Caution</div>
                 <div class="fraud-marquee">
-                    <span>IRDAI is not involved in activities like selling insurance policies, announcing bonus or
-                        investment of premiums. Public receiving such phone calls are requested to lodge a police
-                        complaint. &nbsp;&nbsp;|&nbsp;&nbsp; This is a corporate website for information purpose only. It does not constitute an advertisement or solicitation of general insurance business.</span>
+                    <span>IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint. &nbsp;&nbsp;|&nbsp;&nbsp; This is a corporate website for information purpose only. It does not constitute an advertisement or solicitation of general insurance business.</span>
                 </div>
             </div>
         </aside>

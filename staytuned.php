@@ -78,9 +78,9 @@
                         <div class="contact-card">
                             <h3>Contact ProTec</h3>
                             <p>Connect with us for insurance queries, service support or business interest.</p>
-                            <div class="contact-list">
-                                <div><strong>Email:</strong> <a
-                                        href="mailto:procare@protecins.com">procare@protecins.com</a></div>
+<div class="contact-list">
+    <div><strong>Email:</strong> <a href="mailto:procare@protecins.com">procare@protecins.com</a></div>
+
                                 <div><strong>LinkedIn:</strong> <a
                                         href="https://www.linkedin.com/company/protec-insurance/"
                                         target="_blank" rel="noopener">Visit our LinkedIn page</a></div>
@@ -103,6 +103,7 @@
                                 <label>
                                     Email ID
                                     <input type="email" name="email" placeholder="Enter email address" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address (e.g. name@domain.com)" required />
+
                                 </label>
                                 <label>
                                     Type of Insurance
@@ -125,7 +126,7 @@
 
                             <label class="checkbox-row">
                                 <input type="checkbox" name="whatsappConsent" required />
-                                <span>I agree to receive WhatsApp communication from ProTec
+                                <span>I agree to receive WhatsApp communication from ProTec General Insurance Limited
                                     for my enquiry and service-related communication.</span>
                             </label>
 
@@ -186,7 +187,7 @@
                 <nav class="footer-col" aria-label="Important Links">
                     <h3>Important Links</h3>
                     <ul class="footer-links">
-                        <li style="display: none;"><a href="aboutus.php">Board of Directors</a></li>
+                        <li style="display: none;><a href="aboutus.php">Board of Directors</a></li>
                         <li style="display: none;"><a href="legal.php">Governance Documents</a></li>
                         <li><a href="fraudawareness.php">Cyber Crime Reporting</a></li>
                     </ul>
@@ -221,13 +222,12 @@
         </div>
 
         <!-- IN-PAGE CAUTION SCROLL MESSAGE -->
+        <!-- IN-PAGE CAUTION SCROLL MESSAGE -->
         <aside class="fraud-scroll-widget" aria-label="Caution scroll message">
             <div class="fraud-scroll-inner">
                 <div class="fraud-label">Caution</div>
                 <div class="fraud-marquee">
-                    <span>IRDAI is not involved in activities like selling insurance policies, announcing bonus or
-                        investment of premiums. Public receiving such phone calls are requested to lodge a police
-                        complaint. &nbsp;&nbsp;|&nbsp;&nbsp; This is a corporate website for information purpose only. It does not constitute an advertisement or solicitation of general insurance business.</span>
+                    <span>IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint. &nbsp;&nbsp;|&nbsp;&nbsp; This is a corporate website for information purpose only. It does not constitute an advertisement or solicitation of general insurance business.</span>
                 </div>
             </div>
         </aside>

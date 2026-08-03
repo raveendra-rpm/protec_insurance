@@ -89,9 +89,9 @@
             <div class="hero-layout-grid">
                 <div class="hero-left-col">
                     <div class="hero-bottom-features">
-                        <!-- <div class="hero-feature hero-feature-unique">
-                            <p><strong>Insurance that starts with you.</strong><br>Not policies.<br>Not templates.<br>Not legacy thinking.</p>
-                        </div> -->
+                        <div class="hero-feature hero-feature-unique">
+    <!--<p><strong>Insurance that starts with you.</strong><br>Not policies.<br>Not templates.<br>Not legacy thinking.</p>-->
+                        </div>
                         <div class="hero-feature">
                             <p><strong>Insurance that starts with you.</strong><br>Not policies.<br>Not templates.<br>Not legacy thinking.</p>
                         </div>
@@ -103,7 +103,7 @@
 
                 <div class="hero-right-col">
                     <div class="hero-buttons">
-                        <a href="#designed-different" class="btn btn-hero-primary">Stay Tuned &rarr;</a>
+                        <a class="btn btn-primary" href="index.php#designed-different">Stay Tuned</a>
                         <a href="#join-us" class="btn btn-hero-secondary">Join Our Journey &rarr;</a>
                     </div>
                 </div>
@@ -194,8 +194,8 @@
                         <span class="highlight-line">WORKS FOR YOU.</span>
                     </h2>
                     <div class="designed-icon-wrapper">
-                        <video id="star-video" src="assets/videos/purple_object_rotate.mp4" autoplay loop muted playsinline disablepictureinpicture style="display:none;"></video>
-                        <canvas id="star-canvas" class="icon-star"></canvas>
+                        <video id="star-video" src="assets/videos/purple_object_rotate.mp4" autoplay loop muted playsinline disablepictureinpicture class="icon-star" style="mix-blend-mode: multiply;"></video>
+                        <canvas id="star-canvas" class="icon-star" style="display:none;"></canvas>
                     </div>
                 </div>
 
@@ -268,20 +268,18 @@
                             <h2>LED BY<br>EXPERTS.<br>BUILT BY<br>INNOVATORS.</h2>
                         </div>
                         <div class="slide-middle">
-                            <div class="slide-3-video-wrapper">
-                                <video id="slide-1-video" src="assets/videos/animte_vids.mp4" autoplay loop muted playsinline
-                                    disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;"
-                                    class="icon-swirl-slide-3" style="display:none;"></video>
-                                <canvas id="slide-1-canvas" class="icon-swirl-slide-3"></canvas>
-                            </div>
-                        </div>
+    <div class="slide-3-video-wrapper">
+        <video id="slide-1-video" src="assets/videos/animte_vids.mp4" autoplay loop muted playsinline disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;" class="icon-swirl-slide-3" style="mix-blend-mode: multiply;"></video>
+        <canvas id="slide-1-canvas" class="icon-swirl-slide-3" style="display:none;"></canvas>
+    </div>
+</div>
                         <div class="slide-right">
-                            <p>Protec is led by seasoned insurance leader <strong>Mr. Aditya Sharma</strong>, Co-founder and Managing Director & CEO *. A Fellow of the Insurance Institute of India (FIII), he brings over 25 years of
-                            experience scaling businesses, leading high-performing teams, and driving growth across
+                            <p>ProTec is led by seasoned insurance leader <strong>Mr. Aditya Sharma</strong>, Co-founder and Managing Director & CEO.* A Fellow of the Insurance Institute of India (FIII), he brings over 25 years of
+                            experience in scaling businesses, building high-performing teams, and driving growth across
                             distribution, risk and operations.</p>
-                            <p>Under his leadership, Protec has assembled a team of
+                            <p>Under his leadership, ProTec has brought together a team of
                             accomplished insurance professionals, distribution leaders and technology experts, united by a
-                            shared purpose: <strong>making insurance simpler, smarter and more customer-centric.</strong> <small style="font-size: 0.75em; font-style: italic;">*(subject to regulatory approvals)</small></p>
+                            shared purpose : <strong>making insurance simpler, smarter and more customer-centric.</strong> <br> <br><small style="font-size: 0.75em; font-style: italic;">*subject to regulatory approvals</small></p>
                         </div>
                     </div>
                     <!-- Slide 2 -->
@@ -290,19 +288,18 @@
                             <h2>BACKED BY<br>A LEGACY<br>OF TRUST</h2>
                         </div>
                         <div class="slide-middle">
-                            <div class="video-crop-wrapper">
-                                <video id="slide-2-video" src="assets/videos/animation_vids.mp4" autoplay loop muted playsinline
-                                    disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;"
-                                    class="icon-swirl-cropped" style="display:none;"></video>
-                                <canvas id="slide-2-canvas" class="icon-swirl-cropped"></canvas>
-                            </div>
-                        </div>
+    <div class="video-crop-wrapper">
+        <video id="slide-2-video" src="assets/videos/animation_vids.mp4" autoplay loop muted playsinline disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;" class="icon-swirl-cropped" style="mix-blend-mode: multiply;"></video>
+        <canvas id="slide-2-canvas" class="icon-swirl-cropped" style="display:none;"></canvas>
+    </div>
+</div>
+
                         <div class="slide-right">
-                            <p>Protec is promoted by the <strong>M. Pallonji Group</strong>, a diversified business
+                            <p>ProTec is promoted by the <strong>M. Pallonji Group</strong>, a diversified business
                                 conglomerate with over 95 years of operating history and interests spanning financial
                                 services, insurance, logistics, shipping, industrial services, and automotive
                                 businesses.</p>
-                            <p>Protec is co-promoted by Mr. Divya Sehgal, a seasoned investor with deep expertise in
+                            <p>ProTec is co-promoted by Mr. Divya Sehgal, a seasoned investor with deep expertise in
                                 building and scaling financial services businesses, and Mr. Namit Agarwal, along with
                                 other marquee investors.</p>
                         </div>
@@ -314,15 +311,14 @@
                             <h2>BUILDING<br>INSURANCE<br>AROUND<br>PEOPLE</h2>
                         </div>
                         <div class="slide-middle">
-                            <video id="slide-3-video" src="assets/videos/purple_abstract_swirl.mp4" autoplay loop muted playsinline
-                                disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;"
-                                class="icon-swirl" style="display:none;"></video>
-                            <canvas id="slide-3-canvas" class="icon-swirl"></canvas>
-                        </div>
+    <video id="slide-3-video" src="assets/videos/purple_abstract_swirl.mp4" autoplay loop muted playsinline disablepictureinpicture controlslist="nodownload" oncontextmenu="return false;" class="icon-swirl" style="mix-blend-mode: multiply;"></video>
+    <canvas id="slide-3-canvas" class="icon-swirl" style="display:none;"></canvas>
+</div>
+
                         <div class="slide-right">
                             <p>For too long, insurance has been built around products rather than people. Policies
                                 become more complex, forms get longer, and customers are left to navigate the fine
-                                print. Protec starts with the customer.</p>
+                                print. ProTec starts with the customer.</p>
                             <p>We are building smarter insurance solutions for the way Indians live, work, and manage
                                 risk today. Combining deep insurance expertise with AI and digital technology, we make
                                 insurance simpler, faster, more transparent, and easier to understand.</p>
@@ -356,7 +352,7 @@
             <!-- Partner with Us Panel -->
             <div class="build-content build-panel active" id="panel-partner">
                 <div class="partner-left">
-                    <h3>partner with us</h3>
+                    <h3>Partner with us</h3>
                     <p class="partner-subtext">We're crafting an ecosystem to redefine protection reach across India. If you're passionate about building distribution and creating extraordinary customer experiences, we'd love to build with you.</p>
 
                     <div class="partner-features">
@@ -378,7 +374,8 @@
                             <span class="bullet"></span>
                             <div>
                                 <h4>Smarter Tools</h4>
-                                <p>AI quoting, instant issuance, real-time dashboards.</p>
+                                <p>AI enabled platform & processes
+</p>
                             </div>
                         </div>
                     </div>
@@ -460,7 +457,7 @@
                         journeys
                         and trusted service support.</p>
                     <div class="cta-row">
-                        <a class="btn btn-primary" href="#designed-different">Stay Tuned</a>
+                        <a class="btn btn-primary" href="index.php#designed-different">Stay Tuned</a>
                         <a class="btn btn-secondary"
                             href="https://www.linkedin.com/company/protec-insurance/" target="_blank"
                             rel="noopener">Follow on LinkedIn</a>
@@ -472,7 +469,7 @@
                     <ul class="footer-links">
                         <li><a href="fraudawareness.php">Fraud Awareness</a></li>
                         <li><a href="staytuned.php">Contact Us</a></li>
-                        <li><a href="#designed-different">Stay Tuned</a></li>
+                        <li><a href="index.php#designed-different">Stay Tuned</a></li>
                     </ul>
                 </nav>
 
@@ -489,7 +486,7 @@
                 <nav class="footer-col" aria-label="Important Links">
                     <h3>Important Links</h3>
                     <ul class="footer-links">
-                        <li style="display: none;"><a href="aboutus.php">Board of Directors</a></li>
+                        <li style="display: none;><a href="aboutus.php">Board of Directors</a></li>
                         <li style="display: none;"><a href="legal.php">Governance Documents</a></li>
                         <li><a href="fraudawareness.php">Cyber Crime Reporting</a></li>
                     </ul>
@@ -524,13 +521,12 @@
         </div>
 
         <!-- IN-PAGE CAUTION SCROLL MESSAGE -->
+        <!-- IN-PAGE CAUTION SCROLL MESSAGE -->
         <aside class="fraud-scroll-widget" aria-label="Caution scroll message">
             <div class="fraud-scroll-inner">
                 <div class="fraud-label">Caution</div>
                 <div class="fraud-marquee">
-                    <span>IRDAI is not involved in activities like selling insurance policies, announcing bonus or
-                        investment of premiums. Public receiving such phone calls are requested to lodge a police
-                        complaint. | This is a corporate website for information purpose only. It does not constitute an advertisement or solicitation of general insurance business.</span>
+                    <span>IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint. &nbsp;&nbsp;|&nbsp;&nbsp; This is a corporate website for information purpose only. It does not constitute an advertisement or solicitation of general insurance business.</span>
                 </div>
             </div>
         </aside>

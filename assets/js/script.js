@@ -1,84 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ── CHROMAKEY VIDEO TO CANVAS ─────────────────────────
+    // ── CHROMAKEY VIDEO TO CANVAS (OPTIMIZED) ─────────────────
+    // Using CSS mix-blend-mode: multiply instead of Canvas pixel processing for massive performance boost
     const starVideo = document.getElementById('star-video');
-    const starCanvas = document.getElementById('star-canvas');
-    if (starVideo && starCanvas) {
-        const ctx = starCanvas.getContext('2d', { willReadFrequently: true });
-        
-        starVideo.addEventListener('loadedmetadata', () => {
-            starCanvas.width = starVideo.videoWidth || 500;
-            starCanvas.height = starVideo.videoHeight || 500;
-        });
-
-        function processFrame() {
-            if (starVideo.paused || starVideo.ended) return;
-            
-            ctx.drawImage(starVideo, 0, 0, starCanvas.width, starCanvas.height);
-            let frame = ctx.getImageData(0, 0, starCanvas.width, starCanvas.height);
-            let l = frame.data.length / 4;
-            
-            for (let i = 0; i < l; i++) {
-                let r = frame.data[i * 4 + 0];
-                let g = frame.data[i * 4 + 1];
-                let b = frame.data[i * 4 + 2];
-                // Make white/light gray pixels transparent
-                if (r > 240 && g > 240 && b > 240) {
-                    frame.data[i * 4 + 3] = 0; // Set alpha to 0
-                }
-            }
-            ctx.putImageData(frame, 0, 0);
-            requestAnimationFrame(processFrame);
-        }
-
-        starVideo.addEventListener('play', () => {
-            requestAnimationFrame(processFrame);
-        });
-        
-        // Ensure video plays
+    if (starVideo) {
         starVideo.play().catch(e => console.log('Auto-play prevented:', e));
     }
 
-    // ── HELPER: CHROMAKEY ANY VIDEO ──
-    function setupChromakey(videoId, canvasId) {
+    function setupChromakey(videoId) {
         const vid = document.getElementById(videoId);
-        const can = document.getElementById(canvasId);
-        if (!vid || !can) return;
-
-        const cCtx = can.getContext('2d', { willReadFrequently: true });
-        
-        vid.addEventListener('loadedmetadata', () => {
-            can.width = vid.videoWidth || 500;
-            can.height = vid.videoHeight || 500;
-        });
-
-        function renderFrame() {
-            if (vid.paused || vid.ended) return;
-            cCtx.drawImage(vid, 0, 0, can.width, can.height);
-            let frame = cCtx.getImageData(0, 0, can.width, can.height);
-            let l = frame.data.length / 4;
-            for (let i = 0; i < l; i++) {
-                let r = frame.data[i * 4 + 0];
-                let g = frame.data[i * 4 + 1];
-                let b = frame.data[i * 4 + 2];
-                // Make white/light gray pixels transparent
-                if (r > 240 && g > 240 && b > 240) {
-                    frame.data[i * 4 + 3] = 0;
-                }
-            }
-            cCtx.putImageData(frame, 0, 0);
-            requestAnimationFrame(renderFrame);
-        }
-
-        vid.addEventListener('play', () => {
-            requestAnimationFrame(renderFrame);
-        });
+        if (!vid) return;
         vid.play().catch(e => console.log('Auto-play prevented:', e));
     }
 
-    setupChromakey('slide-1-video', 'slide-1-canvas');
-    setupChromakey('slide-2-video', 'slide-2-canvas');
-    setupChromakey('slide-3-video', 'slide-3-canvas');
+    // Ensure all videos play
+    setupChromakey('slide-1-video');
+    setupChromakey('slide-2-video');
+    setupChromakey('slide-3-video');
+
 
     // ── OUR EDGE ─────────────────────────────────────────
     const edgeTabs = document.querySelectorAll('.edge-tab');
